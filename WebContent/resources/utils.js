@@ -28,7 +28,7 @@ $(function() {
 					var $li = $target.parent("li");
 					$li.closest("ul.nav").children("li").removeClass("active");
 					$li.addClass("active");
-					fnLoadPage(href);
+					$.bbq.pushState("#" + href);
 				}
 			};
 
@@ -39,6 +39,14 @@ $(function() {
 
 			$(".zyb-navigation a.nav-ajax").on("click", fnClickHandler);
 
+			$(window).on("hashchange", function(e) {
+						var href = $.param.fragment();
+						if (href) {
+							fnLoadPage(href);
+						}
+					});
+
+			$(window).trigger("hashchange");
 		});
 
 $(function() {
