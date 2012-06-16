@@ -32,7 +32,7 @@ $(function() {
 				var $target = $(e.target);
 				var href = $target.attr("href");
 				if (href) {
-					$.bbq.pushState("#"
+					$.bbq.pushState("#id="
 							+ href.substring(ZtUtils.getContextPath().length));
 				}
 			};
@@ -45,7 +45,7 @@ $(function() {
 			$(".zyb-navigation a.nav-ajax").on("click", fnClickHandler);
 
 			$(window).on("hashchange", function(e) {
-						var href = $.param.fragment();
+						var href = $.bbq.getState("id");
 						if (href) {
 							fnLoadPage(ZtUtils.getContextPath() + href);
 						}
