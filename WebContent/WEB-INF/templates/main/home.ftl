@@ -34,7 +34,7 @@
 							<header>Android Application Development Training</header>
 							<section>
 								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
-								<a class="more" href="#id=/productsandservices&el=android-app-dev-training">Read More...</a>
+								<a class="more" href="#id=/productsandservices&el=.android-app-dev-training">Read More...</a>
 							</section>
 						</article>
 					</div>
@@ -43,7 +43,7 @@
 							<header>Android Application Development</header>
 							<section>
 								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
-								<a class="more" href="#id=/productsandservices&el=android-app-dev-center">Read More...</a>
+								<a class="more" href="#id=/productsandservices&el=.android-app-dev-center">Read More...</a>
 							</section>
 						</article>
 					</div>

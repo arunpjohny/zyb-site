@@ -14,6 +14,8 @@ $(function() {
 			var $navbar = $("#nav-bar");
 			var $container = $("#page-container");
 
+			var id = undefined;
+
 			var fnLoadPage = function(url, callback) {
 				$container.load(url, false, function() {
 							var $a = $(".zyb-navigation li > a[href='" + url
@@ -22,6 +24,11 @@ $(function() {
 							$li.closest("ul.nav").children("li")
 									.removeClass("active");
 							$li.addClass("active");
+
+							var el = $.bbq.getState("el");
+							if (el) {
+								$(el).ScrollTo();
+							}
 						});
 			};
 
@@ -46,8 +53,14 @@ $(function() {
 
 			$(window).on("hashchange", function(e) {
 						var href = $.bbq.getState("id");
-						if (href) {
+						if (href && id != href) {
 							fnLoadPage(ZtUtils.getContextPath() + href);
+							id = href;
+						} else {
+							var el = $.bbq.getState("el");
+							if (el) {
+								$(el).ScrollTo();
+							}
 						}
 					});
 

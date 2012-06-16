@@ -4,7 +4,7 @@
 	<@macro.title "Products And Services" />
 	<div class="row-fluid">
 		<div class="span9">
-			<article class="article">
+			<article class="article android-app-dev-training">
 				<header class="type2"><h4>Android Application Development Training</h4></header>
 				<section>
 					<p>
@@ -32,7 +32,7 @@
 				</section>
 			</article>
 			
-			<article class="article">
+			<article class="article android-app-dev-center">
 				<header class="type2"><h4>Android Application Development</h4></header>
 				<section>
 					<p>
