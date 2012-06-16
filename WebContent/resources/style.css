@@ -2,7 +2,7 @@ body {
   background-color: #E9E9E7;
 }
 .zyb-logo {
-  padding: 9px 0;
+  padding: 10px 0;
 }
 .navbar-fixed-top {
   background-color: #E7E7E9;
@@ -11,7 +11,7 @@ body {
   margin-top: 40px;
 }
 .zyb-header {
-  height: 95px;
+  height: 85px;
 }
 .zyb-header .phone h4, .zyb-header .phone h5, .zyb-header .phone h6 {
   display: inline;
@@ -136,8 +136,8 @@ section p:first-child {
   background-image: none;
   background-repeat: no-repeat;
   display: inline-block;
-  height: 55px;
-  line-height: 55px;
+  height: 45px;
+  line-height: 45px;
   vertical-align: text-top;
   width: 45px;
 }

@@ -23,7 +23,7 @@
 			
 			<div class="zyb-header container">
 				<div class="zyb-logo pull-left">
-					<img src="${rc.getContextPath()}/resources/images/logo.gif" height="70px"></img>
+					<img src="${rc.getContextPath()}/resources/images/logo.gif" height="65px"></img>
 				</div>
 				<div class="zyb-contact pull-right text-right">
 					<div>
@@ -153,10 +153,9 @@
 				<section class="section get-in-touch">
 					<header class="type2"><h4>Get In Touch</h4></header>
 					<article>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
+						<div><i class="icon-small-mail"></i><span>Email: info.zybotech@gmail.com</span></div>
+						<div><i class="icon-small-mail"></i><span>Phone: 0484-6009444</span></div>
+						<div><i class="icon-small-mail"></i><span>Mobile: 9746600813</span></div>
 					</article>
 				</section>
 </#macro>

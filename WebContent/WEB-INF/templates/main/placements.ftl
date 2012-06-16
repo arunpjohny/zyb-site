@@ -7,14 +7,14 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<article class="article">
-						<header class="type2"><h5>Development and Training process</h5></header>
+						<header class="type2"><h4>Development and Training process</h4></header>
 						<section style="text-align: center;">
 							<img src="${rc.getContextPath()}/resources/images/careers/placement-process.gif"></img>
 						</section>
 					</article>
 
 					<article class="article">
-						<header class="type2"><h5>What we do</h5></header>
+						<header class="type2"><h4>What we do</h4></header>
 						<section>
 							<p>
 								Zybotech solutions offer 100% placement assistance for the students and till date most of the trained students were placed in android application development in various companies in and around the state.
