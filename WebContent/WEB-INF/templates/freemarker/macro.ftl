@@ -164,10 +164,10 @@
 <#macro productsandservicessidebar>
 			<div class="contact-sidebar">
 				<@morelinkspanle>
-					<div><a href="#/productsandservices/whyandroid">Why Android Training at Zybotech</a></div>
-					<div><a href="#/productsandservices/scope-mobile-dev">Scope of Mobile Application Development</a></div>
-					<div><a href="#/productsandservices/app-gallery">Apps Gallery</a></div>
-					<div><a href="#/productsandservices/testimonials">Testimonies</a></div>
+					<div><a href="#id=/productsandservices/whyandroid">Why Android Training at Zybotech</a></div>
+					<div><a href="#id=/productsandservices/scope-mobile-dev">Scope of Mobile Application Development</a></div>
+					<div><a href="#id=/productsandservices/app-gallery">Apps Gallery</a></div>
+					<div><a href="#id=/productsandservices/testimonials">Testimonies</a></div>
 				</@morelinkspanle>				
 				<@getintouchpanel />
 			</div><!-- contact-sidebar -->
@@ -176,9 +176,9 @@
 <#macro aboutussidebar>
 			<div class="contact-sidebar">
 				<@morelinkspanle>
-					<div><a href="#/aboutus/advisoryboard">Advisory Board</a></div>
-					<div><a href="#/aboutus/managementteam">Management Team</a></div>
-					<div><a href="#/aboutus/trainers">Trainers</a></div>
+					<div><a href="#id=/aboutus/advisoryboard">Advisory Board</a></div>
+					<div><a href="#id=/aboutus/managementteam">Management Team</a></div>
+					<div><a href="#id=/aboutus/trainers">Trainers</a></div>
 				</@morelinkspanle>				
 				<@getintouchpanel />
 			</div><!-- contact-sidebar -->

@@ -24,7 +24,7 @@
 					<header><h3>Welcome to zybotech Solutions</h3></header>
 					<section>
 						Zybotech Solutions is one of the leading companies offering professional Mobile Application Training and development in Kerala. We deliver professional and competitively priced development and training solutions in mobile application development. We build experts in android development with our interactive training sessions and industry oriented curriculum and a handful of experience in working with live and multimedia projects helps developers to build confidence to handle any complex projects with a high professional quality.
-						<a class="more" href="#/aboutus">Read More...</a>
+						<a class="more" href="#id=/aboutus">Read More...</a>
 					</section>
 				</article>
 				
@@ -34,13 +34,17 @@
 							<header>Android Application Development Training</header>
 							<section>
 								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
+								<a class="more" href="#id=/productsandservices&el=android-app-dev-training">Read More...</a>
 							</section>
 						</article>
 					</div>
 					<div class="span6">
 						<article class="article">
 							<header>Android Application Development</header>
-							<section></section>
+							<section>
+								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
+								<a class="more" href="#id=/productsandservices&el=android-app-dev-center">Read More...</a>
+							</section>
 						</article>
 					</div>
 				</div>
