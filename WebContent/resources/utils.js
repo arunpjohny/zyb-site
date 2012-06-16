@@ -15,7 +15,14 @@ $(function() {
 			var $container = $("#page-container");
 
 			var fnLoadPage = function(url, callback) {
-				$container.load(url, false);
+				$container.load(url, false, function() {
+							var $a = $(".zyb-navigation li > a[href='" + url
+									+ "']");
+							var $li = $a.parent("li");
+							$li.closest("ul.nav").children("li")
+									.removeClass("active");
+							$li.addClass("active");
+						});
 			};
 
 			var fnClickHandler = function(e) {
@@ -25,10 +32,8 @@ $(function() {
 				var $target = $(e.target);
 				var href = $target.attr("href");
 				if (href) {
-					var $li = $target.parent("li");
-					$li.closest("ul.nav").children("li").removeClass("active");
-					$li.addClass("active");
-					$.bbq.pushState("#" + href);
+					$.bbq.pushState("#"
+							+ href.substring(ZtUtils.getContextPath().length));
 				}
 			};
 
@@ -42,7 +47,7 @@ $(function() {
 			$(window).on("hashchange", function(e) {
 						var href = $.param.fragment();
 						if (href) {
-							fnLoadPage(href);
+							fnLoadPage(ZtUtils.getContextPath() + href);
 						}
 					});
 

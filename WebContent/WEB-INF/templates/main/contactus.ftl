@@ -1,7 +1,7 @@
 <#import "/WEB-INF/templates/freemarker/macro.ftl" as macro/>
 
 <@macro.header />
-	<div class="row" id="zyb-contactus">
+	<div class="row-fluid" id="zyb-contactus">
 		<div class="span9">
 			<form action="" method="POST" class="form-horizontal well">
 				<fieldset>
@@ -15,7 +15,10 @@
 					<span class="cancel-mail btn btn-primary">Cancel</span>
 				</div>
 			</form>
-		</div> <!-- span12 -->
+		</div> <!-- span9 -->
+		<div class="span3">
+			<@macro.contactsidebar />
+		</div>
 	</div><!-- row -->
 <@macro.footer>
 	<script language="" src="${rc.getContextPath()}/resources/js/main/contactus.js"></script>

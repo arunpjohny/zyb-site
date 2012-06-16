@@ -1,11 +1,14 @@
 body {
   background-color: #E9E9E7;
 }
+.zyb-logo {
+  padding: 9px 0;
+}
 .navbar-fixed-top {
   background-color: #E7E7E9;
 }
 .navbar-fixed-top + .container {
-  margin-top: 130px;
+  margin-top: 40px;
 }
 .zyb-header {
   height: 95px;
@@ -28,7 +31,7 @@ body {
   display: none;
   position: fixed;
   right: 5px;
-  top: 95px;
+  top: 140px;
 }
 .theme-default .nivoSlider {
   margin-bottom: 0px;
@@ -73,7 +76,7 @@ body {
   color: #015890;
   margin-bottom: 5px;
 }
-.section {
+.article {
   border-top: 2px solid #e1e1e1;
   border-right: 2px solid #e1e1e1;
   border-bottom: 2px solid #e1e1e1;
@@ -83,21 +86,28 @@ body {
   min-height: 25px;
   padding: 7px;
 }
-.section  > header {
+.article  > header {
   border-top: 1px solid #e1e1e1;
   border-right: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1;
   border-left: 1px solid #e1e1e1;
   border-radius: 5px;
   box-shadow: 0 0 5px 10px rgba(83, 83, 83, 0.1) inset;
-  color: white;
+  color: #226899;
   padding: 4px 6px;
 }
-.section  > header.type2 {
+.article  > header.type2 {
   border: none;
   box-shadow: none;
-  padding: 4px 6px;
+  padding: 4px 6px 4px 0;
   color: #015890;
+}
+section p {
+  margin-top: 50x;
+  text-align: justify;
+}
+section p:first-child {
+  margin-top: 0;
 }
 .topic {
   border-top: 1px solid #e1e1e1;
@@ -157,7 +167,7 @@ body {
   color: #B4EAC7;
 }
 .contact-sidebar .more-links article > div a:visited {
-  color: #E1E1E1;
+  color: #666 !important;
 }
 .contact-sidebar .get-in-touch {
   border: none;
@@ -314,14 +324,14 @@ body {
 .scrollable-wrapper a.disabled {
   visibility: hidden !important;
 }
-.scrollable-wrapper.career-student a.browse {
+.scrollable-wrapper.student a.browse {
   margin-top: 45px;
   margin-bottom: 45px;
 }
-.scrollable-wrapper.career-student .scrollable {
+.scrollable-wrapper.student .scrollable {
   height: 125px;
   width: 770px;
 }
-.scrollable-wrapper.career-student img {
+.scrollable-wrapper.student img {
   cursor: pointer;
 }

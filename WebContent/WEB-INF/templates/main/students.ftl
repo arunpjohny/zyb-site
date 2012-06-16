@@ -1,13 +1,12 @@
 <#import "/WEB-INF/templates/freemarker/macro.ftl" as macro/>
 
 <@macro.header />
-	<div class="row-fluid" id="zyb-careers">
+	<@macro.title "Students" />
+	<div class="row-fluid" id="zyb-students">
 		<div class="span9">
-			<h3 class="bordered-light-b title">Careers</h3>
-
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="scrollable-wrapper career-student">
+					<div class="scrollable-wrapper student">
 						<a class="prev browse left"></a>
 						<div class="scrollable">
 							<div class="items">
@@ -25,7 +24,7 @@
 
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="student-info-ct" style="margin-top: 5px;">
+					<div class="info-ct" style="margin-top: 5px;">
 					</div>
 				</div><!--span12-->
 			</div><!--row-fluid-->
@@ -34,20 +33,20 @@
 			<@macro.contactsidebar />
 		</div>
 
-		<script type="text/x-jsrender" class="career-student-tmpl">
-			<section class="student section">
+		<script type="text/x-jsrender" class="student-tmpl">
+			<article class="student article">
 				<header class="type2"><h4>{{:name}}</h4></header>
-				<article>
+				<section>
 					{{:description}}
-				</article>
-			</section>
+				</section>
+			</article>
 		</script>
 	</div><!-- row -->
 <@macro.footer >
-	<script language="" src="${rc.getContextPath()}/resources/js/main/careers.js"></script>
+	<script language="" src="${rc.getContextPath()}/resources/js/main/students.js"></script>
 	<script>
 		$(function(){
-			new zyb.main.careers.Main("#zyb-careers");
+			new zyb.main.students.Main("#zyb-students");
 		});
 	</script>
 </@macro.footer >

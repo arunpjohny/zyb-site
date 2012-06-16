@@ -1,39 +1,41 @@
 <#import "/WEB-INF/templates/freemarker/macro.ftl" as macro/>
 
 <@macro.header />
+	<@macro.title "About Us" />
 	<div class="row-fluid">
 		<div class="span9">
-			<h3 class="bordered-light-b title">About Us</h3>
+			<article>
+				<section>
+					<p>
+						 Zybotech Solutions is one of the leading companies offering professional Mobile Application Training and development in Kerala. We deliver professional and competitively priced development and training solutions in mobile application development. We build experts in android development with our interactive training sessions and industry oriented curriculum and a handful of experience in working with live and multimedia projects helps developers to build confidence to handle any complex projects with a high professional quality.
+					</p>
+					<p>
+						 Our advanced curriculum and interactive training sessions helps building well groomed developers. With the two years of industry experience, the company has grown to new heights and with the competencies to meet the changing demands of technological environment. Zybotech is successful in being the best source of developers for the employers and best institute for the trainees to get explored with the latest technologies.  Zybotech is being an option for domestic and offshore clients to assign their mobile application development projects. Zybotech combines world class Technology, Process Skills and Expertise to meet the client's requirements round the clock assuring Business as usual.
+					</p>
+				</section>
+			</article>
 			
 			<div class="row-fluid">
-				<div class="span4">
-					<section class="section">
-						<header class="type2"><h2>Our Team</h2></header>
-						<article>
-							Go to Start > Control Panel > Network and Internet > Network and Sharing Center > Troubleshoot Problems (at the bottom) > Internet Connections.
-						</article>
-					</section>
+				<div class="span6">
+					<article class="article" style="min-height: 100px;">
+						<header class="type2"><h2>Our Vision</h2></header>
+						<section>
+							To be the most trusted and reliable centre for mobile application Development and Training.
+						</section>
+					</article>
 				</div>
-				<div class="span4">
-					<section class="section">
+				<div class="span6">
+					<article class="article" style="min-height: 100px;">
 						<header class="type2"><h2>Our Mission</h2></header>
-						<article>
-							Google Chrome can't display the webpage because your computer isn't connected to the Internet. 
-						</article>
-					</section>
-				</div>
-				<div class="span4">
-					<section class="section">
-						<header class="type2"><h2>Our Values</h2></header>
-						<article>
-							<p>
-								<strong>Quality</strong> : Meet and exceed international standards.
-							</p>
-							You can try to diagnose the problem by taking the following steps: 
-						</article>
-					</section>
+						<section>
+							Delight our clients, trainees, employees, and shareholders by relentlessly delivering the platform and technology advancements that become essential to the way we work and live. 
+						</section>
+					</article>
 				</div>
 			</div>
 		</div> <!-- span9 -->
+		<div class="span3">
+			<@macro.aboutussidebar />
+		</div>
 	</div><!-- row -->
 <@macro.footer />
