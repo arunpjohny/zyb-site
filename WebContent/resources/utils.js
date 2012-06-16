@@ -53,7 +53,17 @@ $(function() {
 
 			$(window).on("hashchange", function(e) {
 						var href = $.bbq.getState("id");
-						if (href && id != href) {
+						if (!href && !id) {
+							$.bbq.pushState("#id=/home");
+							return;
+						}
+
+						if (!href) {
+							$.bbq.pushState("id=" + id);
+							return;
+						}
+
+						if (id != href) {
 							fnLoadPage(ZtUtils.getContextPath() + href);
 							id = href;
 						} else {

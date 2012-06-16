@@ -36,7 +36,9 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public ModelAndView defaultpath(HttpServletRequest request) {
-		return new ModelAndView(new RedirectView("/home", true));
+		Map<String, Object> model = new HashMap<String, Object>();
+		requestUtils.putContents(request, model);
+		return new ModelAndView("WEB-INF/templates/main/base", model);
 	}
 
 	@RequestMapping("/home")
