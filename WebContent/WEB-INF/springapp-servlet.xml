@@ -15,13 +15,12 @@
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
 	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
+	<import resource="mvc-context.xml" />
+
 	<context:annotation-config />
-	<mvc:annotation-driven validator="validator" />
 	<tx:annotation-driven transaction-manager="txManager" />
 
 	<context:component-scan base-package="in.co.zybotech" />
-
-	<mvc:resources location="/resources/" mapping="/resources/**" />
 
 	<bean id="freeMarkerViewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -82,9 +81,6 @@
 		<property name="useCodeAsDefaultMessage" value="true" />
 		<property name="basename"
 			value="/WEB-INF/classes/messageResource/applicationMessages" />
-	</bean>
-	<bean name="validator"
-		class="in.co.zybotech.core.spring.bind.validation.LocalValidatorFactoryBean">
 	</bean>
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
