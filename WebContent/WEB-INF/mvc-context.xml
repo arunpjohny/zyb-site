@@ -16,4 +16,40 @@
 		class="in.co.zybotech.core.spring.bind.validation.LocalValidatorFactoryBean">
 	</bean>
 
+
+	<bean id="annotationMethodConverters" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<bean
+					class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="writeAcceptCharset" value="false" />
+				</bean>
+				<bean
+					class="org.springframework.http.converter.ResourceHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.xml.SourceHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"></bean>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+					<property name="objectMapper" ref="jacksonObjectMapper" />
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters" ref="annotationMethodConverters" />
+	</bean>
+
+	<bean id="jacksonObjectMapper" class="in.co.zybotech.core.jackson.ObjectMapperFactory"></bean>
+	<bean id="jacksonUtils" class="in.co.zybotech.core.jackson.JacksonUtils" scope="singleton">
+		<constructor-arg ref="jacksonObjectMapper" />
+	</bean>
+
 </beans>
