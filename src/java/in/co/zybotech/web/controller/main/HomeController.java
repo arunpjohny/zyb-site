@@ -1,5 +1,6 @@
 package in.co.zybotech.web.controller.main;
 
+import static in.co.zybotech.web.utils.RequestUtils.AJAX_PAGE_MESSAGE;
 import in.co.zybotech.core.exception.client.ResourceNotFoundException;
 import in.co.zybotech.model.career.CareerStudent;
 import in.co.zybotech.service.CareerManager;
@@ -37,47 +38,45 @@ public class HomeController {
 	@RequestMapping("/")
 	public ModelAndView defaultpath(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/main/base", model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/base");
 	}
 
 	@RequestMapping("/home")
 	public ModelAndView home(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/main/home", model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/home");
 	}
 
 	@RequestMapping("/aboutus")
 	public ModelAndView aboutus(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/main/aboutus", model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/aboutus");
 	}
 
 	@RequestMapping("/aboutus/{page}")
 	public ModelAndView aboutuspage(HttpServletRequest request,
 			@PathVariable String page) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/aboutus/" + page, model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/aboutus/" + page);
 	}
 
 	@RequestMapping("/productsandservices")
 	public ModelAndView productsandservices(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/main/productsandservices",
-				model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/productsandservices");
 	}
 
 	@RequestMapping("/productsandservices/{page}")
 	public ModelAndView productsandservicespage(HttpServletRequest request,
 			@PathVariable String page) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView(
-				"WEB-INF/templates/productsandservices/" + page, model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/productsandservices/" + page);
 	}
 
 	@RequestMapping("/students")
@@ -85,7 +84,8 @@ public class HomeController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		requestUtils.putContents(request, model);
 		model.put("students", careerManager.getStudentsForCareer());
-		return new ModelAndView("WEB-INF/templates/main/students", model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/students");
 	}
 
 	@RequestMapping("/student/{id}")
@@ -103,15 +103,15 @@ public class HomeController {
 	@RequestMapping("/placements")
 	public ModelAndView placements(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/main/placements", model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/placements");
 	}
 
 	@RequestMapping("/contactus")
 	public ModelAndView contactus(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/main/contactus", model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/contactus");
 	}
 
 	@RequestMapping(value = "/contactus/mail", method = RequestMethod.POST)
@@ -123,15 +123,15 @@ public class HomeController {
 
 		Map<String, Object> model = new HashMap<String, Object>();
 
-		model.put(RequestUtils.AJAX_PAGE_MESSAGE, "Mail send successfully");
+		model.put(AJAX_PAGE_MESSAGE, "Mail send successfully");
 		return model;
 	}
 
 	@RequestMapping("/blog")
 	public ModelAndView blog(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		return new ModelAndView("WEB-INF/templates/main/blog", model);
+		return requestUtils.getModelAndView(request, model,
+				"WEB-INF/templates/main/blog");
 	}
 
 }

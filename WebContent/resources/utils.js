@@ -54,7 +54,13 @@ $(function() {
 			$(window).on("hashchange", function(e) {
 						var href = $.bbq.getState("id");
 						if (!href && !id) {
-							$.bbq.pushState("#id=/home");
+							if (_pageId && _pageId != "/") {
+								id = _pageId;
+								$.bbq.pushState("#id=" + (_pageId));
+							} else {
+								id = _pageId;
+								$.bbq.pushState("#id=/home");
+							}
 							return;
 						}
 

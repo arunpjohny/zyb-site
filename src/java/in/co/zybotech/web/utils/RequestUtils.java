@@ -3,6 +3,7 @@ package in.co.zybotech.web.utils;
 import in.co.zybotech.core.spring.context.utils.ApplicationContextLocator;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
 
 @Component
 public class RequestUtils {
@@ -84,6 +86,14 @@ public class RequestUtils {
 			model.put("_contextPath", request.getContextPath());
 			model.put("_pageId", getResourceId(request));
 		}
+	}
+
+	public ModelAndView getModelAndView(HttpServletRequest request,
+			Map<String, Object> model, String viewName) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		putContents(request, map);
+		map.putAll(model);
+		return new ModelAndView(viewName, map);
 	}
 
 	public enum MessageType {
