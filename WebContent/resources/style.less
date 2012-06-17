@@ -41,16 +41,20 @@ body {
 	background-color: #E9E9E7;
 }
 
+.zyb-logo {
+	padding: 10px 0;
+}
+
 .navbar-fixed-top {
 	background-color: #E7E7E9;
 
 	&+ .container{
-		margin-top: 130px;
+		margin-top: 40px;
 	}
 }
 
 .zyb-header {
-	height: 95px;
+	height: 85px;
 	
 	.phone {
 		h4, h5, h6 {
@@ -65,6 +69,7 @@ body {
 
 .zyb-content {
 	background-color: #FFFFFF;
+	min-height: 300px;
 	padding: 5px 10px;
 }
 
@@ -77,7 +82,7 @@ body {
 	display: none;
 	position: fixed;
     right: 5px;
-	top: 95px;
+	top: 140px;
 }
 
 
@@ -124,14 +129,14 @@ body {
 	margin-bottom: 5px;
 }
 
-.section { 
+.article { 
 
 	& > header {
 		.bordered-light();
 		.rounded-border-small();
 		
 		box-shadow: 0 0 5px 10px rgba(83, 83, 83, .1) inset;
-		color: white;
+		color: #226899;
 		padding: 4px 6px;
 	}
 	
@@ -139,7 +144,7 @@ body {
 		border: none;
 		box-shadow: none;
 		
-		padding: 4px 6px;
+		padding: 4px 6px 4px 0;
 		color: rgb(1, 88, 144);
 	}
 	
@@ -149,6 +154,17 @@ body {
     margin: 5px 0;
     min-height: 25px;
     padding: 7px;
+}
+
+section {
+	p {
+		margin-top: 50x;
+		text-align: justify;
+		
+		&:first-child {
+			margin-top: 0;
+		}
+	}
 }
 
 .topic {
@@ -182,7 +198,7 @@ body {
 
 .social-connect {
 	[class^="connect-"], [class*=" connect-"] {
-		.mixin-icon(55px, 45px);
+		.mixin-icon(45px, 45px);
 	}
 
 	.connect-facebook {
@@ -218,7 +234,7 @@ body {
 				}
 				
 				&:visited {
-					color: #E1E1E1;
+					color: #666 !important;
 				}
 			}			
 		}
@@ -399,7 +415,7 @@ body {
 		visibility: hidden !important;
 	}
 
-	&.career-student {
+	&.student {
 		a.browse {
 			margin-top: 45px;
 			margin-bottom: 45px;

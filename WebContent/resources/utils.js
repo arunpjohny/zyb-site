@@ -14,8 +14,22 @@ $(function() {
 			var $navbar = $("#nav-bar");
 			var $container = $("#page-container");
 
+			var id = undefined;
+
 			var fnLoadPage = function(url, callback) {
-				$container.load(url, false);
+				$container.load(url, false, function() {
+							var $a = $(".zyb-navigation li > a[href='" + url
+									+ "']");
+							var $li = $a.parent("li");
+							$li.closest("ul.nav").children("li")
+									.removeClass("active");
+							$li.addClass("active");
+
+							var el = $.bbq.getState("el");
+							if (el) {
+								$(el).ScrollTo();
+							}
+						});
 			};
 
 			var fnClickHandler = function(e) {
@@ -25,10 +39,8 @@ $(function() {
 				var $target = $(e.target);
 				var href = $target.attr("href");
 				if (href) {
-					var $li = $target.parent("li");
-					$li.closest("ul.nav").children("li").removeClass("active");
-					$li.addClass("active");
-					$.bbq.pushState("#" + href);
+					$.bbq.pushState("#id="
+							+ href.substring(ZtUtils.getContextPath().length));
 				}
 			};
 
@@ -40,9 +52,25 @@ $(function() {
 			$(".zyb-navigation a.nav-ajax").on("click", fnClickHandler);
 
 			$(window).on("hashchange", function(e) {
-						var href = $.param.fragment();
-						if (href) {
-							fnLoadPage(href);
+						var href = $.bbq.getState("id");
+						if (!href && !id) {
+							$.bbq.pushState("#id=/home");
+							return;
+						}
+
+						if (!href) {
+							$.bbq.pushState("id=" + id);
+							return;
+						}
+
+						if (id != href) {
+							fnLoadPage(ZtUtils.getContextPath() + href);
+							id = href;
+						} else {
+							var el = $.bbq.getState("el");
+							if (el) {
+								$(el).ScrollTo();
+							}
 						}
 					});
 

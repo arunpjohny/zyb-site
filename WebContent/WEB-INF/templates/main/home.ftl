@@ -6,13 +6,13 @@
 			<div class="span12">
 		        <div class="slider-wrapper theme-default">
 		            <div class="nivoSlider">
-		                <img src="resources/images/toystory.jpg" data-thumb="resources/images/toystory.jpg" alt="" />
-		                <a href="http://dev7studios.com"><img src="resources/images/up.jpg" data-thumb="resources/images/up.jpg" alt="" title="This is an example of a caption" /></a>
-		                <img src="resources/images/walle.jpg" data-thumb="resources/images/walle.jpg" alt="" data-transition="slideInLeft" />
-		                <img src="resources/images/nemo.jpg" data-thumb="resources/images/nemo.jpg" alt="" title="#htmlcaption" />
-		            </div>
-		            <div id="htmlcaption" class="nivo-html-caption">
-		                <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
+		                <img src="${rc.getContextPath()}/resources/images/home/android-work-shops.jpg"/>
+		                <img src="${rc.getContextPath()}/resources/images/home/imagine-tomorrow.jpg"/>
+		                <img src="${rc.getContextPath()}/resources/images/home/learn-while-u-do.jpg"/>
+		                <img src="${rc.getContextPath()}/resources/images/home/looking-for-a-smart.jpg"/>
+		                <img src="${rc.getContextPath()}/resources/images/home/mob-apps-development.jpg"/>
+		                <img src="${rc.getContextPath()}/resources/images/home/talents.jpg"/>
+		                <img src="${rc.getContextPath()}/resources/images/home/training.jpg"/>
 		            </div>
 		        </div>
 			</div> <!-- span12 -->
@@ -20,39 +20,46 @@
 		
 		<div class="row-fluid">
 			<div class="span9">
-				<section class="welcome">
+				<article class="welcome">
 					<header><h3>Welcome to zybotech Solutions</h3></header>
-					<article>
-						Around advice is the most general kind of advice. Since Spring AOP, like AspectJ, provides a full range of advice types, we recommend that you use the least powerful advice type that can implement the required behavior. For example, if you need only to update a cache with the return value of a method, you are better off implementing an after returning advice than an around advice, although an around advice can accomplish the same thing. Using the most specific advice type provides a simpler programming model with less potential for errors. For example, you do not need to invoke the proceed() method on the JoinPoint used for around advice, and hence cannot fail to invoke it.
-					</article>
-					<p class="more">Read More</p>
-				</section>
+					<section>
+						Zybotech Solutions is one of the leading companies offering professional Mobile Application Training and development in Kerala. We deliver professional and competitively priced development and training solutions in mobile application development. We build experts in android development with our interactive training sessions and industry oriented curriculum and a handful of experience in working with live and multimedia projects helps developers to build confidence to handle any complex projects with a high professional quality.
+						<a class="more" href="#id=/aboutus">Read More...</a>
+					</section>
+				</article>
 				
 				<div class="row-fluid">
 					<div class="span6">
-						<section class="section">
-							<header>ANDROID APPLICATION DEVELOPMENT</header>
-							<article>
+						<article class="article">
+							<header>Android Application Development Training</header>
+							<section>
 								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
-							</article>
-						</section>
+								<a class="more" href="#id=/productsandservices&el=.android-app-dev-training">Read More...</a>
+							</section>
+						</article>
 					</div>
 					<div class="span6">
-						<section class="section">
-							<header>ANDROID APPLICATION DEVELOPMENT</header>
-							<article></article>
-						</section>
+						<article class="article">
+							<header>Android Application Development</header>
+							<section>
+								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
+								<a class="more" href="#id=/productsandservices&el=.android-app-dev-center">Read More...</a>
+							</section>
+						</article>
 					</div>
 				</div>
 			</div> <!-- span9 -->
 			<div class="span3">
-				<section class="section">
+				<article class="article">
 					Some contents goes here
 					
 					<div class="topic">
 						<strong>Some topic goes here</strong>
 					</div>
-				</section>
+					<div class="topic">
+						<strong>Some topic goes here</strong>
+					</div>
+				</article>
 			</div> <!-- span3 -->
 		</div> <!-- row -->
 		

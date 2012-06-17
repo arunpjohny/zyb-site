@@ -5,7 +5,9 @@ $(function() {
 							this.el = $(el);
 							this.options = $.extend({}, options);
 
-							//$(".nivoSlider",this.el).nivoSlider();
+							$(".nivoSlider", this.el).nivoSlider({
+										effect : "boxRandom"
+									});
 						}
 					});
 		});

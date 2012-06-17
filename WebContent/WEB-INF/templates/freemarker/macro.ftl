@@ -21,6 +21,23 @@
 	
 			<#include "menu.ftl" />
 			
+			<div class="zyb-header container">
+				<div class="zyb-logo pull-left">
+					<img src="${rc.getContextPath()}/resources/images/logo.gif" height="65px"></img>
+				</div>
+				<div class="zyb-contact pull-right text-right">
+					<div>
+						<div class="phone">
+							<h4>Call Us</h4> <h5>080-2524900</h5>
+						</div>
+						<h5 class="email">info@zybotechsolutions.in</h5>
+					</div>
+					<div class="social-connect">
+						<div class="connect-facebook"></div>
+						<div class="connect-twitter"></div>
+					</div>
+				</div>
+			</div>
 			<div class="container">
 				<div class="zyb-content">
 					<div>
@@ -47,6 +64,12 @@
 <#else>
 	<#nested>
 </#if>
+</#macro>
+
+<#macro title title>
+	<div class="page-title">
+		<h3 class="bordered-light-b title">${title}</h3>
+	</div>
 </#macro>
 
 <#macro ctrlfile name label class="" size="" errorplacement="inline">
@@ -86,7 +109,7 @@
 <#macro navigation ulclass="">
 		<ul class="zyb-navigation nav">
 			<li>
-				<a class="nav-ajax" href="${rc.getContextPath()}/">Home</a>
+				<a class="nav-ajax" href="${rc.getContextPath()}/home">Home</a>
 			</li>
 			<li>
 				<a class="nav-ajax" href="${rc.getContextPath()}/aboutus">About Us</a>
@@ -95,7 +118,10 @@
 				<a class="nav-ajax" href="${rc.getContextPath()}/productsandservices">Products & Services</a>
 			</li>
 			<li>
-				<a class="nav-ajax" href="${rc.getContextPath()}/careers">Careers</a>
+				<a class="nav-ajax" href="${rc.getContextPath()}/students">Students</a>
+			</li>
+			<li>
+				<a class="nav-ajax" href="${rc.getContextPath()}/placements">Placements</a>
 			</li>
 			<li>
 				<a class="nav-ajax" href="${rc.getContextPath()}/contactus">Contact Us</a>
@@ -105,22 +131,54 @@
 
 <#macro contactsidebar>
 			<div class="contact-sidebar">
-				<section class="section more-links">
-					<header class="type2"><h4>More Links</h4></header>
-					<article>
-						<div><a href="#link">Some Link 1</a></div>
-						<div><a href="#link">Some Link 2</a></div>
-						<div><a href="#link">Some Link 3</a></div>
-					</article>
-				</section>
+				<@morelinkspanle>
+					<#nested>
+				</@morelinkspanle>				
+				<@getintouchpanel />
+			</div><!-- contact-sidebar -->
+</#macro>
+
+<#macro morelinkspanle>
+				<#assign links><#nested></#assign>
+				<#if links?has_content>
+					<section class="section more-links">
+						<header class="type2"><h4>More Links</h4></header>
+						<article>
+							<#nested>
+						</article>
+					</section>
+				</#if>
+</#macro>
+<#macro getintouchpanel>
 				<section class="section get-in-touch">
 					<header class="type2"><h4>Get In Touch</h4></header>
 					<article>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
-						<div><i class="icon-small-mail"></i><span>Some Link 1</span></div>
+						<div><i class="icon-small-mail"></i><span>Email: info.zybotech@gmail.com</span></div>
+						<div><i class="icon-small-mail"></i><span>Phone: 0484-6009444</span></div>
+						<div><i class="icon-small-mail"></i><span>Mobile: 9746600813</span></div>
 					</article>
 				</section>
+</#macro>
+
+<#macro productsandservicessidebar>
+			<div class="contact-sidebar">
+				<@morelinkspanle>
+					<div><a href="#id=/productsandservices/whyandroid">Why Android Training at Zybotech</a></div>
+					<div><a href="#id=/productsandservices/scope-mobile-dev">Scope of Mobile Application Development</a></div>
+					<div><a href="#id=/productsandservices/app-gallery">Apps Gallery</a></div>
+					<div><a href="#id=/productsandservices/testimonials">Testimonies</a></div>
+				</@morelinkspanle>				
+				<@getintouchpanel />
+			</div><!-- contact-sidebar -->
+</#macro>
+
+<#macro aboutussidebar>
+			<div class="contact-sidebar">
+				<@morelinkspanle>
+					<div><a href="#id=/aboutus/advisoryboard">Advisory Board</a></div>
+					<div><a href="#id=/aboutus/managementteam">Management Team</a></div>
+					<div><a href="#id=/aboutus/trainers">Trainers</a></div>
+				</@morelinkspanle>				
+				<@getintouchpanel />
 			</div><!-- contact-sidebar -->
 </#macro>

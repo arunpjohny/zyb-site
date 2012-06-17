@@ -36,7 +36,9 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public ModelAndView defaultpath(HttpServletRequest request) {
-		return new ModelAndView(new RedirectView("/home", true));
+		Map<String, Object> model = new HashMap<String, Object>();
+		requestUtils.putContents(request, model);
+		return new ModelAndView("WEB-INF/templates/main/base", model);
 	}
 
 	@RequestMapping("/home")
@@ -53,6 +55,14 @@ public class HomeController {
 		return new ModelAndView("WEB-INF/templates/main/aboutus", model);
 	}
 
+	@RequestMapping("/aboutus/{page}")
+	public ModelAndView aboutuspage(HttpServletRequest request,
+			@PathVariable String page) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		requestUtils.putContents(request, model);
+		return new ModelAndView("WEB-INF/templates/aboutus/" + page, model);
+	}
+
 	@RequestMapping("/productsandservices")
 	public ModelAndView productsandservices(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -61,22 +71,39 @@ public class HomeController {
 				model);
 	}
 
-	@RequestMapping("/careers")
-	public ModelAndView careers(HttpServletRequest request) {
+	@RequestMapping("/productsandservices/{page}")
+	public ModelAndView productsandservicespage(HttpServletRequest request,
+			@PathVariable String page) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		requestUtils.putContents(request, model);
+		return new ModelAndView(
+				"WEB-INF/templates/productsandservices/" + page, model);
+	}
+
+	@RequestMapping("/students")
+	public ModelAndView students(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		requestUtils.putContents(request, model);
 		model.put("students", careerManager.getStudentsForCareer());
-		return new ModelAndView("WEB-INF/templates/main/careers", model);
+		return new ModelAndView("WEB-INF/templates/main/students", model);
 	}
 
-	@RequestMapping("/careers/student/{id}")
+	@RequestMapping("/student/{id}")
 	public @ResponseBody
 	Object student(HttpServletRequest request, @PathVariable int id) {
-		CareerStudent student = careerManager.getObject(CareerStudent.class, id);
-		if(student==null){
+		CareerStudent student = careerManager
+				.getObject(CareerStudent.class, id);
+		if (student == null) {
 			throw new RuntimeException("Not Found");
 		}
 		return student;
+	}
+
+	@RequestMapping("/placements")
+	public ModelAndView placements(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		requestUtils.putContents(request, model);
+		return new ModelAndView("WEB-INF/templates/main/placements", model);
 	}
 
 	@RequestMapping("/contactus")
