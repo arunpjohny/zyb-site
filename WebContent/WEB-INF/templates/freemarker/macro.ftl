@@ -126,7 +126,16 @@
 			<li>
 				<a class="nav-ajax" href="${rc.getContextPath()}/contactus">Contact Us</a>
 			</li>
+			<li>
+				<a class="nav-ajax" href="${rc.getContextPath()}/blog">Blogs</a>
+			</li>
 		</ul>
+</#macro>
+
+<#macro sidebar>
+			<div class="contact-sidebar">
+					<#nested>
+			</div><!-- contact-sidebar -->
 </#macro>
 
 <#macro contactsidebar>
@@ -138,11 +147,11 @@
 			</div><!-- contact-sidebar -->
 </#macro>
 
-<#macro morelinkspanle>
+<#macro morelinkspanle title="More Links">
 				<#assign links><#nested></#assign>
 				<#if links?has_content>
 					<section class="section more-links">
-						<header class="type2"><h4>More Links</h4></header>
+						<header class="type2"><h4>${title}</h4></header>
 						<article>
 							<#nested>
 						</article>
@@ -158,27 +167,4 @@
 						<div><i class="icon-small-mail"></i><span>Mobile: 9746600813</span></div>
 					</article>
 				</section>
-</#macro>
-
-<#macro productsandservicessidebar>
-			<div class="contact-sidebar">
-				<@morelinkspanle>
-					<div><a href="#id=/productsandservices/whyandroid">Why Android Training at Zybotech</a></div>
-					<div><a href="#id=/productsandservices/scope-mobile-dev">Scope of Mobile Application Development</a></div>
-					<div><a href="#id=/productsandservices/app-gallery">Apps Gallery</a></div>
-					<div><a href="#id=/productsandservices/testimonials">Testimonies</a></div>
-				</@morelinkspanle>				
-				<@getintouchpanel />
-			</div><!-- contact-sidebar -->
-</#macro>
-
-<#macro aboutussidebar>
-			<div class="contact-sidebar">
-				<@morelinkspanle>
-					<div><a href="#id=/aboutus/advisoryboard">Advisory Board</a></div>
-					<div><a href="#id=/aboutus/managementteam">Management Team</a></div>
-					<div><a href="#id=/aboutus/trainers">Trainers</a></div>
-				</@morelinkspanle>				
-				<@getintouchpanel />
-			</div><!-- contact-sidebar -->
 </#macro>

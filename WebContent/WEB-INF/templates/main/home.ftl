@@ -51,13 +51,16 @@
 			</div> <!-- span9 -->
 			<div class="span3">
 				<article class="article">
-					Some contents goes here
+					<header class="type2"><h5>Quick Links<h5></header>
 					
 					<div class="topic">
-						<strong>Some topic goes here</strong>
+						<strong><a href="#id=/productsandservices/app-gallery">Apps gallary</a></strong>
 					</div>
 					<div class="topic">
-						<strong>Some topic goes here</strong>
+						<strong><a href="#id=/productsandservices/whyandroid">Why zybotech</a></strong>
+					</div>
+					<div class="topic">
+						<strong><a href="#id=/productsandservices/scope-mobile-dev">Scope of mobile apps development</a></strong>
 					</div>
 				</article>
 			</div> <!-- span3 -->

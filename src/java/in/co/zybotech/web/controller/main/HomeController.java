@@ -127,4 +127,11 @@ public class HomeController {
 		return model;
 	}
 
+	@RequestMapping("/blog")
+	public ModelAndView blog(HttpServletRequest request) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		requestUtils.putContents(request, model);
+		return new ModelAndView("WEB-INF/templates/main/blog", model);
+	}
+
 }

@@ -19,9 +19,11 @@ body {
 .zyb-header .email {
   color: #B4EA88;
 }
+#page-container {
+  min-height: 300px;
+}
 .zyb-content {
   background-color: #FFFFFF;
-  min-height: 300px;
   padding: 5px 10px;
 }
 .ajax-message-wrapper {

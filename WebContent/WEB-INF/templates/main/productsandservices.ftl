@@ -4,6 +4,19 @@
 	<@macro.title "Products And Services" />
 	<div class="row-fluid">
 		<div class="span9">
+			<article class="article android-app-dev-center">
+				<header class="type2"><h4>Android Application Development</h4></header>
+				<section>
+					<p>
+						WE deliver end to end Application development solutions in Android OS. Our expertise talent pool works 24*7 on projects. Zybotech has built its value proposition as a client partner rather than a service provider with the ability to provide customized delivery solutions based on the client's requirements and enabling process improvements using industry benchmarks and standard quality processes.  Zybotech combines world class Technology, Process Skills and Expertise to meet the client's requirements round the clock assuring Business as usual.
+					</p>
+					<p>
+						<h5>Apps Categories</h5>
+						Zybotech solutions is proven its expertise in developing Android web application, map integrated applications, 2D and 3D game development, social and multimedia application and a  host of other applications that support business, communication, education, entertainment, finance, lifestyle.
+					</p>
+				</section>
+			</article>
+
 			<article class="article android-app-dev-training">
 				<header class="type2"><h4>Android Application Development Training</h4></header>
 				<section>
@@ -31,22 +44,14 @@
 					</p>
 				</section>
 			</article>
-			
-			<article class="article android-app-dev-center">
-				<header class="type2"><h4>Android Application Development</h4></header>
-				<section>
-					<p>
-						WE deliver end to end Application development solutions in Android OS. Our expertise talent pool works 24*7 on projects. Zybotech has built its value proposition as a client partner rather than a service provider with the ability to provide customized delivery solutions based on the client's requirements and enabling process improvements using industry benchmarks and standard quality processes.  Zybotech combines world class Technology, Process Skills and Expertise to meet the client's requirements round the clock assuring Business as usual.
-					</p>
-					<p>
-						<h5>Apps Categories</h5>
-						Zybotech solutions is proven its expertise in developing Android web application, map integrated applications, 2D and 3D game development, social and multimedia application and a  host of other applications that support business, communication, education, entertainment, finance, lifestyle.
-					</p>
-				</section>
-			</article>
 		</div> <!-- span9 -->
 		<div class="span3">
-			<@macro.productsandservicessidebar />
+			<@macro.sidebar>
+				<@macro.morelinkspanle title="Quick Links">
+					<div><a href="#id=/aboutus">About Us</a></div>
+					<div><a href="#id=/contactus">Contact us</a></div>
+				</@macro.morelinkspanle>				
+			</@macro.sidebar>				
 		</div>
 	</div><!-- row -->
 <@macro.footer />
