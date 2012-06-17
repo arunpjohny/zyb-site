@@ -3,6 +3,7 @@ package in.co.zybotech.core.spring.web.servlet.handler;
 import in.co.zybotech.core.exception.ExceptionMetadata;
 import in.co.zybotech.core.exception.ZybException;
 import in.co.zybotech.core.exception.conversion.DefaultExceptionConverter;
+import in.co.zybotech.core.spring.web.servlet.view.JSONExceptionView;
 import in.co.zybotech.web.utils.RequestUtils;
 
 import java.util.ArrayList;
@@ -16,14 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.context.Theme;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 

@@ -16,4 +16,30 @@
 		class="in.co.zybotech.core.spring.bind.validation.LocalValidatorFactoryBean">
 	</bean>
 
+	<bean id="exceptionResolver"
+		class="in.co.zybotech.core.spring.web.servlet.handler.ExceptionResolver">
+		<property name="warnLogCategory"
+			value="in.co.zybotech.core.spring.web.servlet.handler.ExceptionResolver" />
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">WEB-INF/templates/exception/exception</prop>
+			</props>
+		</property>
+		<property name="statusCodes">
+			<map>
+				<entry key="WEB-INF/templates/exception/exception" value="500" />
+			</map>
+		</property>
+		<property name="order" value="100" />
+	</bean>
+	<bean class="in.co.zybotech.core.exception.ExceptionMetadata">
+		<property name="exception" value="java.lang.Exception" />
+		<property name="converter"
+			value="#{ T(in.co.zybotech.core.exception.conversion.DefaultExceptionConverter).getInstance() }" />
+	</bean>
+	<bean class="in.co.zybotech.core.exception.ExceptionMetadata">
+		<property name="exception" value="org.springframework.validation.BindException" />
+		<property name="converter"
+			value="#{ T(in.co.zybotech.core.exception.conversion.BindExceptionConverter).getInstance() }" />
+	</bean>
 </beans>

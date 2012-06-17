@@ -20,6 +20,10 @@ public class RequestUtils {
 	public static final String AJAX_PAGE_MESSAGE = "_page-message";
 	public static final String AJAX_PAGE_MESSAGE_TYPE = "_page-message-type";
 
+	public static final String CONFIRM_MESSAGE = "confirm_message";
+
+	public static final String ERROR_MESSAGE = "error_message";
+
 	private static MessageSourceAccessor messageResolver;
 
 	@Autowired

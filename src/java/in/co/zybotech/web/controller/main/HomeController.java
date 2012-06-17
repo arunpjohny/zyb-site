@@ -1,5 +1,6 @@
 package in.co.zybotech.web.controller.main;
 
+import in.co.zybotech.core.exception.client.ResourceNotFoundException;
 import in.co.zybotech.model.career.CareerStudent;
 import in.co.zybotech.service.CareerManager;
 import in.co.zybotech.service.MailManager;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class HomeController {
@@ -94,7 +94,8 @@ public class HomeController {
 		CareerStudent student = careerManager
 				.getObject(CareerStudent.class, id);
 		if (student == null) {
-			throw new RuntimeException("Not Found");
+			throw new ResourceNotFoundException(
+					"Unable to find the selected student.");
 		}
 		return student;
 	}
