@@ -338,3 +338,9 @@ section p:first-child {
 .scrollable-wrapper.student img {
   cursor: pointer;
 }
+.home-slider {
+  height: 350px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  width: 800px;
+}

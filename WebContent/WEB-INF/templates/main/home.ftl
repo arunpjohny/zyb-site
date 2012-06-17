@@ -4,17 +4,19 @@
 	<div id="zyb-home">
 		<div class="row-fluid" id="zyb-home">
 			<div class="span12">
-		        <div class="slider-wrapper theme-default">
-		            <div class="nivoSlider">
-		                <img src="${rc.getContextPath()}/resources/images/home/android-work-shops.jpg"/>
-		                <img src="${rc.getContextPath()}/resources/images/home/imagine-tomorrow.jpg"/>
-		                <img src="${rc.getContextPath()}/resources/images/home/learn-while-u-do.jpg"/>
-		                <img src="${rc.getContextPath()}/resources/images/home/looking-for-a-smart.jpg"/>
-		                <img src="${rc.getContextPath()}/resources/images/home/mob-apps-development.jpg"/>
-		                <img src="${rc.getContextPath()}/resources/images/home/talents.jpg"/>
-		                <img src="${rc.getContextPath()}/resources/images/home/training.jpg"/>
-		            </div>
-		        </div>
+				<div style1="position; relative;">
+			        <div class="slider-wrapper theme-default home-slider">
+			            <div class="nivoSlider">
+			                <img src="${rc.getContextPath()}/resources/images/home/android-work-shops.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/imagine-tomorrow.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/learn-while-u-do.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/looking-for-a-smart.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/mob-apps-development.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/talents.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/training.jpg"/>
+			            </div>
+			        </div>
+				</div>
 			</div> <!-- span12 -->
 		</div><!-- row -->
 		
