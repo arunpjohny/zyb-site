@@ -10,11 +10,14 @@ import java.util.Set;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.Version;
+import org.codehaus.jackson.map.AnnotationIntrospector;
 import org.codehaus.jackson.map.JsonDeserializer;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
 import org.codehaus.jackson.map.module.SimpleModule;
+import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
 
 public class JacksonUtils {
 
@@ -30,7 +33,29 @@ public class JacksonUtils {
 	}
 
 	public static JacksonUtils getInstance() {
+		if (me == null) {
+			synchronized (JacksonUtils.class) {
+				if (me == null) {
+					me = createJacksonUtils();
+				}
+			}
+		}
+
 		return me;
+	}
+
+	private static JacksonUtils createJacksonUtils() {
+		ObjectMapper mapper = new ObjectMapper();
+
+		AnnotationIntrospector primary = new JacksonAnnotationIntrospector();
+		AnnotationIntrospector secondary = new JaxbAnnotationIntrospector();
+		AnnotationIntrospector pair = new AnnotationIntrospector.Pair(primary,
+				secondary);
+
+		mapper.getDeserializationConfig().setAnnotationIntrospector(pair);
+		mapper.getSerializationConfig().setAnnotationIntrospector(pair);
+
+		return new JacksonUtils(mapper);
 	}
 
 	public <P, Q> void registerModule(String moduleName,
