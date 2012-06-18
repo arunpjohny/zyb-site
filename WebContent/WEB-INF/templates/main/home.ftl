@@ -60,10 +60,10 @@
 						<strong><a href="#id=/productsandservices/app-gallery">Apps gallary</a></strong>
 					</div>
 					<div class="topic">
-						<strong><a href="#id=/productsandservices/whyandroid">Why zybotech</a></strong>
+						<strong><a href="#id=/productsandservices/whyzybotech">Why zybotech</a></strong>
 					</div>
 					<div class="topic">
-						<strong><a href="#id=/productsandservices/scope-mobile-dev">Scope of mobile apps development</a></strong>
+						<strong><a href="#id=/ebroucher">E-Broucher</a></strong>
 					</div>
 				</article>
 			</div> <!-- span3 -->

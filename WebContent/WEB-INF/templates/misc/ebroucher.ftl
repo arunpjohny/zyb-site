@@ -1,7 +1,7 @@
 <#import "/WEB-INF/templates/freemarker/macro.ftl" as macro/>
 
 <@macro.header />
-	<@macro.title "Why Android Training at Zybotech" />
+	<@macro.title "E-Broucher" />
 	<div class="row-fluid">
 		<div class="span9">
 		</div> <!-- span9 -->

@@ -33,8 +33,8 @@
 						<h5 class="email">info@zybotechsolutions.in</h5>
 					</div>
 					<div class="social-connect">
-						<div class="connect-facebook"></div>
-						<div class="connect-twitter"></div>
+						<a href="http://www.facebook.com/Zybotech" target="_blank"><div class="connect-facebook"></div></a>
+						<a href="https://twitter.com/#!/zybotech" target="_blank"><div class="connect-twitter"></div></a>
 					</div>
 				</div>
 			</div>
@@ -115,7 +115,7 @@
 				<a class="nav-ajax" href="${rc.getContextPath()}/aboutus">About Us</a>
 			</li>
 			<li>
-				<a class="nav-ajax" href="${rc.getContextPath()}/productsandservices">Products & Services</a>
+				<a class="nav-ajax" href="${rc.getContextPath()}/productsandservices">Services</a>
 			</li>
 			<li>
 				<a class="nav-ajax" href="${rc.getContextPath()}/students">Students</a>
@@ -127,7 +127,7 @@
 				<a class="nav-ajax" href="${rc.getContextPath()}/contactus">Contact Us</a>
 			</li>
 			<li>
-				<a class="nav-ajax" href="${rc.getContextPath()}/blog">Blogs</a>
+				<a href="http://zybotech.wordpress.com/" target="_blank">Blog</a>
 			</li>
 		</ul>
 </#macro>
@@ -192,7 +192,7 @@
 					<div><a href="#id=/contactus">Contact us</a></div>
 				</@macro.morelinkspanle>
 				<@macro.morelinkspanle title="More Links">
-					<div><a href="#id=/productsandservices/whyandroid">Why Android Training at Zybotech</a></div>
+					<div><a href="#id=/productsandservices/whyzybotech">Why Android Training at Zybotech</a></div>
 					<div><a href="#id=/productsandservices/scope-mobile-dev">Scope of Mobile Application Development</a></div>
 					<div><a href="#id=/productsandservices/app-gallery">Apps Gallery</a></div>
 					<div><a href="#id=/productsandservices/testimonials">Testimonials</a></div>
