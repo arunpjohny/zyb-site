@@ -21,7 +21,7 @@
 				<header class="type2"><h4>Android Application Development Training</h4></header>
 				<section>
 					<p>
-						Zybotech solutions one of the leading android application development and training in Cochin provides, carrier oriented & Job assured courses in the latest Mobile technologies and the training is imparted by experienced faculties with real time development experience. We build technical experts rather than professionals.
+						Zybotech solutions one of the leading android application development and training company in Cochin provides, carrier oriented & Job assured courses in the latest Mobile technologies and the training is imparted by experienced faculties with real time development experience. We build technical experts rather than professionals.
 					</p>
 					<p>
 						What we offer
@@ -46,12 +46,7 @@
 			</article>
 		</div> <!-- span9 -->
 		<div class="span3">
-			<@macro.sidebar>
-				<@macro.morelinkspanle title="Quick Links">
-					<div><a href="#id=/aboutus">About Us</a></div>
-					<div><a href="#id=/contactus">Contact us</a></div>
-				</@macro.morelinkspanle>				
-			</@macro.sidebar>				
+			<@macro.productsandservicessidebar />
 		</div>
 	</div><!-- row -->
 <@macro.footer />

@@ -35,19 +35,7 @@
 			</div>
 		</div> <!-- span9 -->
 		<div class="span3">
-			<@macro.sidebar>
-				<@macro.morelinkspanle title="About">
-					<div><a href="#id=/aboutus/advisoryboard">Advisory Board</a></div>
-					<div><a href="#id=/aboutus/managementteam">Management Team</a></div>
-					<div><a href="#id=/aboutus/trainers">Trainers</a></div>
-				</@macro.morelinkspanle>				
-				<@macro.morelinkspanle title="Quick Links">
-					<div><a href="#id=/productsandservices/whyandroid">Why zybotech</a></div>
-					<div><a href="#id=/productsandservices">products and Services</a></div>
-					<div><a href="#id=/productsandservices/app-gallery">Apps Gallary</a></div>
-					<div><a href="#id=/contactus">Contact us</a></div>
-				</@macro.morelinkspanle>				
-			</@macro.sidebar>				
+			<@macro.aboutussidebar />
 		</div>
 	</div><!-- row -->
 <@macro.footer />
