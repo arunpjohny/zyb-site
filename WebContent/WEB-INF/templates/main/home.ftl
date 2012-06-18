@@ -7,13 +7,14 @@
 				<div style1="position; relative;">
 			        <div class="slider-wrapper theme-default home-slider">
 			            <div class="nivoSlider">
-			                <img src="${rc.getContextPath()}/resources/images/home/android-work-shops.jpg"/>
-			                <img src="${rc.getContextPath()}/resources/images/home/imagine-tomorrow.jpg"/>
-			                <img src="${rc.getContextPath()}/resources/images/home/learn-while-u-do.jpg"/>
-			                <img src="${rc.getContextPath()}/resources/images/home/looking-for-a-smart.jpg"/>
-			                <img src="${rc.getContextPath()}/resources/images/home/mob-apps-development.jpg"/>
-			                <img src="${rc.getContextPath()}/resources/images/home/talents.jpg"/>
-			                <img src="${rc.getContextPath()}/resources/images/home/training.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/1.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/2.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/3.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/4.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/5.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/6.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/7.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/8.jpg"/>
 			            </div>
 			        </div>
 				</div>
