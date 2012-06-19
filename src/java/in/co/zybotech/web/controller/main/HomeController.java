@@ -49,21 +49,6 @@ public class HomeController {
 				"WEB-INF/templates/main/home");
 	}
 
-	@RequestMapping("/aboutus")
-	public ModelAndView aboutus(HttpServletRequest request) {
-		Map<String, Object> model = new HashMap<String, Object>();
-		return requestUtils.getModelAndView(request, model,
-				"WEB-INF/templates/main/aboutus");
-	}
-
-	@RequestMapping("/aboutus/{page}")
-	public ModelAndView aboutuspage(HttpServletRequest request,
-			@PathVariable String page) {
-		Map<String, Object> model = new HashMap<String, Object>();
-		return requestUtils.getModelAndView(request, model,
-				"WEB-INF/templates/aboutus/" + page);
-	}
-
 	@RequestMapping("/productsandservices")
 	public ModelAndView productsandservices(HttpServletRequest request) {
 		Map<String, Object> model = new HashMap<String, Object>();

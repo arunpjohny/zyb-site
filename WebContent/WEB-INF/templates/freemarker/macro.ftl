@@ -172,9 +172,9 @@
 <#macro aboutussidebar>
 			<@macro.sidebar>
 				<@macro.morelinkspanle title="About">
-					<div><a href="#id=/aboutus/advisoryboard">Advisory Board</a></div>
-					<div><a href="#id=/aboutus/managementteam">Management Team</a></div>
-					<div><a href="#id=/aboutus/trainers">Trainers</a></div>
+					<div><a href="#id=/aboutus/personnel/advisoryboard">Advisory Board</a></div>
+					<div><a href="#id=/aboutus/personnel/managementteam">Management Team</a></div>
+					<div><a href="#id=/aboutus/personnel/trainers">Trainers</a></div>
 				</@macro.morelinkspanle>
 				<@macro.morelinkspanle title="Quick Links">
 					<div><a href="#id=/productsandservices/whyandroid">Why Zybotech</a></div>

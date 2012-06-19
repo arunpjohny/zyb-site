@@ -347,3 +347,19 @@ section p:first-child {
 .nivoSlider img {
   max-width: none;
 }
+.zyb-personnel {
+  border-top: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  border-left: 1px solid #e1e1e1;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.zyb-personnel .photo {
+  background: no-repeat transparent center top;
+  min-height: 100px;
+}
+.zyb-personnel .details {
+  color: red;
+}
