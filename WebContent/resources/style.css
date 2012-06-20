@@ -356,12 +356,11 @@ section p:first-child {
   margin-bottom: 10px;
   padding: 5px;
 }
-.zyb-personnel .photo {
-  background: no-repeat transparent center top;
-  min-height: 100px;
+.zyb-personnel .brief .details {
+  margin-left: 15px;
 }
-.zyb-personnel .details {
-  color: red;
+.zyb-personnel .summary {
+  margin-top: 5px;
 }
 .zyb-broucher {
   text-align: center;
