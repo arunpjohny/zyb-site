@@ -2,13 +2,23 @@ package in.co.zybotech.web.utils;
 
 import in.co.zybotech.core.spring.context.utils.ApplicationContextLocator;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -18,6 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Component
 public class RequestUtils {
+	private static Logger logger = LoggerFactory.getLogger(RequestUtils.class);
+
 	public static final String AJAX_FIELD_ERRORS = "_field-errors";
 	public static final String AJAX_PAGE_MESSAGE = "_page-message";
 	public static final String AJAX_PAGE_MESSAGE_TYPE = "_page-message-type";
@@ -71,6 +83,80 @@ public class RequestUtils {
 		}
 
 		return messageResolver;
+	}
+
+	public static void openFile(HttpServletResponse res, File file,
+			String fileName) throws FileNotFoundException, IOException {
+		if (file.exists()) {
+			int length = (int) file.length();
+			FileInputStream fis = new FileInputStream(file);
+
+			sendStream(res, fileName, fis, length);
+		} else {
+			res.setContentType("text/html");
+			PrintWriter out = res.getWriter();
+			out.write("<font size='5' color='red'>File not found: " + fileName
+					+ "</font>");
+			logger.error("File not found:" + file);
+		}
+	}
+
+	public static void sendStream(HttpServletResponse response,
+			String fileName, InputStream fis, int length) throws IOException {
+		writeFileUploadHeaders(response, fileName, length);
+		ServletOutputStream ouputStream = response.getOutputStream();
+		try {
+			int b;
+			while ((b = fis.read()) != -1) {
+				ouputStream.write(b);
+			}
+		} finally {
+			ouputStream.flush();
+			ouputStream.close();
+			fis.close();
+		}
+	}
+
+	public static String getContentType(String fileName) {
+		String contentType = "application/";
+		String fileExtension = fileName
+				.substring(fileName.lastIndexOf('.') + 1).toUpperCase();
+		if ("XLS".equals(fileExtension) || "XLSX".equals(fileExtension)) {
+			contentType = contentType + "vnd.ms-excel";
+		} else if ("DOC".equals(fileExtension) || "DOCX".equals(fileExtension)) {
+			contentType = contentType + "msword";
+		} else if ("PDF".equals(fileExtension)) {
+			contentType = contentType + "pdf";
+		} else if ("RTF".equals(fileExtension)) {
+			contentType = contentType + "msword";
+		} else if ("PPS".equals(fileExtension)) {
+			contentType = contentType + "vnd.ms-powerpoint";
+		} else if ("PPT".equals(fileExtension) || "PPTX".equals(fileExtension)) {
+			contentType = contentType + "vnd.ms-powerpoint";
+		} else if ("JPG".equals(fileExtension)) {
+			contentType = "image/jpeg";
+		} else if ("GIF".equals(fileExtension) || "BMP".equals(fileExtension)) {
+			contentType = "image/" + fileExtension;
+		} else if ("ZIP".equals(fileExtension)) {
+			contentType += "zip";
+		} else {
+			contentType = "text/HTML";
+		}
+		return contentType;
+	}
+
+	public static void writeFileUploadHeaders(HttpServletResponse response,
+			String fileName, int length) {
+		String contentType = getContentType(fileName);
+		String disHeader = "Attachment;Filename=\"" + fileName + "\"";
+		response.setContentType(contentType);
+		response.setHeader("Content-Disposition", disHeader);
+		response.setHeader("Cache-Control", "private, max-age=5");
+
+		response.setHeader("Pragma", "");
+		if (length != -1) {
+			response.setContentLength(length);
+		}
 	}
 
 	public void putContents(HttpServletRequest request,
