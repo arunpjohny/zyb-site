@@ -11,18 +11,22 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.compress.archivers.zip.ZipFile;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.MessageSourceAccessor;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,6 +47,9 @@ public class RequestUtils {
 	@Autowired
 	@Qualifier("messageSource")
 	private MessageSource messageSource;
+
+	@Value("classpath:../temp")
+	private Resource tempLocation;
 
 	public static boolean isAjaxRequest(HttpServletRequest request) {
 		String header = request
@@ -194,5 +201,23 @@ public class RequestUtils {
 		public String getType() {
 			return type;
 		}
+	}
+
+	public File getTempDir(String type) throws IOException {
+		File temp = tempLocation.getFile();
+		File dir = new File(temp, type);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		return dir;
+	}
+
+	public File getTempFile(String type) throws IOException {
+		File dir = getTempDir(type);
+		String name;
+		synchronized (getClass()) {
+			name = UUID.randomUUID().toString();
+		}
+		return new File(dir, name);
 	}
 }

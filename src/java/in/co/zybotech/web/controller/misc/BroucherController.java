@@ -5,7 +5,11 @@ import in.co.zybotech.web.utils.RequestUtils;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +18,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.compress.archivers.ArchiveException;
+import org.apache.commons.compress.archivers.ArchiveOutputStream;
+import org.apache.commons.compress.archivers.ArchiveStreamFactory;
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,17 +55,60 @@ public class BroucherController {
 	@RequestMapping("/ebroucher/download/{id}")
 	public void download(HttpServletRequest request,
 			HttpServletResponse response, @PathVariable int id)
-			throws IOException {
-		File broucher = getBroucher(id);
+			throws IOException, ArchiveException {
+		File broucher = null;
+
+		if (id == 0) {
+			broucher = getAllBrouchers();
+		} else {
+			broucher = getBroucher(id);
+		}
+
 		if (broucher == null) {
 			throw new ResourceNotFoundException(
 					"Unable to find the selected resource.");
 		}
-		RequestUtils.openFile(
-				response,
-				broucher,
-				StringUtils.substringAfter(
-						StringUtils.substring(broucher.getName(), 3), "-"));
+		RequestUtils.openFile(response, broucher, id == 0 ? "Brouchers.zip"
+				: getBroucherName(broucher));
+	}
+
+	private File getAllBrouchers() throws IOException, ArchiveException {
+		File[] brouchers = getBroucherFiles();
+		File file = requestUtils.getTempFile("ebroucher");
+		zip(file, brouchers);
+		return file;
+	}
+
+	public void zip(File zip, File[] files) throws FileNotFoundException,
+			ArchiveException, IOException {
+		OutputStream out = null;
+		out = new FileOutputStream(zip);
+		ArchiveOutputStream aout = null;
+		try {
+			aout = new ArchiveStreamFactory().createArchiveOutputStream("zip",
+					out);
+			for (File broucher : files) {
+				aout.putArchiveEntry(new ZipArchiveEntry(
+						getBroucherName(broucher)));
+				FileInputStream fis = null;
+				try {
+					fis = new FileInputStream(broucher);
+					IOUtils.copy(fis, aout);
+				} finally {
+					fis.close();
+				}
+				aout.closeArchiveEntry();
+			}
+		} finally {
+			if (aout != null) {
+				aout.flush();
+				aout.close();
+			}
+			if (out != null) {
+				out.close();
+
+			}
+		}
 	}
 
 	private File getBroucher(final int id) throws IOException {
@@ -78,34 +130,42 @@ public class BroucherController {
 	}
 
 	private List<Broucher> getBrouchers() throws IOException {
-		File dir = location.getFile();
 		List<Broucher> brouchers = new ArrayList<Broucher>();
 
+		File[] files = getBroucherFiles();
+		if (files != null) {
+			for (File file : files) {
+				brouchers
+						.add(new Broucher(NumberUtils.toInt(StringUtils
+								.substringBefore(StringUtils.substring(
+										file.getName(), 3), "-")),
+								getBroucherCaption(file)));
+			}
+		}
+		return brouchers;
+	}
+
+	private String getBroucherCaption(File file) {
+		return StringUtils.substringBeforeLast(getBroucherName(file), ".");
+	}
+
+	private String getBroucherName(File file) {
+		return StringUtils.substringAfter(
+				StringUtils.substring(file.getName(), 3), "-");
+	}
+
+	private File[] getBroucherFiles() throws IOException {
+		File dir = location.getFile();
+		File[] files = null;
 		if (dir.exists()) {
-			File[] files = dir.listFiles(new FileFilter() {
+			files = dir.listFiles(new FileFilter() {
 				@Override
 				public boolean accept(File file) {
 					return file.isFile()
 							&& StringUtils.startsWith(file.getName(), "eb-");
 				}
 			});
-			for (File file : files) {
-				brouchers
-						.add(new Broucher(
-								NumberUtils.toInt(StringUtils.substringBefore(
-										StringUtils
-												.substring(file.getName(), 3),
-										"-")),
-								StringUtils.substringBeforeLast(
-										StringUtils
-												.substringAfter(StringUtils
-														.substring(
-																file.getName(),
-																3), "-"),
-										".")));
-			}
 		}
-
-		return brouchers;
+		return files;
 	}
 }
