@@ -17,7 +17,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.compress.archivers.zip.ZipFile;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +38,9 @@ public class RequestUtils {
 	public static final String AJAX_PAGE_MESSAGE_TYPE = "_page-message-type";
 
 	public static final String CONFIRM_MESSAGE = "confirm_message";
-
 	public static final String ERROR_MESSAGE = "error_message";
+
+	public static final String DISABLE_AJAX_LOADING = "_disable_ajax_loading";
 
 	private static MessageSourceAccessor messageResolver;
 

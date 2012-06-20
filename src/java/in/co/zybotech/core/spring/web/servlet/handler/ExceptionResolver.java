@@ -93,6 +93,7 @@ public class ExceptionResolver extends SimpleMappingExceptionResolver {
 		if (ZybException.class.isAssignableFrom(ex.getClass())) {
 			model.put(RequestUtils.ERROR_MESSAGE, ex.getMessage());
 		}
+		model.put(RequestUtils.DISABLE_AJAX_LOADING, true);
 		return new ModelAndView(viewName, model);
 	}
 

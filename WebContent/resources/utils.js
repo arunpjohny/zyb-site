@@ -11,6 +11,10 @@ ZtUtils = {
 };
 
 $(function() {
+			if(_disable_ajax_loading){
+				return;
+			}
+
 			var $navbar = $("#nav-bar");
 			var $container = $("#page-container");
 
