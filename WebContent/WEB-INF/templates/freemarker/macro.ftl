@@ -30,7 +30,7 @@
 						<div class="phone">
 							<h4>Call us: 0484-6009444</h4>
 						</div>
-						<h5 class="email">info@zybotechsolutions.in</h5>
+						<h5 class="email"><a href="#mailto:info.zybotech@gmail.com">info.zybotech@gmail.com</a></h5>
 					</div>
 					<div class="social-connect">
 						<a href="http://www.facebook.com/Zybotech" target="_blank"><div class="connect-facebook"></div></a>

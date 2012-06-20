@@ -12,7 +12,7 @@
 				
 				<div class="form-actions">
 					<span class="send-mail btn btn-primary">Send Mail</span>
-					<span class="cancel-mail btn btn-primary">Cancel</span>
+					<span class="cancel-mail btn">Cancel</span>
 				</div>
 			</form>
 		</div> <!-- span9 -->

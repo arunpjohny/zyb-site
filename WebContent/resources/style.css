@@ -16,7 +16,7 @@ body {
 .zyb-header .phone h4, .zyb-header .phone h5, .zyb-header .phone h6 {
   display: inline;
 }
-.zyb-header .email {
+.zyb-header .email a {
   color: #B4EA88;
 }
 #page-container {
