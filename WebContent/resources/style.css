@@ -377,3 +377,41 @@ section p:first-child {
   background: url(images/ebroucher-bg.jpg) no-repeat center;
   color: white;
 }
+.zyb-opening  > header {
+  border-top: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  border-left: 1px solid #e1e1e1;
+  border-radius: 10px;
+  background-color: lightgrey;
+  padding: 2px 5px;
+  margin-top: 5px;
+}
+.zyb-opening .zyb-section {
+  border-top: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  border-left: 1px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 5px;
+  min-height: 70px;
+}
+.zyb-opening .zyb-section:first-child {
+  margin-top: 0;
+}
+.zyb-placement-openings {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.zyb-placement-openings  > header {
+  color: #015890;
+}
+.zyb-placement-openings  > footer {
+  margin-top: 5px;
+  min-height: 18px;
+}
+.zyb-link {
+  cursor: pointer;
+  color: #0088CC;
+}

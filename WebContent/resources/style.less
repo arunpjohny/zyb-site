@@ -475,3 +475,47 @@ section {
 		color: white;
 	}
 }
+
+.zyb-opening {
+	& > header {
+		.bordered-light();
+		.rounded-border();
+
+		background-color: lightgrey;
+		padding: 2px 5px;
+		margin-top: 5px;
+	}
+
+	.zyb-section {
+		.bordered-light();
+		.rounded-border();
+
+		padding: 5px;
+		margin-top: 5px;
+		min-height: 70px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}
+
+.zyb-placement-openings {
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	& > header {
+		color: #015890;
+	}
+
+	& > footer {
+		margin-top: 5px;
+		min-height: 18px;
+	}
+}
+
+.zyb-link {
+	cursor: pointer;
+	color: #0088CC;
+}
