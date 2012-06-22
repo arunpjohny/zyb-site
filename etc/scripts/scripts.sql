@@ -40,6 +40,7 @@ create table placement_openings(
     createddate timestamp without time zone,
     company varchar,
     position varchar,
+    noofopenings int default 1 not null,
     location varchar,
     contactperson varchar,
     contactemail varchar,
@@ -48,4 +49,6 @@ create table placement_openings(
     desiredprofile text,
     constraint pk_placement_openings primary key (cid)
 )
+
+alter table placement_openings add noofopenings int default 1 not null
 

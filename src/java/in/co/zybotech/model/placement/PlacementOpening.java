@@ -1,5 +1,7 @@
 package in.co.zybotech.model.placement;
 
+import in.co.zybotech.core.jackson.serializer.DateTimeSerializer;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @Entity
 @Table(name = "placement_openings")
@@ -20,12 +24,15 @@ public class PlacementOpening {
 	@Column(name = "cid")
 	private int id;
 
+	@JsonSerialize(using = DateTimeSerializer.class)
 	private Date createdDate;
 
 	private String company;
 
 	private String position;
 
+	private int noOfOpenings;
+	
 	private String location;
 
 	private String contactPerson;
@@ -68,6 +75,14 @@ public class PlacementOpening {
 
 	public void setPosition(String position) {
 		this.position = position;
+	}
+
+	public int getNoOfOpenings() {
+		return noOfOpenings;
+	}
+
+	public void setNoOfOpenings(int noOfOpenings) {
+		this.noOfOpenings = noOfOpenings;
 	}
 
 	public String getLocation() {

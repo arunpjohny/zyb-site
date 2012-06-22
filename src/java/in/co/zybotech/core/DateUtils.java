@@ -15,6 +15,8 @@ public class DateUtils {
 
 	public static final String DMY_FORMAT = "dd MMM yyyy";
 
+	public static final String DATETIME_FORMAT = "dd MMM yyyy HH:mm:ss";
+
 	public static final String DMY_HMS_FORMAT = "dd MMM yyyy hh:mm:ss a";
 
 	public static final String TIME_FORMAT_12_HOURS = "h:mm:ss a";
