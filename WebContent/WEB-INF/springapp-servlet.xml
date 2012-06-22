@@ -22,6 +22,15 @@
 
 	<context:component-scan base-package="in.co.zybotech" />
 
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:application.properties" />
+	</bean>
+
+	<bean id="applicationConfiguration" class="in.co.zybotech.utils.ApplicationConfiguration" scope="singleton">
+		<property name="temp" value="${location.temp}"/>
+	</bean>
+
 	<bean id="freeMarkerViewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="order" value="2" />
@@ -63,9 +72,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://127.0.0.1/zyb" />
-		<property name="username" value="majordomo" />
-		<property name="password" value="sa" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
 
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
