@@ -1,4 +1,6 @@
-﻿drop table career_students
+﻿set session AUTHORIZATION "zyb-site";
+
+drop table career_students
 
 create table career_students(
     cid serial,

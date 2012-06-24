@@ -30,6 +30,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -239,5 +240,11 @@ public class RequestUtils {
 			name = UUID.randomUUID().toString();
 		}
 		return new File(dir, name);
+	}
+
+	public boolean isEditable(SecurityContextHolderAwareRequestWrapper request,
+			String role) {
+		User user = getUser();
+		return user != null && request.isUserInRole(role);
 	}
 }

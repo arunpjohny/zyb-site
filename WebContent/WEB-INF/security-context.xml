@@ -9,7 +9,8 @@
 	<http pattern="/login" security="none" />
 
 	<http auto-config="true">
-		<intercept-url pattern="/**" access="ROLE_USER" />
+		<intercept-url pattern="/admin/**" access="ROLE_USER" />
+		<intercept-url pattern="/**"  access="ROLE_USER" />
 
 		<form-login login-page="/login" default-target-url="/"
 			always-use-default-target="true" authentication-failure-url="/login?status=error" />
@@ -18,7 +19,8 @@
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="arun" password="arun" authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="arun" password="arun"
+					authorities="ROLE_USER, ROLE_ADMIN, ROLE_STUDENT_ADMIN" />
 				<user name="sunil" password="sunil" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>

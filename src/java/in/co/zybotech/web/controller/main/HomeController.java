@@ -1,9 +1,6 @@
 package in.co.zybotech.web.controller.main;
 
 import static in.co.zybotech.web.utils.RequestUtils.AJAX_PAGE_MESSAGE;
-import in.co.zybotech.core.exception.client.ResourceNotFoundException;
-import in.co.zybotech.model.career.CareerStudent;
-import in.co.zybotech.service.CareerManager;
 import in.co.zybotech.service.MailManager;
 import in.co.zybotech.web.controller.main.form.ContactUsMailForm;
 import in.co.zybotech.web.utils.RequestUtils;
@@ -28,9 +25,6 @@ public class HomeController {
 
 	@Autowired
 	private RequestUtils requestUtils;
-
-	@Autowired
-	private CareerManager careerManager;
 
 	@Autowired
 	private MailManager mailManager;
@@ -62,27 +56,6 @@ public class HomeController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		return requestUtils.getModelAndView(request, model,
 				"WEB-INF/templates/productsandservices/" + page);
-	}
-
-	@RequestMapping("/students")
-	public ModelAndView students(HttpServletRequest request) {
-		Map<String, Object> model = new HashMap<String, Object>();
-		requestUtils.putContents(request, model);
-		model.put("students", careerManager.getStudentsForCareer());
-		return requestUtils.getModelAndView(request, model,
-				"WEB-INF/templates/main/students");
-	}
-
-	@RequestMapping("/student/{id}")
-	public @ResponseBody
-	Object student(HttpServletRequest request, @PathVariable int id) {
-		CareerStudent student = careerManager
-				.getObject(CareerStudent.class, id);
-		if (student == null) {
-			throw new ResourceNotFoundException(
-					"Unable to find the selected student.");
-		}
-		return student;
 	}
 
 	@RequestMapping("/placements")
