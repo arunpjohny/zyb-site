@@ -18,12 +18,12 @@ public class MailManagerImpl extends BaseManager implements MailManager {
 	private MailSender mailSender;
 
 	@Override
-	public void sendMail(String from, String subject, String body) {
+	public void sendMail(String from, String to, String subject, String body) {
 		SimpleMailMessage simpleMessage = new SimpleMailMessage();
 		simpleMessage.setFrom(from);
 		simpleMessage.setSubject(subject);
 		simpleMessage.setText(body);
-		simpleMessage.setTo("arun.official.mail@gmail.com");
+		simpleMessage.setTo(to);
 		mailSender.send(simpleMessage);
 	}
 

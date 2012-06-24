@@ -4,6 +4,6 @@ import in.co.zybotech.core.service.Manager;
 
 public interface MailManager extends Manager {
 
-	void sendMail(String from, String subject, String body);
+	void sendMail(String from, String to, String subject, String body);
 
 }
