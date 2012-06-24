@@ -33,19 +33,19 @@
 				
 				<div class="row-fluid">
 					<div class="span6">
-						<article class="article">
+						<article class="article" style="height: 153px;">
 							<header>Android Application Development Training</header>
 							<section>
-								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
+								Zybotech solutions one of the leading android application development and training company in Cochin provides, carrier oriented & Job assured courses in the latest Mobile technologies and the training is imparted by experienced faculties with real time development experience. We build technical experts rather than professionals.
 								<a class="more" href="#id=/productsandservices&el=.android-app-dev-training">Read More...</a>
 							</section>
 						</article>
 					</div>
 					<div class="span6">
-						<article class="article">
+						<article class="article" style="height: 153px;">
 							<header>Android Application Development</header>
 							<section>
-								In Spring 2.0, all advice parameters are statically typed, so that you work with advice parameters of the appropriate type (the type of the return value from a method execution for example) rather than Object arrays.
+								WE deliver end to end Application development solutions in Android OS. Our expertise talent pool works 24*7 on projects. Zybotech has built its value proposition as a client partner rather than a service provider with the ability to provide customized delivery solutions based on the client's requirements and enabling process improvements using industry benchmarks and standard quality processes.
 								<a class="more" href="#id=/productsandservices&el=.android-app-dev-center">Read More...</a>
 							</section>
 						</article>
