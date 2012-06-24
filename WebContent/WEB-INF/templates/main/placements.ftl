@@ -9,7 +9,7 @@
 					<article class="article">
 						<header class="type2"><h4>Development and Training process</h4></header>
 						<section style="text-align: center;">
-							<img src="${rc.getContextPath()}/resources/images/careers/placement-process.gif"></img>
+							<img src="${rc.getContextPath()}/resources/images/careers/placement-process.png"></img>
 						</section>
 					</article>
 
