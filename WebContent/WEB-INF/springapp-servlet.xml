@@ -93,14 +93,14 @@
 	</bean>
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="arun.official.mail@gmail.com" />
-		<property name="password" value="ljgsxhzbbbrfrcfd" />
+		<property name="host" value="${mailer.host}" />
+		<property name="port" value="${mailer.port}" />
+		<property name="username" value="${mailer.username}" />
+		<property name="password" value="${mailer.password}" />
 		<property name="javaMailProperties">
 			<map>
-				<entry key="mail.smtp.auth" value="true" />
-				<entry key="mail.smtp.starttls.enable" value="true" />
+				<entry key="mail.smtp.auth" value="${mailer.smtp.auth}" />
+				<entry key="mail.smtp.starttls.enable" value="${mailer.smtp.starttls.enable}" />
 			</map>
 		</property>
 	</bean>
