@@ -1,5 +1,6 @@
 body {
   background-color: #E9E9E7;
+  overflow-y: scroll;
 }
 .zyb-logo {
   padding: 10px 0;
@@ -374,7 +375,7 @@ section p:first-child {
   line-height: 42px;
   vertical-align: text-top;
   width: 192px;
-  background: url(images/ebroucher-bg.jpg) no-repeat center;
+  background: url(images/ebroucher-bg.png) no-repeat center;
   color: white;
 }
 .zyb-opening  > header {

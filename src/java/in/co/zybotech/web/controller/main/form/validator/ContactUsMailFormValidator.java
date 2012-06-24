@@ -17,8 +17,6 @@ public class ContactUsMailFormValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ContactUsMailForm form = (ContactUsMailForm) target;
-
 		rejectIfEmpty(errors, "from", "error.v2.field.current.empty",
 				"Password cannot be blank");
 	}

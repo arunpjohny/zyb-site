@@ -28,8 +28,14 @@ public class PlacementDaoImpl extends BaseDAO implements PlacementDao {
 	@Override
 	public PlacementOpening getLatestOpening() {
 		String criteriaQuery = "from PlacementOpening where id = (select max(id) from PlacementOpening)";
-		return (PlacementOpening) entityManager.createQuery(criteriaQuery)
-				.getSingleResult();
+		PlacementOpening singleResult = null;
+		try {
+			singleResult = (PlacementOpening) entityManager.createQuery(
+					criteriaQuery).getSingleResult();
+		} catch (Exception e) {
+			// Ignore
+		}
+		return singleResult;
 	}
 
 }

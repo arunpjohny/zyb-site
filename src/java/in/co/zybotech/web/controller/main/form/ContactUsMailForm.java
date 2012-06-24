@@ -4,14 +4,34 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class ContactUsMailForm {
 
+	private String name;
+
+	private String mobile;
+
 	@NotBlank
 	private String from;
-	
+
 	@NotBlank
 	private String subject;
-	
+
 	@NotBlank
 	private String body;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 
 	public String getFrom() {
 		return from;
