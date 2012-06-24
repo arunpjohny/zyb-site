@@ -8,5 +8,5 @@
 				var _pageId = "${_pageId}";
 				var _disable_ajax_loading = ${(_disable_ajax_loading!"false")?string};
 
-				var _error_message = "";
+				var _error_message = "${error_message!""}";
 			</script> 

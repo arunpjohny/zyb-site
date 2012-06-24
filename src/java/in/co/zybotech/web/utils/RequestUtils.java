@@ -26,6 +26,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.core.io.Resource;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -166,6 +170,18 @@ public class RequestUtils {
 		}
 	}
 
+	public static User getUser() {
+		User user = null;
+		SecurityContext context = SecurityContextHolder.getContext();
+		if (context != null) {
+			Authentication authentication = context.getAuthentication();
+			if (authentication != null) {
+				user = (User) authentication.getPrincipal();
+			}
+		}
+		return user;
+	}
+
 	public void putContents(HttpServletRequest request,
 			Map<String, Object> model) {
 		boolean ajaxRequest = isAjaxRequest(request);
@@ -178,6 +194,10 @@ public class RequestUtils {
 		if (!ajaxRequest) {
 			model.put("_contextPath", request.getContextPath());
 			model.put("_pageId", getResourceId(request));
+		}
+		User user = getUser();
+		if (user != null) {
+			model.put("_user", user);
 		}
 	}
 
