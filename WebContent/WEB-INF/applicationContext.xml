@@ -19,7 +19,7 @@
 	<import resource="security-context.xml" />
 
 	<context:annotation-config />
-	<tx:annotation-driven transaction-manager="txManager" />
+	<tx:annotation-driven transaction-manager="transactionManger" />
 
 	<context:component-scan base-package="in.co.zybotech" />
 
@@ -80,7 +80,7 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	<bean id="transactionManger" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
