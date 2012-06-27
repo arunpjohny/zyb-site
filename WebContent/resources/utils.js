@@ -11,10 +11,18 @@ ZtUtils = {
 };
 
 $(function() {
+			$("body").on("zyb-page-load", function(e, page) {
+						if (_disable_ajax_loading) {
+							window.location = ZtUtils.getContextPath() + path;
+						} else {
+							$.bbq.pushState("#id=" + page);
+						}
+					});
+
 			if(_disable_ajax_loading){
 				return;
 			}
-
+			
 			var $navbar = $("#nav-bar");
 			var $container = $("#page-container");
 
@@ -437,6 +445,42 @@ $(function() {
 						.width()) / 2) + 5)
 						+ "px");
 	};
+	var fnProcessSuccess = function(xhr, $form, opts) {
+		opts = opts || {};
+
+		if ($form) {
+			$form.valid();
+		}
+		try {
+			var resp = undefined;
+			var messages = undefined;
+			if (xhr.responseText) {
+				resp = $.parseJSON(xhr.responseText);
+				messages = fnGetMessages(resp["_page-message"]);
+			}
+
+			if (resp && resp["_zyb-redirect-path"]) {
+				if ($.isArray(messages) && messages.length > 0) {
+					fnSetCookieMessage(messages.join(""));
+				}
+				var path = resp["_zyb-redirect-path"];
+				$("body").trigger("zyb-page-load", path);
+			} else {
+				if ($.isArray(messages) && messages.length > 0) {
+					fnShowMessage(messages, resp["_page-message-type"
+									|| "success"]);
+					fnSetHide(5000);
+				} else if (opts.hideMessage) {
+					fnHide();
+					fnClearHide();
+				}
+			}
+
+		} catch (err) {
+			// Ignore
+		}
+	};
+
 	$(window).on("resize", fnAdjustView);
 	fnAdjustView();
 
@@ -457,40 +501,10 @@ $(function() {
 
 	$.extend(ZtUtils, {
 		processAjaxSuccess : function(xhr, $form, opts) {
-			opts = opts || {};
-
-			if ($form) {
-				$form.valid();
-			}
-			try {
-				var messages = undefined;
-				var resp = undefined;
-				if (xhr.responseText) {
-					resp = $.parseJSON(xhr.responseText);
-					messages = fnGetMessages(resp["_page-message"]);
-				}
-
-				if (xhr.getResponseHeader("zyb-ajax-redirect")
-						&& xhr.getResponseHeader("zyb-ajax-redirect-path")) {
-					if ($.isArray(messages) && messages.length > 0) {
-						fnSetCookieMessage(messages.join(""));
-					}
-					var path = xhr.getResponseHeader("zyb-ajax-redirect-path");
-					window.location = ZtUtils.getContextPath() + path;
-				} else {
-					if ($.isArray(messages) && messages.length > 0) {
-						fnShowMessage(messages, resp["_page-message-type"
-										|| "success"]);
-						fnSetHide(5000);
-					} else if (opts.hideMessage) {
-						fnHide();
-						fnClearHide();
-					}
-				}
-
-			} catch (err) {
-				// Ignore
-			}
+			fnProcessSuccess (xhr, $form, opts);
+		},
+		processFormSuccess : function(resp, status, xhr, $form) {
+			fnProcessSuccess(xhr, $form, opts);
 		},
 
 		processAjaxError : function(xhr, opts) {

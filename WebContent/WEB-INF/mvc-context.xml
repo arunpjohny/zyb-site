@@ -16,6 +16,9 @@
 		class="in.co.zybotech.core.spring.bind.validation.LocalValidatorFactoryBean">
 	</bean>
 
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 	<bean id="exceptionResolver"
 		class="in.co.zybotech.core.spring.web.servlet.handler.ExceptionResolver">
 		<property name="warnLogCategory"

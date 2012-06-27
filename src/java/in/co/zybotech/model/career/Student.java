@@ -9,12 +9,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "career_students")
-public class CareerStudent {
+@Table(name = "students")
+public class Student {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "career_students_cid_gen")
-	@SequenceGenerator(name = "career_students_cid_gen", sequenceName = "career_students_cid_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "students_cid_gen")
+	@SequenceGenerator(name = "students_cid_gen", sequenceName = "students_cid_seq")
 	@Column(name = "cid")
 	private int id;
 
@@ -22,7 +22,9 @@ public class CareerStudent {
 
 	private String description;
 
-	private String image;
+	private byte[] image;
+
+	private String imageName;
 
 	private int weight;
 
@@ -50,12 +52,20 @@ public class CareerStudent {
 		this.description = description;
 	}
 
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	public int getWeight() {

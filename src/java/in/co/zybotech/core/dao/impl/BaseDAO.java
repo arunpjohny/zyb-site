@@ -17,4 +17,9 @@ public class BaseDAO implements DAO {
 		return entityManager.find(clazz, id);
 	}
 
+	@Override
+	public void saveObject(Object object) {
+		entityManager.persist(object);
+	}
+
 }

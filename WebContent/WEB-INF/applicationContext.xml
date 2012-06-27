@@ -32,6 +32,8 @@
 		<property name="temp" value="${location.temp}"/>
 	</bean>
 
+	<bean class="in.co.zybotech.core.spring.context.utils.ApplicationContextLocator" />
+
 	<bean id="freeMarkerViewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="order" value="2" />
@@ -63,7 +65,7 @@
 		<property name="packagesToScan" value="in.co.zybotech" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="false" />
+				<property name="showSql" value="true" />
 				<property name="generateDdl" value="false" />
 				<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
 			</bean>

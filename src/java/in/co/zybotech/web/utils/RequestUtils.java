@@ -59,7 +59,10 @@ public class RequestUtils {
 	public static boolean isAjaxRequest(HttpServletRequest request) {
 		String header = request
 				.getHeader(HttpHeader.X_REQUESTED_WITH.getName());
-		return StringUtils.endsWithIgnoreCase(header, "XMLHttpRequest");
+		return StringUtils.endsWithIgnoreCase(header, "XMLHttpRequest")
+				|| StringUtils.equals(request
+						.getParameter(HttpHeader.X_REQUESTED_WITH.getName()),
+						"XMLHttpRequest");
 	}
 
 	public static String getResourceId(HttpServletRequest request) {
@@ -176,7 +179,10 @@ public class RequestUtils {
 		SecurityContext context = SecurityContextHolder.getContext();
 		if (context != null) {
 			Authentication authentication = context.getAuthentication();
-			if (authentication != null) {
+			if (authentication != null
+					&& authentication.getPrincipal() != null
+					&& User.class.isAssignableFrom(authentication
+							.getPrincipal().getClass())) {
 				user = (User) authentication.getPrincipal();
 			}
 		}

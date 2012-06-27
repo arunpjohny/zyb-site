@@ -22,4 +22,10 @@ public class BaseManager implements Manager {
 		return dao.getObject(clazz, id);
 	}
 
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public void saveObject(Object object) {
+		dao.saveObject(object);
+	}
+
 }

@@ -1,14 +1,15 @@
 ﻿set session AUTHORIZATION "zyb-site";
 
-drop table career_students
+drop table students
 
-create table career_students(
+create table students(
     cid serial,
     name varchar not null,
     description text not null,
-    image varchar,
+    image bytea,
+    imageName varchar,
     weight int default 0 not null,
-    constraint pk_career_students primary key(cid)
+    constraint pk_students primary key(cid)
 )
 
 create table zyb_personnel_type(
@@ -54,3 +55,4 @@ create table placement_openings(
 
 alter table placement_openings add noofopenings int default 1 not null
 
+select * from students

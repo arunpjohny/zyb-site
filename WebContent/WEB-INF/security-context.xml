@@ -5,12 +5,15 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
+	<global-method-security secured-annotations="enabled"
+		jsr250-annotations="enabled" />
+
 	<http pattern="/resources/**" security="none" />
 	<http pattern="/login" security="none" />
 
-	<http auto-config="true">
-		<intercept-url pattern="/admin/**" access="ROLE_USER" />
-		<intercept-url pattern="/**"  access="ROLE_USER" />
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/**" access="permitAll" />
 
 		<form-login login-page="/login" default-target-url="/"
 			always-use-default-target="true" authentication-failure-url="/login?status=error" />
