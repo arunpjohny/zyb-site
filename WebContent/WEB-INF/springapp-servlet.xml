@@ -64,14 +64,14 @@
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="false" />
 				<property name="generateDdl" value="false" />
-				<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
+				<property name="databasePlatform" value="${hibernate.dialect}" />
 			</bean>
 		</property>
 	</bean>
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
