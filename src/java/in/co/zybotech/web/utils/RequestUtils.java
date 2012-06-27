@@ -117,18 +117,18 @@ public class RequestUtils {
 	}
 
 	public static void sendStream(HttpServletResponse response,
-			String fileName, InputStream fis, int length) throws IOException {
+			String fileName, InputStream is, int length) throws IOException {
 		writeFileUploadHeaders(response, fileName, length);
 		ServletOutputStream ouputStream = response.getOutputStream();
 		try {
 			int b;
-			while ((b = fis.read()) != -1) {
+			while ((b = is.read()) != -1) {
 				ouputStream.write(b);
 			}
 		} finally {
 			ouputStream.flush();
 			ouputStream.close();
-			fis.close();
+			is.close();
 		}
 	}
 
