@@ -6,12 +6,14 @@ import in.co.zybotech.model.career.Student;
 import in.co.zybotech.service.StudentManager;
 import in.co.zybotech.web.utils.RequestUtils;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,17 +46,26 @@ public class StudentController {
 		model.put("students", studentManager.getStudents());
 		model.put("editable", requestUtils.isEditable(request, "student_admin"));
 		return requestUtils.getModelAndView(request, model,
-				"WEB-INF/templates/main/students");
+				"WEB-INF/templates/students/list");
 	}
 
 	@RequestMapping(value = "/student/photo/{id}", method = RequestMethod.GET)
 	public void photo(SecurityContextHolderAwareRequestWrapper request,
-			@PathVariable int id) {
+			HttpServletResponse response, @PathVariable int id)
+			throws SecurityException, IllegalArgumentException,
+			NoSuchFieldException, IllegalAccessException, IOException {
 		Student student = studentManager.getObject(Student.class, id);
 		if (student == null) {
 			throw new ResourceNotFoundException(
 					"Unable to find the selected student.");
 		}
+
+		byte[] bytes = studentManager.getBytes(Student.class, id, "image");
+		if (bytes != null) {
+			RequestUtils.sendStream(response, student.getImageName(),
+					new ByteArrayInputStream(bytes), bytes.length);
+		}
+
 	}
 
 	@RequestMapping("/student/{id}")
