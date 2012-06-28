@@ -445,39 +445,72 @@ $(function() {
 						.width()) / 2) + 5)
 						+ "px");
 	};
-	var fnProcessSuccess = function(xhr, $form, opts) {
+	var fnProcessJsonResponse = function(xhr, $form, opts) {
 		opts = opts || {};
 
 		if ($form) {
 			$form.valid();
 		}
-		try {
-			var resp = undefined;
-			var messages = undefined;
-			if (xhr.responseText) {
-				resp = $.parseJSON(xhr.responseText);
-				messages = fnGetMessages(resp["_page-message"]);
-			}
 
-			if (resp && resp["_zyb-redirect-path"]) {
-				if ($.isArray(messages) && messages.length > 0) {
-					fnSetCookieMessage(messages.join(""));
+		var resp = undefined;
+		var messages = undefined;
+		if (xhr.responseText) {
+			resp = $.parseJSON(xhr.responseText);
+			messages = resp ? fnGetMessages(resp["_page-message"]) : [];
+		}
+
+		if (resp && resp["_zyb-redirect-path"]) {
+			if ($.isArray(messages) && messages.length > 0) {
+				fnSetCookieMessage(messages.join(""));
+			}
+			var path = resp["_zyb-redirect-path"];
+			$("body").trigger("zyb-page-load", path);
+		} else {
+			var fieldErrors = resp ? resp["_field-errors"] : undefined;
+			if (fieldErrors) {
+				var fields = opts["fields"] || {};
+
+				var fieldErrorMessages = {};
+				$.each(fieldErrors, function(name) {
+							var field;
+							if (fields[name]) {
+								field = fields[name];
+							} else {
+								field = name;
+							}
+							if ($form
+									&& $form.validate().elements()
+											.is("input[name='" + field + "']")) {
+								var fmsg = fieldErrors[name];
+								if ($.isArray(fmsg)) {
+									fieldErrorMessages[field] = fmsg
+											.join("<br />");
+								} else {
+									fieldErrorMessages[field] = fmsg;
+								}
+							} else {
+								messages.push(fnWrapMessage(fieldErrors[name]));
+							}
+						});
+
+				if ($form) {
+					var fn = function() {
+						$form.validate().showErrors(fieldErrorMessages);
+					};
+					setTimeout(fn, 500);
 				}
-				var path = resp["_zyb-redirect-path"];
-				$("body").trigger("zyb-page-load", path);
-			} else {
-				if ($.isArray(messages) && messages.length > 0) {
-					fnShowMessage(messages, resp["_page-message-type"
-									|| "success"]);
+			}
+			if ($.isArray(messages) && messages.length > 0) {
+				var msgtype = resp["_page-message-type"] || opts.type
+						|| "success";
+				fnShowMessage(messages, msgtype);
+				if (msgtype == "success") {
 					fnSetHide(5000);
-				} else if (opts.hideMessage) {
-					fnHide();
-					fnClearHide();
 				}
+			} else if (opts.hideMessage) {
+				fnHide();
+				fnClearHide();
 			}
-
-		} catch (err) {
-			// Ignore
 		}
 	};
 
@@ -501,56 +534,16 @@ $(function() {
 
 	$.extend(ZtUtils, {
 		processAjaxSuccess : function(xhr, $form, opts) {
-			fnProcessSuccess (xhr, $form, opts);
-		},
-		processFormSuccess : function(resp, status, xhr, $form) {
-			fnProcessSuccess(xhr, $form, opts);
-		},
-
-		processAjaxError : function(xhr, opts) {
 			try {
-				var resp = $.parseJSON(xhr.responseText);
-				var fieldErrors = resp["_field-errors"];
-				opts = opts || {};
-				var messages = [];
-				var form = $(opts.form);
-				if (fieldErrors && form.length > 0) {
+				fnProcessJsonResponse(xhr, $form, opts);
+			} catch (err) {
+				// Ignore
+			}
+		},
 
-					var fields = opts["fields"] || {};
-
-					var fieldErrorMessages = {};
-					$.each(fieldErrors, function(name) {
-						var field;
-						if (fields[name]) {
-							field = fields[name];
-						} else {
-							field = name;
-						}
-						if (form.validate().elements().is("input[name='"
-								+ field + "']")) {
-							var fmsg = fieldErrors[name];
-							if ($.isArray(fmsg)) {
-								fieldErrorMessages[field] = fmsg.join("<br />");
-							} else {
-								fieldErrorMessages[field] = fmsg;
-							}
-						} else {
-							messages.push(fnWrapMessage(fieldErrors[name]));
-						}
-					});
-					$(form).valid();
-					var fn = function() {
-						$(form).validate().showErrors(fieldErrorMessages);
-					};
-					setTimeout(fn, 500);
-				}
-
-				messages = messages
-						.concat(fnGetMessages(resp["_page-message"]));
-				if (messages.length > 0) {
-					fnShowMessage(messages, resp["_page-message-type"
-									|| "error"]);
-				}
+		processAjaxError : function(xhr, $form, opts) {
+			try {
+				fnProcessJsonResponse(xhr, $form, opts);
 			} catch (err) {
 				fnShowMessage(
 						"Unknown error occured while processing the request!",
@@ -599,21 +592,22 @@ $(function() {
 			});
 
 	elAjaxMessage.ajaxError(function(e, jqXHR, settings, thrownError) {
-				var proc = fnGetMsgProcessingOpts(settings);
-				if (jqXHR.responseText && proc.error) {
-					var val = settings.validator || {};
-					ZtUtils.processAjaxError(jqXHR, {
-								form : $(val.form),
-								fields : val.fields
-							});
-				} else if (jqXHR.status == 403) {
-					fnShowMessage("Unable to access the specified resource.",
-							"error");
-				} else if (jqXHR.status == 404) {
-					fnShowMessage("Unable to find the specified resource.",
-							"error");
-				}
-			});
+		var proc = fnGetMsgProcessingOpts(settings);
+		if (proc.error) {
+			if (jqXHR.status == 403) {
+				fnShowMessage("Unable to access the specified resource.",
+						"error");
+			} else if (jqXHR.status == 404) {
+				fnShowMessage("Unable to find the specified resource.", "error");
+			}
+		} else if (jqXHR.responseText) {
+			var val = settings.validator || {};
+			ZtUtils.processAjaxError(jqXHR, val.form ? $(val.form) : undefined,
+					{
+						fields : val.fields
+					});
+		}
+	});
 
 	$.ajaxSetup({
 				timeout : 600000,
