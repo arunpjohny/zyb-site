@@ -251,6 +251,7 @@ public class RequestUtils {
 	public boolean isEditable(SecurityContextHolderAwareRequestWrapper request,
 			String role) {
 		User user = getUser();
-		return user != null && request.isUserInRole(role);
+		return user != null
+				&& request.isUserInRole("ROLE_" + StringUtils.upperCase(role));
 	}
 }
