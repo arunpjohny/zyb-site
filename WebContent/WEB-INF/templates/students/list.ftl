@@ -4,6 +4,13 @@
 	<@macro.title "Students" />
 	<div class="row-fluid" id="zyb-students">
 		<div class="span9">
+			<#if editable?exists && editable == true>
+				<div class="row-fluid">
+					<div class="span12">
+						<span class="student-add zyb-link pull-right">Add Student</span>
+					</div><!--span12-->
+				</div><!--row-fluid-->
+			</#if>
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="scrollable-wrapper student">
@@ -34,8 +41,14 @@
 		</div>
 
 		<script type="text/x-jsrender" class="student-tmpl">
-			<article class="student article">
-				<header class="type2"><h4>{{:name}}</h4></header>
+			<article class="student article" data-student="{{:id}}">
+				<header class="type2">
+				<#if editable?exists && editable == true>
+					<i class="icon-remove pull-right zyb-link" style="margin-left: 5px;"></i>
+					<i class="icon-edit pull-right zyb-link"></i>
+				</#if>
+					<h4>{{:name}}</h4>
+				</header>
 				<section>
 					{{:description}}
 				</section>
@@ -43,7 +56,7 @@
 		</script>
 	</div><!-- row -->
 <@macro.footer >
-	<script language="" src="${rc.getContextPath()}/resources/js/main/students.js"></script>
+	<script language="" src="${rc.getContextPath()}/resources/js/students/list.js"></script>
 	<script>
 		$(function(){
 			new zyb.main.students.Main("#zyb-students");

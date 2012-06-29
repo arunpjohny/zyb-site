@@ -15,6 +15,12 @@ $(function() {
 							$(".student img:eq(0)", this.el).trigger("click");
 
 							$.templates("student", $(".student-tmpl", this.el)[0]);
+							
+							$(".student-add", this.el).on("click",
+								this.proxy("onStudentAddClick"));
+								
+							this.el.on("click", "article.student .icon-edit", this
+								.proxy("onStudentEditClick"));
 						},
 
 						onStudentClick : function(e) {
@@ -54,6 +60,20 @@ $(function() {
 
 						onStudentRequestComplete : function() {
 							delete this.studentRequest;
+						},
+
+						onStudentAddClick : function(e) {
+							$(e.target).trigger("zyb-page-load",
+									"/admin/student/edit/0");
+						},
+
+						onStudentEditClick : function(e) {
+							var $target = $(e.target);
+							var id = $target.closest("article.student").data("student");
+							if (id) {
+								$target.trigger("zyb-page-load", "/admin/student/edit/"
+												+ id);
+							}
 						}
 					});
 		});
