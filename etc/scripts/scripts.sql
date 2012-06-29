@@ -1,4 +1,4 @@
-﻿set session AUTHORIZATION "zyb-site";
+set session AUTHORIZATION "zyb-site";
 
 drop table students
 
