@@ -72,11 +72,11 @@
 	</div>
 </#macro>
 
-<#macro ctrlfile name label class="" size="" errorplacement="inline">
+<#macro ctrlfile name label class="" size="" errorplacement="inline" value="">
 	<div class="control-group">
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
-			<input type="file" name="${name}" class="${size}" error-placement="${errorplacement}" all-true="true"/>
+			<input type="file" name="${name}" class="${size}" error-placement="${errorplacement}" all-true="true" value="${value!""}"/>
 		</div>
 	</div>
 </#macro>
@@ -88,19 +88,19 @@
 		</div>
 	</div>
 </#macro>
-<#macro ctrltext name label class="" size="" errorplacement="inline">
+<#macro ctrltext name label class="" size="" errorplacement="inline" value="">
 	<div class="control-group">
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
-			<input type="text" name="${name}" class="${class} ${size}" error-placement="${errorplacement}"/>
+			<input type="text" name="${name}" class="${class} ${size}" error-placement="${errorplacement}" value="${value!""}"/>
 		</div>
 	</div>
 </#macro>
-<#macro ctrlreadonly name label class="" size="" errorplacement="inline">
+<#macro ctrlreadonly name label class="" size="" errorplacement="inline" value="">
 	<div class="control-group">
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
-			<input type="text" name="${name}" class="uneditable-input ${class} ${size}" error-placement="${errorplacement}" readonly="readonly"/>
+			<input type="text" name="${name}" class="uneditable-input ${class} ${size}" error-placement="${errorplacement}" readonly="readonly" value="${value!""}"/>
 		</div>
 	</div>
 </#macro>
