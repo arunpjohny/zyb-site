@@ -11,7 +11,7 @@
 					</div>
 				</#list>
 				<div class="zyb-broucher">
-					<h4><a href="${rc.getContextPath()}//ebroucher/download/0" target="_blank">Download Al</a></h4>
+					<h4><a href="${rc.getContextPath()}//ebroucher/download/0" target="_blank">Download All</a></h4>
 				</div>
 			</#if>
 		</div> <!-- span9 -->
