@@ -54,7 +54,7 @@
 			</div> <!-- span9 -->
 			<div class="span3">
 				<article class="article">
-					<header class="type2"><h5>Quick Links<h5></header>
+					<header class="type2"><h5>Quick Links</h5></header>
 					
 					<div class="topic">
 						<strong><a href="#id=/productsandservices/app-gallery">Apps gallary</a></strong>
