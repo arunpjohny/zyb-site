@@ -9,6 +9,14 @@ $(function() {
 
 					this.$formValidator = this.$form.validate({
 								rules : {
+									name : {
+										required : true
+									},
+									mobile : {
+										required : true,
+										digits : true,
+										minlength : 10
+									},
 									from : {
 										required : true,
 										email : true
