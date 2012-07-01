@@ -64,6 +64,18 @@ create table placement_openings(
     constraint pk_placement_openings primary key (cid)
 );
 
+-- drop table ebrouchers
+create table ebrouchers(
+    cid int NOT NULL AUTO_INCREMENT,
+    createddate timestamp not null, 
+    modifiedDate timestamp,
+    item_order int not null,
+    caption VARCHAR(200) not null,
+    name VARCHAR(200) not null,
+    broucher longblob not null,
+    constraint pk_ebrouchers primary key (cid)
+);
+
 alter table placement_openings add noofopenings int default 1 not null;
 
 select * from students

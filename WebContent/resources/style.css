@@ -367,7 +367,7 @@ section p:first-child {
   text-align: center;
   padding-bottom: 10px;
 }
-.zyb-broucher a {
+.zyb-broucher .brocher-dl {
   background-image: none;
   background-repeat: no-repeat;
   display: inline-block;
@@ -376,6 +376,8 @@ section p:first-child {
   vertical-align: text-top;
   width: 192px;
   background: url(images/ebroucher-bg.png) no-repeat center;
+}
+.zyb-broucher .brocher-dl a {
   color: white;
 }
 .zyb-opening  > header {
