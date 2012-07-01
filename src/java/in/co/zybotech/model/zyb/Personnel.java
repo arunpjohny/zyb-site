@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.core.Ordered;
 
 @Entity
@@ -32,7 +33,10 @@ public class Personnel implements Ordered {
 
 	private String company;
 
-	private String image;
+	@JsonIgnore
+	private byte[] image;
+
+	private String imageName;
 
 	private String summary;
 
@@ -79,12 +83,20 @@ public class Personnel implements Ordered {
 		this.company = company;
 	}
 
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	public int getOrder() {

@@ -19,7 +19,7 @@ create table students(
     constraint pk_students primary key(cid)
 );
 
-drop table zyb_personnel_type;
+-- drop table zyb_personnel_type;
 
 create table zyb_personnel_type(
     name VARCHAR(200) not null,
@@ -32,6 +32,7 @@ insert into zyb_personnel_type (name, description, caption) values ('advisoryboa
 insert into zyb_personnel_type (name, description, caption) values ('managementteam', 'Management Team', 'Management Team');
 insert into zyb_personnel_type (name, description, caption) values ('trainers', 'Trainers goes here', 'Trainers');
 
+-- drop table zyb_personnel;
 
 create table zyb_personnel(
     cid int NOT NULL AUTO_INCREMENT,
@@ -39,7 +40,8 @@ create table zyb_personnel(
     name VARCHAR(200) not null,
     designation VARCHAR(200) not null,
     company VARCHAR(200) not null,
-    image VARCHAR(200),
+    image longblob,
+    imageName VARCHAR(200),
     item_order int default 0 not null,
     summary text,
     constraint pk_zyb_personnel primary key(cid),

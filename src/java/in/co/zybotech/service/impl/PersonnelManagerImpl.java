@@ -2,6 +2,7 @@ package in.co.zybotech.service.impl;
 
 import in.co.zybotech.core.service.impl.BaseManager;
 import in.co.zybotech.dao.PersonnelDao;
+import in.co.zybotech.model.zyb.Personnel;
 import in.co.zybotech.model.zyb.PersonnelType;
 import in.co.zybotech.service.PersonnelManager;
 
@@ -29,6 +30,13 @@ public class PersonnelManagerImpl extends BaseManager implements
 		PersonnelType ptype = personnelDao.getObject(PersonnelType.class, type);
 		ptype.getPersonnel().size();
 		return ptype;
+	}
+
+	@Override
+	public Personnel getPersonnel(int id) {
+		Personnel object = getObject(Personnel.class, id);
+		object.getType().getCaption();
+		return object;
 	}
 
 }

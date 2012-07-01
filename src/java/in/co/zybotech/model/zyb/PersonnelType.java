@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "zyb_personnel_type")
 public class PersonnelType {
@@ -20,6 +22,7 @@ public class PersonnelType {
 
 	private String description;
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Personnel.class, mappedBy = "type")
 	private Set<Personnel> personnel;
 
