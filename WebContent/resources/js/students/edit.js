@@ -17,7 +17,7 @@ $(function() {
 						required : true
 					},
 					image : {
-						required : true,
+						required : this.options.student == 0,
 						accept : "jpeg|jpg|gif|png"
 					},
 					messages : {

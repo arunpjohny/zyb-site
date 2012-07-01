@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "students")
 public class Student {
@@ -22,6 +24,7 @@ public class Student {
 
 	private String description;
 
+	@JsonIgnore
 	private byte[] image;
 
 	private String imageName;

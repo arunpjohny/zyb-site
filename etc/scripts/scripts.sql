@@ -7,13 +7,13 @@ GRANT ALL PRIVILEGES ON *.* TO 'zyb-site'@'%' WITH GRANT OPTION;
 
 use zyb2;
 
-drop table career_students;
+drop table students;
 
 create table students(
     cid int NOT NULL AUTO_INCREMENT,
     name VARCHAR(200) not null,
     description text not null,
-    image blob,
+    image longblob,
     imageName VARCHAR(200),
     weight int default 0 not null,
     constraint pk_students primary key(cid)

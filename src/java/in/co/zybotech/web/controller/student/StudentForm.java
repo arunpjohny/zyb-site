@@ -1,26 +1,33 @@
 package in.co.zybotech.web.controller.student;
 
-import java.io.IOException;
-
-import javax.validation.constraints.NotNull;
-
 import in.co.zybotech.model.career.Student;
+
+import java.io.IOException;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 public class StudentForm {
-	
+
+	private int id;
+
 	@NotBlank
 	private String name;
 
 	@NotBlank
 	private String description;
 
-	@NotNull
 	private MultipartFile image;
 
 	private int weight;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -56,8 +63,10 @@ public class StudentForm {
 
 	public void set(Student student) throws IOException {
 		student.setDescription(description);
-		student.setImage(image.getBytes());
-		student.setImageName(image.getOriginalFilename());
+		if (image != null && !image.isEmpty()) {
+			student.setImage(image.getBytes());
+			student.setImageName(image.getOriginalFilename());
+		}
 		student.setName(name);
 		student.setWeight(student.getWeight());
 	}

@@ -17,9 +17,18 @@ public class StudentFormValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		StudentForm form = (StudentForm) target;
-		if (!StringUtils.endsWithAny(
-				StringUtils.lowerCase(form.getImage().getOriginalFilename()),
-				"jpeg", "jpg", "png", "gif")) {
+
+		if (form.getId() == 0
+				&& (form.getImage() == null || form.getImage().isEmpty())) {
+			errors.rejectValue("image", "student.image.empty",
+					"Image cannot be empty");
+		}
+
+		if (form.getImage() != null
+				&& !form.getImage().isEmpty()
+				&& !StringUtils.endsWithAny(StringUtils.lowerCase(form
+						.getImage().getOriginalFilename()), "jpeg", "jpg",
+						"png", "gif")) {
 			errors.rejectValue("image", "student.image.filetype.invalid",
 					"Allowed image types are jpeg, jpg, png and gif");
 		}

@@ -19,7 +19,7 @@
 							<div class="items">
 								<#list students as student>
 									<#if student_index % 5 == 0><div></#if>
-									<img src="${rc.getContextPath()}/student/photo/${student.id}" data-studentid="${student.id}"></img>
+									<img src="${rc.getContextPath()}/student/photo/${student.id}<#if editable?exists && editable == true>?_dc=${dc!"0"}</#if>" data-studentid="${student.id}"></img>
 									<#if student_index % 5 == 4 || student_index = students?size - 1></div></#if>
 								</#list>
 							</div><!--items-->

@@ -8,6 +8,7 @@ import in.co.zybotech.web.utils.RequestUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +45,7 @@ public class StudentController {
 			SecurityContextHolderAwareRequestWrapper request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("students", studentManager.getStudents());
+		model.put("dc", new Date().getTime());
 		model.put("editable", requestUtils.isEditable(request, "student_admin"));
 		return requestUtils.getModelAndView(request, model,
 				"WEB-INF/templates/students/list");
@@ -100,8 +102,17 @@ public class StudentController {
 			student = new Student();
 		}
 		form.set(student);
-		studentManager.saveObject(student);
+		studentManager.saveObject(student, Student.class);
 		return new Redirect("/students");
+	}
+
+	@RequestMapping(value = "/admin/student/delete/{id}", method = RequestMethod.GET)
+	@Secured("ROLE_STUDENT_ADMIN")
+	public @ResponseBody
+	Student delete(SecurityContextHolderAwareRequestWrapper request,
+			@PathVariable int id) {
+		Student student = studentManager.remove(Student.class, id);
+		return student;
 	}
 
 	@InitBinder
