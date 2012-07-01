@@ -1,7 +1,5 @@
 package in.co.zybotech.core.service;
 
-import in.co.zybotech.model.career.Student;
-
 import java.io.Serializable;
 
 public interface Manager {
@@ -12,7 +10,7 @@ public interface Manager {
 
 	<T> T remove(Class<T> clazz, Serializable id);
 
-	byte[] getBytes(Class<Student> clazz, Serializable id, String field)
+	<T> byte[] getBytes(Class<T> clazz, Serializable id, String field)
 			throws SecurityException, NoSuchFieldException,
 			IllegalArgumentException, IllegalAccessException;
 

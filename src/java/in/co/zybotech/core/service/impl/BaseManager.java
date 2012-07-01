@@ -39,10 +39,10 @@ public class BaseManager implements Manager {
 	}
 
 	@Override
-	public byte[] getBytes(Class<Student> clazz, Serializable id, String field)
+	public <T> byte[] getBytes(Class<T> clazz, Serializable id, String field)
 			throws SecurityException, NoSuchFieldException,
 			IllegalArgumentException, IllegalAccessException {
-		Student object = getObject(clazz, id);
+		T object = getObject(clazz, id);
 		if (object == null) {
 			throw new ResourceNotFoundException("Unable to find the resource "
 					+ clazz + " with id " + id + ".");
