@@ -357,6 +357,9 @@ section p:first-child {
   margin-bottom: 10px;
   padding: 5px;
 }
+.zyb-personnel .brief img {
+  height: 100px;
+}
 .zyb-personnel .brief .details {
   margin-left: 15px;
 }
@@ -374,7 +377,7 @@ section p:first-child {
   height: 42px;
   line-height: 42px;
   vertical-align: text-top;
-  width: 192px;
+  width: 254px;
   background: url(images/ebroucher-bg.png) no-repeat center;
 }
 .zyb-broucher .brocher-dl a {

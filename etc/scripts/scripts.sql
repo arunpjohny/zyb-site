@@ -76,6 +76,19 @@ create table ebrouchers(
     constraint pk_ebrouchers primary key (cid)
 );
 
-alter table placement_openings add noofopenings int default 1 not null;
-
-select * from students
+-- -------------------------------------------------------------------------------
+insert into zyb_personnel (p_type, name, designation, company, image, item_order, summary)
+values ('managementteam', 'Sunil P Johny', 'Managing Partner', 'Zybotech Solutions',
+    '{contextPath}/resources/photos/management/sunil.jpg', 2,
+    'Sunil is an MBA marketing graduate, having three plus years of experience in marketing IN IT and ITES sector. After worked with some of ht leading IT service providers, Sunil with his friends started up the most successful mobile application development and training company in Cochin zybotech solutions. currently engaged with zybotech solutions business development and client management.'
+);
+insert into zyb_personnel (p_type, name, designation, company, image, item_order, summary)
+values ('managementteam', 'Sagar S', 'Managing Partner', 'Zybotech Solutions',
+    '{contextPath}/resources/photos/management/sagar.jpg', 1,
+    'Sagar an MBA graduate from UK, with experienced in handling complex projects in many MNC''s now engaged with Zybotech solutions project management.'
+);
+insert into zyb_personnel (p_type, name, designation, company, image, item_order, summary)
+values ('trainers', 'Dixon James Melitt', 'Sr. Android Developer', 'Zybotech Solutions',
+    '{contextPath}/resources/photos/trainer/dixon.jpg', 1,
+    'Dixon, an experienced java developer, has been involved with the Android horizon for the past 3 years since he has been with us. He has achieved projects in various skills in Android, Java and gaming APIs. He is also responsible for the preparation of the Android course material and has organized training sessions for working professionals and students in educational intitutions. His interests and current pursuation of mobile application development technologies has been duly seen to the syllabus giving the trainee a vast and indepth knowledge of the Android operating system.'
+);

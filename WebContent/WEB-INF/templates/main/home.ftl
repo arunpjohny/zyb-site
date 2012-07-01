@@ -26,7 +26,7 @@
 				<article class="welcome">
 					<header><h3>Welcome to zybotech Solutions</h3></header>
 					<section>
-						Zybotech Solutions is one of the leading companies offering professional Mobile Application Training and development in Kerala. We deliver professional and competitively priced development and training solutions in mobile application development. We build experts in android development with our interactive training sessions and industry oriented curriculum and a handful of experience in working with live and multimedia projects helps developers to build confidence to handle any complex projects with a high professional quality.
+						Zybotech Solutions is one of the leading company offering professional Mobile Application Training and development in Kerala. We deliver professional and competitively priced development and training solutions in mobile application development. We build experts in android development with our interactive training sessions and industry oriented curriculum and a handful of experience in working with live and multimedia projects helps developers to build confidence to handle any complex projects with a high professional quality.
 						<a class="more" href="#id=/aboutus">Read More...</a>
 					</section>
 				</article>
