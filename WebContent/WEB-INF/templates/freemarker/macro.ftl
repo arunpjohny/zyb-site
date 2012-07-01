@@ -76,7 +76,7 @@
 	<div class="control-group">
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
-			<input type="file" name="${name}" class="${size}" error-placement="${errorplacement}" all-true="true" value="${value!""}"/>
+			<input type="file" name="${name}" class="${size} ${class}" error-placement="${errorplacement}" all-true="true" value="${value!""}"/>
 		</div>
 	</div>
 </#macro>
@@ -84,7 +84,7 @@
 	<div class="control-group">
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
-			<textarea name="${name}" class="${size}" error-placement="${errorplacement}" all-true="true">${value}</textarea>
+			<textarea name="${name}" class="${size} ${class}" error-placement="${errorplacement}" all-true="true">${value}</textarea>
 		</div>
 	</div>
 </#macro>
