@@ -576,7 +576,7 @@ $(function() {
 	var msgprocessing = {
 		error : true,
 		success : true,
-		hideMessage : false
+		hideMessage : true
 	};
 	var fnGetMsgProcessingOpts = function(options) {
 		return $.extend({}, msgprocessing, options.msgprocessing || {});
