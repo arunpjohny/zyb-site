@@ -18,8 +18,15 @@ public class BaseDAO implements DAO {
 	}
 
 	@Override
-	public void saveObject(Object object) {
-		entityManager.persist(object);
+	public <T> T saveObject(T object, Class<T> clazz) {
+		return entityManager.merge(object);
+	}
+
+	@Override
+	public <T> T remove(Class<T> clazz, Serializable id) {
+		T object = getObject(clazz, id);
+		entityManager.remove(object);
+		return object;
 	}
 
 }

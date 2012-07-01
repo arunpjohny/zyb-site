@@ -1,16 +1,16 @@
 package in.co.zybotech.core.service.impl;
 
+import in.co.zybotech.core.dao.DAO;
+import in.co.zybotech.core.exception.client.ResourceNotFoundException;
+import in.co.zybotech.core.service.Manager;
+import in.co.zybotech.model.career.Student;
+
 import java.io.Serializable;
 import java.lang.reflect.Field;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ReflectionUtils;
-
-import in.co.zybotech.core.dao.DAO;
-import in.co.zybotech.core.exception.client.ResourceNotFoundException;
-import in.co.zybotech.core.service.Manager;
-import in.co.zybotech.model.career.Student;
 
 @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class BaseManager implements Manager {
@@ -28,8 +28,14 @@ public class BaseManager implements Manager {
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void saveObject(Object object) {
-		dao.saveObject(object);
+	public <T> T saveObject(T object, Class<T> clazz) {
+		return dao.saveObject(object, clazz);
+	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public <T> T remove(Class<T> clazz, Serializable id) {
+		return dao.remove(clazz, id);
 	}
 
 	@Override
