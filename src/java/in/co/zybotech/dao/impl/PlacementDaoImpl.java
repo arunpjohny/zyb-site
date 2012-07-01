@@ -1,5 +1,7 @@
 package in.co.zybotech.dao.impl;
 
+import javax.persistence.NoResultException;
+
 import in.co.zybotech.core.dao.impl.BaseDAO;
 import in.co.zybotech.dao.PlacementDao;
 import in.co.zybotech.model.placement.PlacementOpening;
@@ -32,7 +34,7 @@ public class PlacementDaoImpl extends BaseDAO implements PlacementDao {
 		try {
 			singleResult = (PlacementOpening) entityManager.createQuery(
 					criteriaQuery).getSingleResult();
-		} catch (Exception e) {
+		} catch (NoResultException e) {
 			// Ignore
 		}
 		return singleResult;
