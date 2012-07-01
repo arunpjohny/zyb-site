@@ -599,13 +599,14 @@ $(function() {
 						"error");
 			} else if (jqXHR.status == 404) {
 				fnShowMessage("Unable to find the specified resource.", "error");
+			} else if (jqXHR.responseText) {
+				var val = settings.validator || {};
+				ZtUtils.processAjaxError(jqXHR, val.form
+								? $(val.form)
+								: undefined, {
+							fields : val.fields
+						});
 			}
-		} else if (jqXHR.responseText) {
-			var val = settings.validator || {};
-			ZtUtils.processAjaxError(jqXHR, val.form ? $(val.form) : undefined,
-					{
-						fields : val.fields
-					});
 		}
 	});
 
@@ -620,3 +621,13 @@ $(function() {
 			});
 
 });
+
+$(function() {
+			if ($.views) {
+				$.views.helpers({
+							timeInMillis : function() {
+								return new Date().getTime();
+							}
+						});
+			}
+		});
