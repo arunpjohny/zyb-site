@@ -416,3 +416,16 @@ section p:first-child {
   cursor: pointer;
   color: #0088CC;
 }
+.zyb-btn-wrapper {
+  min-height: 28px;
+  padding: 5px 0;
+}
+textarea.height-small {
+  height: 60px;
+}
+textarea.height-medium {
+  height: 120px;
+}
+textarea.height-large {
+  height: 180px;
+}
