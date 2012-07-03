@@ -5,68 +5,76 @@ $(function() {
 			this.el = $(el);
 			this.options = $.extend({}, options);
 
-			this.elOpeningCt = $(".zyb-placement-openings .opening-container",
+			this.elOpeningCt = $(
+					".zyb-placement-openings .list-view .list-view-content",
 					this.el);
-
-			this.elNextOpening = $(".zyb-placement-openings .next", this.el);
-			this.elPrevOpening = $(".zyb-placement-openings .prev", this.el);
 
 			$.templates("placements-opening", $(
 							"script.placement-opening-tmpl", this.el)[0]);
 
-			this.el.on("click", ".zyb-placement-openings .dir-loader", this
-							.proxy("onOpeningLoaderClick"));
+			this.el.on("click", ".list-view-item > header", this
+							.proxy("onItemHeaderClick"));
 
-			this.loadOpening(0);
+			this.elOpeningPager = $(
+					".zyb-placement-openings .list-view .list-view-footer",
+					this.el).zybpager({
+						pageselect : this.proxy("onOpeningPageSelect")
+					});
+
+			this.loadOpeningPage(1);
 		},
 
-		onOpeningLoaderClick : function(e) {
-			var $target = $(e.target);
-			var id = $target.data("openingid");
-			if (id) {
-				this.loadOpening(id);
+		onAddClick : function(e) {
+
+		},
+
+		onItemHeaderClick : function(e) {
+			var target = $(e.target);
+			var elItem = target.closest(".list-view-item");
+			var view = elItem.children(".list-view-item-body");
+			if (view.is(":visible")) {
+				view.hide();
+			} else {
+				view.show();
 			}
 		},
 
-		loadOpening : function(id) {
-			if (this._loading_opening) {
+		loadOpeningPage : function(page) {
+			if (this._loading_opening_page) {
 				return;
 			}
 
 			$.ajax({
-				url : ZtUtils.getContextPath() + "/placements/opening/pview/"
-						+ id
-			}).success(this.proxy("onOpeningRequestSuccess")).always(this
-					.proxy("onOpeningRequestComplete"));
+				url : ZtUtils.getContextPath() + "/placements/opening/page/"
+						+ page,
+				data : {
+					rows : 10
+				}
+			}).success(this.proxy("onOpeningPageSuccess")).always(this
+					.proxy("onOpeningPageComplete"));
 		},
 
-		onOpeningRequestSuccess : function(result) {
-			if (result.opening) {
-				this.elOpeningCt
-						.html($.render["placements-opening"](result.opening));
-
-				if (result.next) {
-					this.elNextOpening.data("openingid", result.next);
-					this.elNextOpening.show();
-				} else {
-					this.elNextOpening.data("openingid", 0);
-					this.elNextOpening.hide();
-				}
-				if (result.prev) {
-					this.elPrevOpening.data("openingid", result.prev);
-					this.elPrevOpening.show();
-				} else {
-					this.elPrevOpening.data("openingid", 0);
-					this.elPrevOpening.hide();
-				}
+		onOpeningPageSuccess : function(result) {
+			var rows = [];
+			var tmpl = $.render["placements-opening"];
+			$.each(result.rows, function(i, v) {
+						rows.push(tmpl(v));
+					});
+			if (result.rowCount) {
+				this.elOpeningCt.html(rows.join(""));
 			} else {
 				this.elOpeningCt
 						.html("There are no openings available now, please come back again.");
 			}
+			this.elOpeningPager.zybpager("update", result.pages, result.page);
+		},
+		onOpeningPageComplete : function() {
+			this._loading_opening = false;
 		},
 
-		onOpeningRequestComplete : function() {
-			this._loading_opening = false;
+		onOpeningPageSelect : function(e, page) {
+			this.loadOpeningPage(page);
 		}
+
 	});
 });

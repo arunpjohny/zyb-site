@@ -13,6 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "placement_openings")
@@ -27,12 +28,14 @@ public class PlacementOpening {
 	@JsonSerialize(using = DateTimeSerializer.class)
 	private Date createdDate;
 
+	@NotBlank
 	private String company;
 
+	@NotBlank
 	private String position;
 
 	private int noOfOpenings;
-	
+
 	private String location;
 
 	private String contactPerson;
@@ -41,8 +44,10 @@ public class PlacementOpening {
 
 	private String contactNumber;
 
+	@NotBlank
 	private String jobDescription;
 
+	@NotBlank
 	private String desiredProfile;
 
 	public int getId() {

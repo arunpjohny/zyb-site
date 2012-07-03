@@ -1,7 +1,5 @@
 package in.co.zybotech.web.controller.main;
 
-import in.co.zybotech.service.CareerManager;
-import in.co.zybotech.service.MailManager;
 import in.co.zybotech.web.utils.RequestUtils;
 
 import java.util.HashMap;
@@ -20,10 +18,6 @@ public class HomeController {
 
 	@Autowired
 	private RequestUtils requestUtils;
-
-	@Autowired
-	private MailManager mailManager;
-	private CareerManager careerManager;
 
 	@RequestMapping("/")
 	public ModelAndView defaultpath(HttpServletRequest request) {
@@ -52,13 +46,6 @@ public class HomeController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		return requestUtils.getModelAndView(request, model,
 				"WEB-INF/templates/productsandservices/" + page);
-	}
-
-	@RequestMapping("/placements")
-	public ModelAndView placements(HttpServletRequest request) {
-		Map<String, Object> model = new HashMap<String, Object>();
-		return requestUtils.getModelAndView(request, model,
-				"WEB-INF/templates/main/placements");
 	}
 
 	@RequestMapping("/blog")
