@@ -1,6 +1,11 @@
 package in.co.zybotech.core.service;
 
+import in.co.zybotech.core.dao.criteria.SearchCriteria;
+import in.co.zybotech.core.dao.criteria.SearchCriteriaResult;
+
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 public interface Manager {
 
@@ -14,4 +19,12 @@ public interface Manager {
 			throws SecurityException, NoSuchFieldException,
 			IllegalArgumentException, IllegalAccessException;
 
+	<T> List<T> query(SearchCriteria criteria, Class<T> clazz);
+
+	List<Map<String, Object>> query(SearchCriteria criteria);
+
+	long getCount(SearchCriteria criteria);
+
+	<T> SearchCriteriaResult<T> queryResult(SearchCriteria criteria,
+			Class<T> clazz);
 }

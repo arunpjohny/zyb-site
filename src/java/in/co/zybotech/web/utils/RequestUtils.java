@@ -1,5 +1,8 @@
 package in.co.zybotech.web.utils;
 
+import in.co.zybotech.core.dao.criteria.SearchCriteria;
+import in.co.zybotech.core.dao.criteria.SearchCriteriaResult;
+import in.co.zybotech.core.service.Manager;
 import in.co.zybotech.core.spring.context.utils.ApplicationContextLocator;
 
 import java.io.File;
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -184,6 +188,18 @@ public class RequestUtils {
 			}
 		}
 		return user;
+	}
+
+	public static <T> SearchCriteriaResult<T> getPagerResult(
+			HttpServletRequest request, int page, SearchCriteria criteria,
+			Class<T> clazz, Manager manager) {
+		int pageSize = NumberUtils.toInt(request.getParameter("rows"));
+		int start = (page - 1) * pageSize;
+		criteria.setStart(start);
+		criteria.setPageSize(pageSize);
+
+		SearchCriteriaResult<T> result = manager.queryResult(criteria, clazz);
+		return result;
 	}
 
 	public void putContents(HttpServletRequest request,

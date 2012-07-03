@@ -1,12 +1,15 @@
 package in.co.zybotech.core.service.impl;
 
 import in.co.zybotech.core.dao.DAO;
+import in.co.zybotech.core.dao.criteria.SearchCriteria;
+import in.co.zybotech.core.dao.criteria.SearchCriteriaResult;
 import in.co.zybotech.core.exception.client.ResourceNotFoundException;
 import in.co.zybotech.core.service.Manager;
-import in.co.zybotech.model.career.Student;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,4 +59,24 @@ public class BaseManager implements Manager {
 		return (byte[]) f.get(object);
 	}
 
+	@Override
+	public <T> List<T> query(SearchCriteria criteria, Class<T> clazz) {
+		return dao.query(criteria, clazz);
+	}
+
+	@Override
+	public List<Map<String, Object>> query(SearchCriteria criteria) {
+		return dao.query(criteria);
+	}
+
+	@Override
+	public long getCount(SearchCriteria criteria) {
+		return dao.getCount(criteria);
+	}
+
+	@Override
+	public <T> SearchCriteriaResult<T> queryResult(SearchCriteria criteria,
+			Class<T> clazz) {
+		return dao.queryResult(criteria, clazz);
+	}
 }
