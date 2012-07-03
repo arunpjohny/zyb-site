@@ -631,3 +631,94 @@ $(function() {
 						});
 			}
 		});
+
+(function($) {
+
+	$.widget("ui.zybpager", {
+				_create : function() {
+					if (!this.element.hasClass("pagination")) {
+						this.element.addClass("pagination");
+					}
+					if (!this.element.hasClass("pagination-centered")) {
+						this.element.addClass("pagination-centered");
+					}
+
+					this.list = $("<ul></ul>").appendTo(this.element.empty());
+
+					this.element.on("click", "li > a", $.proxy(
+									this._onPageClick, this));
+
+					this._updatePager(this.options.totalPages || 0,
+							this.options.currentPage || 0);
+				},
+
+				_onPageClick : function(e) {
+					var $target = $(e.currentTarget);
+					var page = $target.data("page");
+					if (page) {
+						this._trigger("pageselect", 0, page);
+						$("li.active", this.list).removeClass("active");
+						$target.parent("li").addClass("active");
+					}
+				},
+
+				_updatePager : function(totalPages, currentPage) {
+					var pages = [];
+					if (totalPages < 10) {
+						for (var i = 1; i <= totalPages; i++) {
+							pages.push(this
+									._getPagerElementHtml(i, currentPage));
+						}
+					} else {
+						var added = {};
+
+						for (var i = 1; i <= 2; i++) {
+							pages.push(this
+									._getPagerElementHtml(i, currentPage));
+							added[i] = true;
+						}
+
+						if (currentPage - 4 > 3) {
+							pages.push("<li class='space disabled'>...</li>");
+						}
+
+						var varPartStart = currentPage < 5 ? 3 : currentPage
+								- 4;
+						var varPartEnd = currentPage < 5 ? 9 : currentPage + 4;
+						for (var i = varPartStart; i <= varPartEnd; i++) {
+							if (i > 0 && !added[i]) {
+								pages.push(this._getPagerElementHtml(i,
+										currentPage));
+								added[i] = true;
+							}
+						}
+
+						if (currentPage + 4 < totalPages - 2) {
+							pages.push("<li class='space disabled'>...</li>");
+						}
+
+						for (var i = totalPages - 1; i <= totalPages; i++) {
+							if (!added[i]) {
+								pages.push(this._getPagerElementHtml(i,
+										currentPage));
+								added[i] = true;
+							}
+						}
+					}
+					this.list.empty().html(pages.join(""));
+				},
+
+				_getPagerElementHtml : function(page, currentPage) {
+					return "<li class=" + (page == currentPage ? "active" : "")
+							+ "><a data-page='" + page + "'>" + page
+							+ "</a></li>";
+				},
+
+				update : function(totalPages, currentPage) {
+					this._updatePager(totalPages, currentPage);
+				},
+
+				options : {}
+			});
+
+})(jQuery);
