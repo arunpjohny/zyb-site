@@ -434,3 +434,18 @@ textarea.height-medium {
 textarea.height-large {
   height: 180px;
 }
+.list-view-item {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.list-view-item  > header {
+  background-color: rgba(93, 207, 195, 0.19999999999999996);
+  padding: 5px;
+  cursor: pointer;
+}
+.list-view-item .list-view-item-content  > section {
+  padding-bottom: 5px;
+}
+.list-view-item .list-view-item-content  > section:last-child {
+  padding-bottom: 0;
+}
