@@ -443,6 +443,9 @@ textarea.height-large {
   padding: 5px;
   cursor: pointer;
 }
+.list-view-item .list-view-item-content {
+  padding-top: 5px;
+}
 .list-view-item .list-view-item-content  > section {
   padding-bottom: 5px;
 }
