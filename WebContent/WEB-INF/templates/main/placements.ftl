@@ -29,6 +29,13 @@
 
 			<article class="zyb-placement-openings">
 				<header><h4>Current Openings</h4></header>
+				<#if editable == true>
+					<div class="zyb-btn-wrapper">
+						<span class="opening-add pull-right btn btn-primary">Add Openings</span>
+					</div>
+					<div class="add-form-container">
+					</div>
+				</#if>
 				<div class="list-view">
 				    <div class="list-view-content accordion">
 				    </div>
@@ -39,7 +46,95 @@
 		<div class="span3">
 			<@macro.contactsidebar />
 		</div>
-		
+
+		<script type="text/x-jsrenderer" class="hide placement-opening-view-tmpl">
+				<#if editable == true>
+					<i class="icon-remove pull-right zyb-link" style="margin-left: 5px;"></i>
+					<i class="icon-edit pull-right zyb-link"></i>
+                </#if>
+				<div class="row-fluid">
+					<div class="span2">Company2</div>
+					<div class="span4">{{:company}}</div>
+					<div class="span2">Location</div>
+					<div class="<#if editable == true>span3<#else>span4</#if>">{{:location}}</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span2">Position</div>
+					<div class="span4">{{:position}}</div>
+					{{if noOfOpenings > 0 }}
+						<div class="span2">No. of Openings</div>
+						<div class="span4">{{:noOfOpenings}}</div>
+					{{/if}}
+				</div>
+				<div class="row-fluid">
+					<div class="span2">Contact Person</div>
+					<div class="span4">{{:contactPerson}}</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span2">e-mail</div>
+					<div class="span4">{{:contactEmail}}</div>
+					<div class="span2">Contact Number</div>
+					<div class="span4">{{:contactNumber}}</div>
+				</div>
+				<section>
+					<header><h5>Job Description</h5></header>
+					<div>
+						{{:jobDescription}}
+					</div>
+				</section>
+
+				<section>
+					<header><h5>Desired Candidate Profile</h5></header>
+					<div>
+						{{:desiredProfile}}
+					</div>
+				</section>
+		</script>
+
+		<#if editable == true>
+			<script type="text/x-jsrenderer" class="hide placement-opening-edit-tmpl">
+				<form class="form-horizontal" method="POST">
+					<div class="row-fluid">
+						<div class="span6">
+							<@macro.ctrltext name="company" label="Company" class="" size="span12" value="{{:company}}"/>
+						</div>
+						<div class="span6">
+							<@macro.ctrltext name="location" label="Location" class="" size="span12" value="{{:location}}"/>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span6">
+							<@macro.ctrltext name="position" label="Position" class="" size="span12" value="{{:position}}"/>
+						</div>
+						<div class="span6">
+							<@macro.ctrltext name="noOfOpenings" label="No. of Openings" class="" size="span12" value="{{:noOfOpenings}}"/>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span6">
+							<@macro.ctrltext name="contactPerson" label="Contact Person" class="" size="span12" value="{{:contactPerson}}"/>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span6">
+							<@macro.ctrltext name="contactEmail" label="Contact Email" class="" size="span12" value="{{:contactEmail}}"/>
+						</div>
+						<div class="span6">
+							<@macro.ctrltext name="contactNumber" label="Contact Number" class="" size="span12" value="{{:contactNumber}}"/>
+						</div>
+					</div>
+					<@macro.ctrltextarea name="jobDescription" label="Job Description" class="height-medium" size="span12" value="{{:jobDescription}}"/>
+					<@macro.ctrltextarea name="desiredProfile" label="Desired Profile" class="height-medium" size="span12" value="{{:desiredProfile}}"/>
+
+					<div class="form-actions">
+						<input type="submit" class="btn btn-primary save" value="Save"></input>
+						<input type="submit" class="btn cancel" value="Cancel"></input>
+						<input type="hidden" name="id" value="{{:id}}"></input>
+					</div>
+				</form>
+			</script>
+		</#if>
+
 		<script type="text/x-jsrenderer" class="hide placement-opening-tmpl">
 	        <section class="list-view-item accordion-group" data-opening="{{:id}}">
 	            <header>
@@ -56,39 +151,16 @@
 	
 	            <div class="list-view-item-body hide">
                     <div class="list-view-item-content">
-						<div class="row-fluid">
-							<div class="span2">Company</div>
-							<div class="span4">{{:company}}</div>
-							<div class="span2">Position</div>
-							<div class="span4">{{:position}}</div>
+						<div class="placement-opening-view">
+							{{if id > 0 tmpl=~viwPlacementOpening}}
+							{{/if}}
 						</div>
-						<div class="row-fluid">
-							<div class="span2">Location</div>
-							<div class="span4">{{:location}}</div>
-						</div>
-						<div class="row-fluid">
-							<div class="span2">Contact Person</div>
-							<div class="span4">{{:contactPerson}}</div>
-						</div>
-						<div class="row-fluid">
-							<div class="span2">e-mail</div>
-							<div class="span4">{{:contactEmail}}</div>
-							<div class="span2">Contact Number</div>
-							<div class="span4">{{:contactNumber}}</div>
-						</div>
-						<section>
-							<header><h5>Job Description</h5></header>
-							<div>
-								{{:jobDescription}}
+						<#if editable == true>
+							<div class="placement-opening-edit hide">
+								{{if id > 0 tmpl=~edtPlacementOpening}}
+								{{/if}}
 							</div>
-						</section>
-		
-						<section>
-							<header><h5>Desired Candidate Profile</h5></header>
-							<div>
-								{{:desiredProfile}}
-							</div>
-						</section>
+						</#if>
                     </div><!-- list-view-item-content -->
                     <footer class="list-view-item-footer">
                     </footer><!-- list-view-item-footer -->

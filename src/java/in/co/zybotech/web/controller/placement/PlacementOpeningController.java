@@ -76,4 +76,10 @@ public class PlacementOpeningController {
 		return opening;
 	}
 
+	@RequestMapping(value = "/admin/placements/opening/delete/{id}")
+	public @ResponseBody
+	PlacementOpening delete(HttpServletRequest request, @PathVariable int id) {
+		return placementManager.remove(PlacementOpening.class, id);
+	}
+
 }
