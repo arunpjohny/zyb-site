@@ -452,3 +452,9 @@ textarea.height-large {
 .list-view-item .list-view-item-content  > section:last-child {
   padding-bottom: 0;
 }
+.placement-opening-view section {
+  padding-bottom: 5px;
+}
+.placement-opening-view section:last-child {
+  padding-bottom: 0;
+}

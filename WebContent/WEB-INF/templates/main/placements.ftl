@@ -71,8 +71,8 @@
 					<div class="span4">{{:contactPerson}}</div>
 				</div>
 				<div class="row-fluid">
-					<div class="span2">e-mail</div>
-					<div class="span4">{{:contactEmail}}</div>
+					<div class="span2">Contact EMail</div>
+					<div class="span4"><a href="mailto:{{:contactEmail}}?subject=Apply: Company:{{:company}} - Position:{{:position}}">{{:contactEmail}}</a></div>
 					<div class="span2">Contact Number</div>
 					<div class="span4">{{:contactNumber}}</div>
 				</div>
