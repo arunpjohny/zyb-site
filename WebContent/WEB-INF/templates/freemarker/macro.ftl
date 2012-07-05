@@ -1,16 +1,17 @@
-<#macro header>
+<#macro header title="" metadescription="" metakeywords="">
 <#if _isAjaxRequest = false>
 	<html>
 		<head>
 			<meta charset="utf-8">
 		
-			<!-- Use the .htaccess and remove these lines to avoid edge case issues.
-				More info: h5bp.com/b/378 -->
-			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		
-			<title>Zybotech</title>
-			<meta name="description" content="">
-			<meta name="author" content="">
+			<title><#if title?has_content>${title}<#else>Android Developement Cochin</#if></title>
+			<meta name="keywords" content="<#if metakeywords?has_content>${metakeywords}<#else>android development, android development cochin</#if>">
+			<meta name="description" content="<#if metadescription?has_content>${metadescription}<#else></#if>">
+			<meta name="author" content="Arun P Johny">
+			<meta name="copyright" content="July 2012">
+			<meta name="contact" content="info.zybotech@gmail.com">
+
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		
 			<!-- Mobile viewport optimized: j.mp/bplateviewport -->
 			<meta name="viewport" content="width=device-width,initial-scale=1">
