@@ -45,7 +45,7 @@
 						<article class="article" style="height: 153px;">
 							<header>Android Application Development</header>
 							<section>
-								WE deliver end to end Application development solutions in Android OS. Our expertise talent pool works 24*7 on projects. Zybotech has built its value proposition as a client partner rather than a service provider with the ability to provide customized delivery solutions based on the client's requirements and enabling process improvements using industry benchmarks and standard quality processes.
+								We deliver end to end Application development solutions in Android OS. Our expertise talent pool works 24*7 on projects. Zybotech has built its value proposition as a client partner rather than a service provider with the ability to provide customized delivery solutions based on the client's requirements and enabling process improvements using industry benchmarks and standard quality processes.
 								<a class="more" href="#id=/productsandservices&el=.android-app-dev-center">Read More...</a>
 							</section>
 						</article>
