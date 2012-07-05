@@ -47,8 +47,10 @@ public class ContactUsController {
 
 		StringBuffer body = new StringBuffer();
 		body.append("Name: " + StringUtils.trimToEmpty(form.getName()) + "\n");
+		body.append("Email: " + StringUtils.trimToEmpty(form.getFrom()) + "\n");
 		body.append("Mobile: " + StringUtils.trimToEmpty(form.getMobile())
 				+ "\n");
+		body.append("\n");
 		body.append(form.getBody());
 		mailManager.sendMail(form.getFrom(), contactMailTo, form.getSubject(),
 				body.toString());

@@ -21,6 +21,7 @@ public class MailManagerImpl extends BaseManager implements MailManager {
 	public void sendMail(String from, String to, String subject, String body) {
 		SimpleMailMessage simpleMessage = new SimpleMailMessage();
 		simpleMessage.setFrom(from);
+		simpleMessage.setReplyTo(from);
 		simpleMessage.setSubject(subject);
 		simpleMessage.setText(body);
 		simpleMessage.setTo(to);
