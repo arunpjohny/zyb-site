@@ -51,6 +51,36 @@ $(function() {
 					"click", ".cancel", this.proxy("onOpeningAddCancelClick"));
 
 			this.loadOpeningPage(1);
+			
+			this.elApplyModalForm = $(".modal-apply-opening", this.el).modal({
+						show : false
+					});
+			this.elApplyModalForm.validate({
+						rules : {
+							name : {
+								required : true
+							},
+							mobile : {
+								required : true,
+								digits : true,
+								minlength : 10
+							},
+							email : {
+								required : true,
+								email : true
+							},
+							body : {
+								required : true
+							},
+							file : {
+								accept : "doc|docx|pdf|txt"
+							}
+						}
+					});
+			$(".opening-apply", this.elApplyModalForm).on("click",
+					this.proxy("onOpeningApplySubmitClick"));
+			$(".zyb-placement-openings", this.el).on("click", ".opening-apply",
+					this.proxy("onOpeningApplyClick"));
 		},
 
 		onAddClick : function(e) {
@@ -240,7 +270,6 @@ $(function() {
 									required : true
 								},
 								contactEmail : {
-									required : true,
 									email : true
 								},
 								jobDescription : {
@@ -252,6 +281,42 @@ $(function() {
 							}
 						});
 			}
+		},
+
+		onOpeningApplyClick : function(e) {
+			var target = $(e.target);
+			var id = target.closest(".list-view-item").data("opening");
+			if (id) {
+				this.elApplyModalForm.attr(
+						"action",
+						ZtUtils.getContextPath() + "/placements/opening/apply/"
+								+ id).clearForm().modal('show');
+			}
+		},
+
+		onOpeningApplySubmitClick : function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			if (this.elApplyModalForm.valid()) {
+				this.elApplyModalForm.ajaxSubmit({
+							success : this.proxy("openingApplySubmitSuccess"),
+							error : this.proxy("openingApplySubmitError")
+						});
+			}
+		},
+
+		openingApplySubmitSuccess : function(result) {
+			this.elApplyModalForm.modal('hide');
+			if (result.opening) {
+				$(
+						".zyb-placement-openings .list-view-item[data-opening='"
+								+ result.opening.id + "'] .opening-apply",
+						this.el).attr("disabled", "disabled");
+			}
+		},
+		
+		openingApplySubmitError: function(result) {
+			this.elApplyModalForm.modal('hide');
 		}
 	});
 });

@@ -95,6 +95,9 @@
 						{{:desiredProfile}}
 					</div>
 				</section>
+				<div class="text-center">
+					<div class="btn btn-primary opening-apply">Apply</div>
+				</div>
 		</script>
 
 		<#if editable == true>
@@ -173,6 +176,24 @@
 	            </div><!-- list-view-item-body -->
 	        </section>
 		</script>
+
+		<form class="modal hide modal-apply-opening form-horizontal" method="POST">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+				<h3>Apply</h3>
+			</div>
+			<fieldset class="modal-body">
+				<@macro.ctrltext name="name" label="Name" class="" size="span12"/>
+				<@macro.ctrltext name="mobile" label="Mobile" class="" size="span12"/>
+				<@macro.ctrltext name="email" label="Email" class="" size="span12"/>
+				<@macro.ctrltextarea name="body" label="Body" class="height-medium" size="span12"/>
+				<@macro.ctrlfile name="file" label="Resume" class="" size="span12"/>
+			</fieldset>
+			<div class="modal-footer">
+				<span class="btn" data-dismiss="modal">Close</span>
+				<span class="btn btn-primary opening-apply">Apply</span>
+			</div>
+		</form>
 	</div><!-- row -->
 <@macro.footer>
 	<script language="javascript" src="${rc.getContextPath()}/resources/js/main/placements.js"></script>
