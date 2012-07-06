@@ -61,6 +61,7 @@ create table placement_openings(
     contactnumber VARCHAR(200),
     jobdescription text,
     desiredprofile text,
+    hidden boolean default false not null,
     constraint pk_placement_openings primary key (cid)
 );
 

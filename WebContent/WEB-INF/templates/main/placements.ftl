@@ -105,6 +105,15 @@
 				<form class="form-horizontal" method="POST">
 					<div class="row-fluid">
 						<div class="span6">
+							{{if hidden == true}}
+								<@macro.ctrlcheckbox name="hidden" label="Hidden" class="" value=true/>
+							{{else}}
+								<@macro.ctrlcheckbox name="hidden" label="Hidden" class="" value=false/>
+							{{/if}}
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span6">
 							<@macro.ctrltext name="company" label="Company" class="" size="span12" value="{{:company}}"/>
 						</div>
 						<div class="span6">

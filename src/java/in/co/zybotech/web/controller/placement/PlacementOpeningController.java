@@ -51,17 +51,21 @@ public class PlacementOpeningController {
 	public ModelAndView placements(
 			SecurityContextHolderAwareRequestWrapper request) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("editable",
-				requestUtils.isEditable(request, "placement_admin"));
+		model.put("editable", isEditable(request));
 		return requestUtils.getModelAndView(request, model,
 				"WEB-INF/templates/main/placements");
 	}
 
+	private boolean isEditable(SecurityContextHolderAwareRequestWrapper request) {
+		return requestUtils.isEditable(request, "placement_admin");
+	}
+
 	@RequestMapping(value = "/placements/opening/page/{page}")
 	public @ResponseBody
-	SearchCriteriaResult<PlacementOpening> page(HttpServletRequest request,
+	SearchCriteriaResult<PlacementOpening> page(SecurityContextHolderAwareRequestWrapper request,
 			@PathVariable int page) {
 		OpeningListCriteria criteria = new OpeningListCriteria();
+		criteria.setShowHidden(isEditable(request));
 		return getPagerResult(request, page, criteria, PlacementOpening.class,
 				placementManager);
 	}
@@ -119,12 +123,17 @@ public class PlacementOpeningController {
 			attachments.put(form.getFile().getOriginalFilename(), form
 					.getFile().getBytes());
 		}
-		mailManager.sendMail(form.getEmail(), applyTo,
-				WordUtils.capitalize(form.getName()) + " applied for position "
-						+ opening.getPosition() + " in " + opening.getCompany(),
-				body.toString(), attachments);
+		mailManager
+				.sendMail(
+						form.getEmail(),
+						applyTo,
+						WordUtils.capitalize(form.getName())
+								+ " applied for position "
+								+ opening.getPosition() + " in "
+								+ opening.getCompany(), body.toString(),
+						attachments);
 
-		Map<String, Object> model=new HashMap<String, Object>();
+		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("opening", opening);
 		RequestUtils.addAjaxMessage(model, MessageType.SUCCESS,
 				"Your application submitted successfully.");

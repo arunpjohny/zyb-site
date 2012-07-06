@@ -6,9 +6,15 @@ import in.co.zybotech.core.dao.criteria.impl.BaseSearchCriteria;
 
 public class OpeningListCriteria extends BaseSearchCriteria {
 
+	private boolean showHidden;
+
 	public OpeningListCriteria() {
 		setDefaultSort("createdDate");
 		setDir("desc");
+	}
+
+	public void setShowHidden(boolean showHidden) {
+		this.showHidden = showHidden;
 	}
 
 	@Override
@@ -18,7 +24,8 @@ public class OpeningListCriteria extends BaseSearchCriteria {
 
 	@Override
 	protected String getBaseSql() {
-		return "from PlacementOpening po";
+		return "from PlacementOpening po"
+				+ (showHidden ? "" : " where po.hidden = :hidden");
 	}
 
 	@Override
@@ -27,8 +34,9 @@ public class OpeningListCriteria extends BaseSearchCriteria {
 	}
 
 	@Override
-	protected void addParameters(Map<String, Object> parameters) {
-
+	public void addParameters(Map<String, Object> parameters) {
+		if (!showHidden) {
+			parameters.put("hidden", false);
+		}
 	}
-
 }

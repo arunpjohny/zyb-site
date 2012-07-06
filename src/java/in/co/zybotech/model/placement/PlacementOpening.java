@@ -50,6 +50,8 @@ public class PlacementOpening {
 	@NotBlank
 	private String desiredProfile;
 
+	private boolean hidden;
+
 	public int getId() {
 		return id;
 	}
@@ -138,4 +140,11 @@ public class PlacementOpening {
 		this.desiredProfile = desiredProfile;
 	}
 
+	public boolean isHidden() {
+		return hidden;
+	}
+
+	public void setHidden(boolean hidden) {
+		this.hidden = hidden;
+	}
 }
