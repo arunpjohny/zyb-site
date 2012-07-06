@@ -24,9 +24,10 @@ public abstract class BaseSearchCriteria implements SearchCriteria {
 
 	protected String defaultSort;
 
+	private boolean parameInitialized;
+
 	public BaseSearchCriteria() {
 		addColumns(columnMap);
-		addParameters(parameters);
 	}
 
 	public BaseSearchCriteria(String[] fields) {
@@ -83,6 +84,10 @@ public abstract class BaseSearchCriteria implements SearchCriteria {
 	}
 
 	public Map<String, Object> getParameters() {
+		if (!parameInitialized) {
+			parameInitialized = true;
+			addParameters(parameters);
+		}
 		return parameters;
 	}
 
@@ -109,5 +114,4 @@ public abstract class BaseSearchCriteria implements SearchCriteria {
 	protected abstract void addColumns(Map<String, String> columnMap);
 
 	protected abstract void addParameters(Map<String, Object> parameters);
-
 }
