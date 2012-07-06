@@ -105,6 +105,16 @@
 		</div>
 	</div>
 </#macro>
+<#macro ctrlcheckbox name label value=false class="" errorplacement="inline">
+	<div class="control-group zyb-ctrl-chkbx">
+		<div class="controls">
+			<input type="checkbox" name="${name}" class="pull-left ${class}" error-placement="${errorplacement}" <#if value == true>checked="checked"</#if>/>
+			<label class="pull-left">
+				${messageResolver.getMessage( label )}
+			</label>
+		</div>
+	</div>
+</#macro>
 
 
 <#macro navigation ulclass="">

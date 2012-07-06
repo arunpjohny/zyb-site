@@ -453,8 +453,11 @@ textarea.height-large {
   padding-bottom: 0;
 }
 .placement-opening-view section {
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 }
 .placement-opening-view section:last-child {
   padding-bottom: 0;
+}
+.zyb-ctrl-chkbx .controls label {
+  margin-left: 5px;
 }
