@@ -98,7 +98,21 @@ create table pas_application(
     constraint pk_ebrouchers primary key (cid)
 );
 
-
+-- drop table pas_testimonial
+create table pas_testimonial(
+    cid int NOT NULL AUTO_INCREMENT,
+    createddate timestamp not null, 
+    modifiedDate timestamp,
+    item_order int not null,
+    name VARCHAR(200) not null,
+    company VARCHAR(200) not null,
+    designation VARCHAR(200) not null,
+    image longblob not null,
+    imagename VARCHAR(200) not null,
+    testimonial text not null,
+    hidden boolean default false not null,
+    constraint pk_ebrouchers primary key (cid)
+);
 
 -- -------------------------------------------------------------------------------
 insert into zyb_personnel (p_type, name, designation, company, image, item_order, summary)
