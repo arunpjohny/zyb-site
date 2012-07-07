@@ -77,6 +77,27 @@ create table ebrouchers(
     constraint pk_ebrouchers primary key (cid)
 );
 
+-- drop table pas_application
+create table pas_application(
+    cid int NOT NULL AUTO_INCREMENT,
+    createddate timestamp not null, 
+    modifiedDate timestamp,
+    item_order int not null,
+    caption VARCHAR(200) not null,
+    application longblob,
+    fileName VARCHAR(200),
+    image longblob,
+    imagename VARCHAR(200),
+    breif text,
+    description text not null,
+    author VARCHAR(200),
+    downloads int default 0 not null,
+    hidden boolean default false not null,
+    constraint pk_ebrouchers primary key (cid)
+);
+
+
+
 -- -------------------------------------------------------------------------------
 insert into zyb_personnel (p_type, name, designation, company, image, item_order, summary)
 values ('managementteam', 'Sunil P Johny', 'Managing Partner', 'Zybotech Solutions',
