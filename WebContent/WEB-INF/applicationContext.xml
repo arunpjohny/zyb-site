@@ -107,4 +107,9 @@
 			</map>
 		</property>
 	</bean>
+
+	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"></bean>
+	<bean id="jacksonUtils" class="in.co.zybotech.core.jackson.JacksonUtils">
+		<constructor-arg ref="objectMapper"/>
+	</bean>
 </beans>
