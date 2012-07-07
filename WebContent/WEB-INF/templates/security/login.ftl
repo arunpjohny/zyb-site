@@ -3,10 +3,12 @@
 <@macro.header />
 	<div id="zyb-login" class="row-fluid">
 		<div class="span12">
-			<form action="${rc.getContextPath()}/j_spring_security_check" method="POST">
-				<input name="j_username" placeholder="User Name"/>
-				<input name="j_password" placeholder="Password"/>
-				<input type="submit" value="Login" class="btn btn-primary"/>
+			<form action="${rc.getContextPath()}/j_spring_security_check" method="POST" class="form-horizobtal well">
+				<@macro.ctrltext name="j_username" label="User Name" class="" size="span3" value=(application.caption)!"" placeholder="User Name"/>
+				<@macro.ctrlpassword name="j_password" label="Password" class="" size="span3" value=(application.caption)!"" placeholder="Password"/>
+				<div class="form-actions">
+					<input type="submit" value="Login" class="btn btn-primary login"/>
+				</div>
 			</form>
 		</div>
 	</div> <!-- zyb-home -->

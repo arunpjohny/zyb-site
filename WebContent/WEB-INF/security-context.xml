@@ -16,7 +16,8 @@
 		<intercept-url pattern="/**" access="permitAll" />
 
 		<form-login login-page="/login" default-target-url="/"
-			always-use-default-target="true" authentication-failure-url="/login?status=error" />
+			always-use-default-target="true" authentication-success-handler-ref="authenticationSuccessHandler"
+			authentication-failure-handler-ref="authenticationFailureHandler" />
 	</http>
 
 	<authentication-manager>
@@ -28,4 +29,15 @@
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean id="authenticationSuccessHandler"
+		class="in.co.zybotech.core.spring.security.web.authentication.AuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl" value="/" />
+		<beans:property name="jacksonUtils" ref="jacksonUtils" />
+	</beans:bean>
+	<beans:bean id="authenticationFailureHandler"
+		class="in.co.zybotech.core.spring.security.web.authentication.AuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl" value="/login?status=error" />
+		<beans:property name="jacksonUtils" ref="jacksonUtils" />
+	</beans:bean>
 </beans:beans>

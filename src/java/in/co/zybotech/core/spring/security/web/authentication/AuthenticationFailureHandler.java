@@ -2,6 +2,7 @@ package in.co.zybotech.core.spring.security.web.authentication;
 
 import in.co.zybotech.core.jackson.JacksonUtils;
 import in.co.zybotech.web.utils.RequestUtils;
+import in.co.zybotech.web.utils.RequestUtils.MessageType;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -34,10 +35,10 @@ public class AuthenticationFailureHandler
 			throws IOException, ServletException {
 		if (RequestUtils.isAjaxRequest(request)) {
 			String reason = getReason(exception);
-			response.setStatus(HttpStatus.FORBIDDEN.value());
+			response.setStatus(HttpStatus.BAD_REQUEST.value());
 
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("reason", reason);
+			RequestUtils.addAjaxMessage(model, MessageType.ERROR, reason);
 
 			jacksonUtils.writeValue(model, response.getWriter());
 			return;
