@@ -89,11 +89,11 @@
 		</div>
 	</div>
 </#macro>
-<#macro ctrltext name label class="" size="" errorplacement="inline" value="">
+<#macro ctrltext name label class="" size="" errorplacement="inline" value="" placeholder="">
 	<div class="control-group">
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
-			<input type="text" name="${name}" class="${class} ${size}" error-placement="${errorplacement}" value="${value!""}"/>
+			<input type="text" name="${name}" class="${class} ${size}" error-placement="${errorplacement}" value="${value!""}" placeholder="${placeholder}"/>
 		</div>
 	</div>
 </#macro>
@@ -112,6 +112,14 @@
 			<label class="pull-left">
 				${messageResolver.getMessage( label )}
 			</label>
+		</div>
+	</div>
+</#macro>
+<#macro ctrlpassword name label class="" size="" errorplacement="inline" value="" placeholder="">
+	<div class="control-group">
+		<label class="control-label">${messageResolver.getMessage( label )}</label>
+		<div class="controls">
+			<input type="password" name="${name}" class="${class} ${size}" error-placement="${errorplacement}" value="${value!""}" placeholder="${placeholder}"/>
 		</div>
 	</div>
 </#macro>
