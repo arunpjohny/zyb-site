@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class SecurityController {
@@ -42,4 +43,9 @@ public class SecurityController {
 				"WEB-INF/templates/security/login");
 	}
 
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request) {
+		return new ModelAndView(new RedirectView("/j_spring_security_logout",
+				true));
+	}
 }
