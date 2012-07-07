@@ -428,7 +428,21 @@ $(function() {
 		return "<ul class='unstyled' style='margin-bottom: 0'>" + message
 				+ "</ul>";
 	};
-	var fnShowMessage = function(message, type) {
+	var fnShowMessageEl = function(message, type, el) {
+		$(".message-content", el).html(fnWrapMessageElements(message));
+		$.each(alertClass, function(i, v) {
+					el.removeClass(v);
+				});
+		el.addClass(alertClass[type]);
+		el.show();
+		el.effect("highlight", {}, 3000);
+	};
+	var fnShowMessage = function(message, type, el) {
+		if(el){
+			fnShowMessageEl(message, type, el);
+			return;
+		}
+
 		if (hideCallId) {
 			fnClearHide(hideCallId);
 		}
@@ -503,8 +517,9 @@ $(function() {
 			if ($.isArray(messages) && messages.length > 0) {
 				var msgtype = resp["_page-message-type"] || opts.type
 						|| "success";
-				fnShowMessage(messages, msgtype);
-				if (msgtype == "success") {
+				var msgel = opts.el;
+				fnShowMessage(messages, msgtype, msgel);
+				if (msgtype == "success" && !msgtype && !msgel) {
 					fnSetHide(5000);
 				}
 			} else if (opts.hideMessage) {
