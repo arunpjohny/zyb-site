@@ -68,11 +68,12 @@ public abstract class BaseSearchCriteria implements SearchCriteria {
 	}
 
 	protected String getSql() {
-		return getSelectSql()
-				+ " "
-				+ getBaseSql()
-				+ (StringUtils.isBlank(getSort()) ? "" : " order by "
-						+ getSort() + " " + getDir());
+		return getSelectSql() + " " + getBaseSql() + " " + getSorting();
+	}
+
+	protected String getSorting() {
+		return StringUtils.isBlank(getSort()) ? "" : " order by " + getSort()
+				+ " " + getDir();
 	}
 
 	public String getCountQuery() {
