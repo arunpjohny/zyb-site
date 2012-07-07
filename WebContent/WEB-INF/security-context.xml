@@ -22,10 +22,10 @@
 
 	<authentication-manager>
 		<authentication-provider>
+			<password-encoder ref="authenticationPasswordEncoder"/>
 			<user-service>
-				<user name="arun" password="arun"
+				<user name="zybotech" password="cfe4b026ed52d61b1256c92ad13b73e2730131b6c4a918e1b6a5a30bdef7a10d"
 					authorities="ROLE_USER, ROLE_ADMIN, ROLE_STUDENT_ADMIN, ROLE_ABOUTUS_ADMIN, ROLE_BROUCHER_ADMIN, ROLE_PLACEMENT_ADMIN, ROLE_APPLICATION_GALLERY_ADMIN" />
-				<user name="sunil" password="sunil" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
@@ -40,4 +40,7 @@
 		<beans:property name="defaultFailureUrl" value="/login?status=error" />
 		<beans:property name="jacksonUtils" ref="jacksonUtils" />
 	</beans:bean>
+
+	<beans:bean id="authenticationPasswordEncoder"
+		class="in.co.zybotech.core.spring.security.authentication.encoding.PasswordEncoderImpl"></beans:bean>
 </beans:beans>
