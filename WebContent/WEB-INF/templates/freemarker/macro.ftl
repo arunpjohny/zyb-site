@@ -4,12 +4,17 @@
 		<head>
 			<meta charset="utf-8">
 		
-			<title><#if title?has_content>${title}<#else>Android Developement Cochin</#if></title>
-			<meta name="keywords" content="<#if metakeywords?has_content>${metakeywords}<#else>android development, android development cochin</#if>">
-			<meta name="description" content="<#if metadescription?has_content>${metadescription}<#else></#if>">
+			<title><#if title?has_content>${title}<#else>Android training in cochin, android training in Kerala, best android training in Kochi, certified android training courses in Cochin</#if></title>
+
+			<meta name="domain" content="www.zybotech.in">
 			<meta name="author" content="Arun P Johny">
 			<meta name="copyright" content="July 2012">
 			<meta name="contact" content="info.zybotech@gmail.com">
+
+			<meta name="keywords" content="<#if metakeywords?has_content>${metakeywords}<#else>Android training in cochin, android training in Kerala, best android training in kochi, certified android training courses in Cochin , Android application development training in cochin, kochi, Ernakulum,  Kerala, mobile application jobs, mobile application development training,  android jobs in cochin, college projects in android, mobile application programmer, android development training, certified courses on mobile application,  android application development, corporate job oriented android training, placement oriented android training, zybotech android training courses, job oriented android training program</#if>">
+			<meta name="tags" content="<#if metakeywords?has_content>${metakeywords}<#else>Android training in cochin, android training in Kerala, best android training in kochi, certified android training courses in Cochin , Android application development training in cochin, kochi, Ernakulum,  Kerala, mobile application jobs, mobile application development training,  android jobs in cochin, college projects in android, mobile application programmer, android development training, certified courses on mobile application,  android application development, corporate job oriented android training, placement oriented android training, zybotech android training courses, job oriented android training program</#if>">
+			<meta name="description" content="<#if metadescription?has_content>${metadescription}<#else>Zybotech solutions offers 100% job oriented courses on mobile application development for freshers and professionals with advanced curriculam, interactive training sessions, live projects and placement assistance. Zybotech solutions one of the leading mobile application development and training company in Cochin offers Btech/BCA/MCA/BSc/Msc students 100% job assured mobile application development course</#if>">
+			<meta name="header" content="Android training in cochin, android training in Kerala, best android training in kochi, certified android training courses in Cochin">
 
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		
