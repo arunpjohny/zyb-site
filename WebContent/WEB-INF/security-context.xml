@@ -24,7 +24,7 @@
 		<authentication-provider>
 			<password-encoder ref="authenticationPasswordEncoder"/>
 			<user-service>
-				<user name="zybotech" password="cfe4b026ed52d61b1256c92ad13b73e2730131b6c4a918e1b6a5a30bdef7a10d"
+				<user name="zybotech" password="98f37a485a6c61bf0eefbd83930cc0382743e62e266b907964007b43b5d7c0d2"
 					authorities="ROLE_USER, ROLE_ADMIN, ROLE_STUDENT_ADMIN, ROLE_ABOUTUS_ADMIN, ROLE_BROUCHER_ADMIN, ROLE_PLACEMENT_ADMIN, ROLE_APPLICATION_GALLERY_ADMIN, ROLE_TESTIMONIAL_ADMIN" />
 			</user-service>
 		</authentication-provider>
