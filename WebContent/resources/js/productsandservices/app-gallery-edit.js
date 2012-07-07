@@ -21,10 +21,6 @@ $(function() {
 									application : {
 										required : this.options.application == 0
 									},
-									image : {
-										required : this.options.application == 0,
-										accept : "jpeg|jpg|gif|png"
-									},
 									description : {
 										required : true,
 										minlength : 50
@@ -34,9 +30,11 @@ $(function() {
 										maxlength : 200
 									},
 									image1 : {
+										required : this.options.application == 0,
 										accept : "jpeg|jpg|png"
 									},
 									image2 : {
+										required : this.options.application == 0,
 										accept : "jpeg|jpg|png"
 									}
 								}

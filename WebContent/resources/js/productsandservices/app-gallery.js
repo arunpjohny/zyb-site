@@ -78,7 +78,7 @@ $(function() {
 				url : ZtUtils.getContextPath()
 						+ "/productsandservices/app-gallery/page/" + page,
 				data : {
-					rows : 4
+					rows : 20
 				}
 			}).success(this.proxy("onPageSuccess")).always(this
 					.proxy("onPageComplete"));
