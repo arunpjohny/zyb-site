@@ -28,16 +28,32 @@ public class ApplicationFormValidator implements Validator {
 		}
 
 		if (form.getId() == 0
-				&& (form.getImage() == null || form.getImage().isEmpty())) {
+				&& (form.getImage1() == null || form.getImage1().isEmpty())) {
 			errors.rejectValue("image",
 					"productsandservices.gallery.image.empty",
 					"Image cannot be empty");
 		}
 
-		if (form.getImage() != null
-				&& !form.getImage().isEmpty()
+		if (form.getImage1() != null
+				&& !form.getImage1().isEmpty()
 				&& !StringUtils.endsWithAny(StringUtils.lowerCase(form
-						.getImage().getOriginalFilename()), "jpeg", "jpg",
+						.getImage1().getOriginalFilename()), "jpeg", "jpg",
+						"png", "gif")) {
+			errors.rejectValue("image", "student.image.filetype.invalid",
+					"Allowed image types are jpeg, jpg, png and gif");
+		}
+
+		if (form.getId() == 0
+				&& (form.getImage2() == null || form.getImage2().isEmpty())) {
+			errors.rejectValue("image",
+					"productsandservices.gallery.image.empty",
+					"Image cannot be empty");
+		}
+
+		if (form.getImage2() != null
+				&& !form.getImage2().isEmpty()
+				&& !StringUtils.endsWithAny(StringUtils.lowerCase(form
+						.getImage2().getOriginalFilename()), "jpeg", "jpg",
 						"png", "gif")) {
 			errors.rejectValue("image", "student.image.filetype.invalid",
 					"Allowed image types are jpeg, jpg, png and gif");

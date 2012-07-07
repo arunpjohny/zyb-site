@@ -4,8 +4,7 @@ import static in.co.zybotech.web.utils.RequestUtils.getPagerResult;
 import in.co.zybotech.core.dao.criteria.SearchCriteriaResult;
 import in.co.zybotech.core.exception.client.ResourceNotFoundException;
 import in.co.zybotech.core.web.model.ajax.Redirect;
-import in.co.zybotech.dao.criteria.placement.OpeningListCriteria;
-import in.co.zybotech.model.career.Student;
+import in.co.zybotech.dao.criteria.productsandservices.ApplicationGalleryCriteria;
 import in.co.zybotech.model.productsandservices.Application;
 import in.co.zybotech.service.ProductAndServicesManager;
 import in.co.zybotech.web.controller.productsandservices.form.ApplicationForm;
@@ -45,12 +44,23 @@ public class AppsGalleryController {
 	private ProductAndServicesManager manager;
 
 	@RequestMapping("/productsandservices/app-gallery")
-	public ModelAndView students(
-			SecurityContextHolderAwareRequestWrapper request) {
+	public ModelAndView gallery(SecurityContextHolderAwareRequestWrapper request) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("editable", isEditable(request));
 		return requestUtils.getModelAndView(request, model,
 				"WEB-INF/templates/productsandservices/app-gallery");
+	}
+
+	@RequestMapping("/productsandservices/app-gallery/{id}")
+	public @ResponseBody
+	Application students(SecurityContextHolderAwareRequestWrapper request,
+			@PathVariable int id) {
+		Application application = manager.getObject(Application.class, id);
+		if (application == null) {
+			throw new ResourceNotFoundException(
+					"Unable to find the selected student.");
+		}
+		return application;
 	}
 
 	private boolean isEditable(SecurityContextHolderAwareRequestWrapper request) {
@@ -62,14 +72,14 @@ public class AppsGalleryController {
 	SearchCriteriaResult<Application> page(
 			SecurityContextHolderAwareRequestWrapper request,
 			@PathVariable int page) {
-		OpeningListCriteria criteria = new OpeningListCriteria();
+		ApplicationGalleryCriteria criteria = new ApplicationGalleryCriteria();
 		criteria.setShowHidden(isEditable(request));
 		return getPagerResult(request, page, criteria, Application.class,
 				manager);
 	}
 
-	@RequestMapping(value = "/productsandservices/app-gallery/image/{id}", method = RequestMethod.GET)
-	public void image(SecurityContextHolderAwareRequestWrapper request,
+	@RequestMapping(value = "/productsandservices/app-gallery/image1/{id}", method = RequestMethod.GET)
+	public void image1(SecurityContextHolderAwareRequestWrapper request,
 			HttpServletResponse response, @PathVariable int id)
 			throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException, IOException {
@@ -79,12 +89,29 @@ public class AppsGalleryController {
 					"Unable to find the selected student.");
 		}
 
-		byte[] bytes = manager.getBytes(Student.class, id, "image");
+		byte[] bytes = manager.getBytes(Application.class, id, "image1");
 		if (bytes != null) {
-			RequestUtils.sendStream(response, application.getImageName(),
+			RequestUtils.sendStream(response, application.getImage1Name(),
 					new ByteArrayInputStream(bytes), bytes.length);
 		}
+	}
 
+	@RequestMapping(value = "/productsandservices/app-gallery/image2/{id}", method = RequestMethod.GET)
+	public void image2(SecurityContextHolderAwareRequestWrapper request,
+			HttpServletResponse response, @PathVariable int id)
+			throws SecurityException, IllegalArgumentException,
+			NoSuchFieldException, IllegalAccessException, IOException {
+		Application application = manager.getObject(Application.class, id);
+		if (application == null) {
+			throw new ResourceNotFoundException(
+					"Unable to find the selected student.");
+		}
+
+		byte[] bytes = manager.getBytes(Application.class, id, "image2");
+		if (bytes != null) {
+			RequestUtils.sendStream(response, application.getImage2Name(),
+					new ByteArrayInputStream(bytes), bytes.length);
+		}
 	}
 
 	@RequestMapping(value = "/productsandservices/app-gallery/application/{id}", method = RequestMethod.GET)
@@ -98,12 +125,13 @@ public class AppsGalleryController {
 					"Unable to find the selected student.");
 		}
 
-		byte[] bytes = manager.getBytes(Application.class, id, "image");
+		byte[] bytes = manager.getBytes(Application.class, id, "application");
 		if (bytes != null) {
-			RequestUtils.sendStream(response, application.getImageName(),
+			RequestUtils.sendStream(response, application.getFileName(),
 					new ByteArrayInputStream(bytes), bytes.length);
 		}
-
+		application.setDownloads(application.getDownloads() + 1);
+		manager.saveObject(application, Application.class);
 	}
 
 	@RequestMapping(value = "/admin/productsandservices/app-gallery/edit/{id}", method = RequestMethod.GET)
@@ -137,9 +165,9 @@ public class AppsGalleryController {
 	@RequestMapping(value = "/admin/productsandservices/app-gallery/delete/{id}", method = RequestMethod.GET)
 	@Secured("ROLE_APPLICATION_GALLERY_ADMIN")
 	public @ResponseBody
-	Student delete(SecurityContextHolderAwareRequestWrapper request,
+	Application delete(SecurityContextHolderAwareRequestWrapper request,
 			@PathVariable int id) {
-		Student student = manager.remove(Student.class, id);
+		Application student = manager.remove(Application.class, id);
 		return student;
 	}
 

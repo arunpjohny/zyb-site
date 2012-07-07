@@ -18,7 +18,9 @@ public class ApplicationForm {
 
 	private MultipartFile application;
 
-	private MultipartFile image;
+	private MultipartFile image1;
+
+	private MultipartFile image2;
 
 	@NotBlank
 	private String breif;
@@ -62,12 +64,20 @@ public class ApplicationForm {
 		this.application = application;
 	}
 
-	public MultipartFile getImage() {
-		return image;
+	public MultipartFile getImage1() {
+		return image1;
 	}
 
-	public void setImage(MultipartFile image) {
-		this.image = image;
+	public void setImage1(MultipartFile image1) {
+		this.image1 = image1;
+	}
+
+	public MultipartFile getImage2() {
+		return image2;
+	}
+
+	public void setImage2(MultipartFile image2) {
+		this.image2 = image2;
 	}
 
 	public String getBreif() {
@@ -111,9 +121,13 @@ public class ApplicationForm {
 		item.setBreif(breif);
 		item.setDescription(description);
 		item.setHidden(hideApplication);
-		if (image != null && !image.isEmpty()) {
-			item.setImage(image.getBytes());
-			item.setImageName(image.getOriginalFilename());
+		if (image1 != null && !image1.isEmpty()) {
+			item.setImage1(image1.getBytes());
+			item.setImage1Name(image1.getOriginalFilename());
+		}
+		if (image2 != null && !image2.isEmpty()) {
+			item.setImage2(image2.getBytes());
+			item.setImage2Name(image2.getOriginalFilename());
 		}
 		item.setCaption(caption);
 		item.setOrder(order);

@@ -33,7 +33,10 @@ $(function() {
 										required : true,
 										maxlength : 200
 									},
-									image : {
+									image1 : {
+										accept : "jpeg|jpg|png"
+									},
+									image2 : {
 										accept : "jpeg|jpg|png"
 									}
 								}
@@ -60,7 +63,7 @@ $(function() {
 					}
 				},
 
-				onCancelClick : function() {
+				onCancelClick : function(e) {
 					$(e.target).trigger("zyb-page-load",
 							"/productsandservices/app-gallery");
 				}

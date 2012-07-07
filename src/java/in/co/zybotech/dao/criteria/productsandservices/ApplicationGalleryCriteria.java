@@ -7,11 +7,6 @@ import in.co.zybotech.core.dao.criteria.impl.BaseSearchCriteria;
 public class ApplicationGalleryCriteria extends BaseSearchCriteria {
 	private boolean showHidden;
 
-	public ApplicationGalleryCriteria() {
-		setDefaultSort("order");
-		setDir("desc");
-	}
-
 	public void setShowHidden(boolean showHidden) {
 		this.showHidden = showHidden;
 	}
@@ -37,5 +32,10 @@ public class ApplicationGalleryCriteria extends BaseSearchCriteria {
 		if (!showHidden) {
 			parameters.put("hidden", false);
 		}
+	}
+
+	@Override
+	protected String getSorting() {
+		return "order by order asc, downloads desc";
 	}
 }

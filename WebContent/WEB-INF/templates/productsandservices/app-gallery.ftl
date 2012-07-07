@@ -10,67 +10,50 @@
 				</div>
 			</#if>
 
-
-			<#if editable == true>
-				<script type="text/x-jsrenderer" class="hide application-edit-tmpl">
-					<div class="row-fluid">
-						<div class="span6">
-							{{if hidden == true}}
-								<@macro.ctrlcheckbox name="hideApplication" label="Hidden" class="" value=true/>
-							{{else}}
-								<@macro.ctrlcheckbox name="hideApplication" label="Hidden" class="" value=false/>
-							{{/if}}
-						</div>
-					</div>
-					<div class="row-fluid">
-						<div class="span12">
-							<@macro.ctrltext name="caption" label="Caption" class="" size="span12" value="{{:caption}}"/>
-						</div>
-					</div>
-					<div class="row-fluid">
-						<div class="span12">
-							<@macro.ctrltext name="order" label="Order" class="" size="span12" value="{{:order}}"/>
-						</div>
-					</div>
-					<div class="row-fluid">
-						<div class="span12">
-							<@macro.ctrltext name="author" label="Author" class="" size="span12" value="{{:author}}"/>
-						</div>
-					</div>
-					<div class="row-fluid">
-						<div class="span6">
-							<@macro.ctrlfile name="application" label="Application" class="" size="span12"/>
-						</div>
-					</div>
-					<div class="row-fluid">
-						<div class="span6">
-							<@macro.ctrlfile name="image" label="Image" class="" size="span12"/>
-						</div>
-					</div>
-					<@macro.ctrltextarea name="breif" label="Brief" class="height-small" size="span12" value="{{:breif}}"/>
-					<@macro.ctrltextarea name="description" label="Description" class="height-small" size="span12" value="{{:description}}"/>
-
-					<input type="hidden" name="id" value="{{:id}}"></input>
-				</script>
-
-				<form class="modal hide modal-application-edit form-horizontal" method="POST">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
-						<h3>Application</h3>
-					</div>
-					<div class="hide ajax-message alert">
-						<div class="message-content"></div>
-					</div>
-					<fieldset class="modal-body">
-					</fieldset>
-					<div class="modal-footer">
-						<span class="btn" data-dismiss="modal">Close</span>
-						<span class="btn btn-primary save">Save</span>
-					</div>
-				</form>
-			</#if>
-
+			<div class="gallery-view">
+			    <div class="gallery-content">
+			    </div>
+			    <div class="gallery-footer"></div>
+			</div>
 		</div> <!-- span9 -->
+
+		<script type="text/x-jsrenderer" class="hide list-tmpl">
+			<div class="span6">
+				<article class="article application-view" style="height: 155px;" data-application="{{:id}}">
+					<#if editable == true>
+						<i class="icon-remove pull-right zyb-link" style="margin-left: 5px;"></i>
+						<i class="icon-edit pull-right zyb-link"></i>
+		            </#if>
+					<header class="type2"><h4>{{:caption}}</h4></header>
+					<section class="row-fluid">
+						<img src="${rc.getContextPath()}/productsandservices/app-gallery/image1/{{:id}}" class="pull-left" style="width: 126px; height: 126px;"></img>
+						<div class="zyb-btn-wrapper text-center" style="margin-top: 50px;">
+							<span class="btn btn-primary download">Download</span>
+						</div>
+					</section>
+				</article>
+			</div>
+		</script>
+		<script type="text/x-jsrenderer" class="hide view-tmpl">
+			<div class="modal hide modal-application-view" data-application="{{:id}}">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+					<h3>{{:caption}}</h3>
+				</div>
+				<div class="modal-body">
+					<div style="height: 255px; padding: 5px;">
+						<img style="width: 250px; height: 250px;" class="pull-left" src="${rc.getContextPath()}/productsandservices/app-gallery/image2/{{:id}}">
+						<div style="margin-top: 105px;" class="zyb-btn-wrapper text-center">
+							<span class="btn btn-primary download">Download</span>
+						</div>
+					</div>
+					<article class="article">
+						{{:description}}
+					</article>
+				</div>
+			</div>
+		</script>
+
 		<div class="span3">
 			<@macro.productsandservicessidebar />
 		</div>

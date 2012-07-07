@@ -48,10 +48,17 @@ public class Application {
 
 	@JsonIgnore
 	@NotNull
-	private byte[] image;
+	private byte[] image1;
 
 	@NotBlank
-	private String imageName;
+	private String image1Name;
+
+	@JsonIgnore
+	@NotNull
+	private byte[] image2;
+
+	@NotBlank
+	private String image2Name;
 
 	@NotBlank
 	private String breif;
@@ -121,20 +128,36 @@ public class Application {
 		this.fileName = fileName;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public byte[] getImage1() {
+		return image1;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImage1(byte[] image1) {
+		this.image1 = image1;
 	}
 
-	public String getImageName() {
-		return imageName;
+	public String getImage1Name() {
+		return image1Name;
 	}
 
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
+	public void setImage1Name(String image1Name) {
+		this.image1Name = image1Name;
+	}
+
+	public byte[] getImage2() {
+		return image2;
+	}
+
+	public void setImage2(byte[] image2) {
+		this.image2 = image2;
+	}
+
+	public String getImage2Name() {
+		return image2Name;
+	}
+
+	public void setImage2Name(String image2Name) {
+		this.image2Name = image2Name;
 	}
 
 	public String getBreif() {

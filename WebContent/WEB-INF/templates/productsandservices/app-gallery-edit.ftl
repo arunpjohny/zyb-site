@@ -32,7 +32,12 @@
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
-							<@macro.ctrlfile name="image" label="Image" class="" size="span12"/>
+							<@macro.ctrlfile name="image1" label="Image 1 (126x126 px)" class="" size="span12"/>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<@macro.ctrlfile name="image2" label="Image 2 (250x250 px)" class="" size="span12"/>
 						</div>
 					</div>
 					<@macro.ctrltextarea name="breif" label="Brief" class="height-small" size="span12" value=(application.brief)!""/>
