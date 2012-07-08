@@ -6,7 +6,7 @@ import in.co.zybotech.core.exception.client.ResourceNotFoundException;
 import in.co.zybotech.core.web.model.ajax.Redirect;
 import in.co.zybotech.dao.criteria.productsandservices.TestimonialListCriteria;
 import in.co.zybotech.model.productsandservices.Testimonial;
-import in.co.zybotech.service.ProductAndServicesManager;
+import in.co.zybotech.service.MiscManager;
 import in.co.zybotech.web.controller.productsandservices.form.TestimonialForm;
 import in.co.zybotech.web.utils.RequestUtils;
 
@@ -41,7 +41,7 @@ public class TestimonialController {
 	private RequestUtils requestUtils;
 
 	@Autowired
-	private ProductAndServicesManager manager;
+	private MiscManager manager;
 
 	@RequestMapping("/productsandservices/testimonials")
 	public ModelAndView gallery(SecurityContextHolderAwareRequestWrapper request) {

@@ -21,8 +21,8 @@ public class StudentManagerImpl extends BaseManager implements StudentManager {
 	@Autowired
 	public StudentManagerImpl(StudentDao studentDao) {
 		super();
-		this.studentDao = studentDao;
 		setDao(studentDao);
+		this.studentDao = studentDao;
 	}
 
 	@Override

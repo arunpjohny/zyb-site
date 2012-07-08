@@ -6,7 +6,7 @@ import in.co.zybotech.core.exception.client.ResourceNotFoundException;
 import in.co.zybotech.dao.criteria.placement.OpeningListCriteria;
 import in.co.zybotech.model.placement.PlacementOpening;
 import in.co.zybotech.service.MailManager;
-import in.co.zybotech.service.PlacementManager;
+import in.co.zybotech.service.MiscManager;
 import in.co.zybotech.web.controller.placement.form.OpeningApplyForm;
 import in.co.zybotech.web.utils.RequestUtils;
 import in.co.zybotech.web.utils.RequestUtils.MessageType;
@@ -39,7 +39,7 @@ public class PlacementOpeningController {
 	private String applyTo;
 
 	@Autowired
-	private PlacementManager placementManager;
+	private MiscManager miscManager;
 
 	@Autowired
 	private MailManager mailManager;
@@ -67,13 +67,13 @@ public class PlacementOpeningController {
 		OpeningListCriteria criteria = new OpeningListCriteria();
 		criteria.setShowHidden(isEditable(request));
 		return getPagerResult(request, page, criteria, PlacementOpening.class,
-				placementManager);
+				miscManager);
 	}
 
 	@RequestMapping(value = "/placements/opening/{id}")
 	public @ResponseBody
 	PlacementOpening opening(HttpServletRequest request, @PathVariable int id) {
-		PlacementOpening object = placementManager.getObject(
+		PlacementOpening object = miscManager.getObject(
 				PlacementOpening.class, id);
 		if (object == null) {
 			throw new ResourceNotFoundException(
@@ -89,21 +89,21 @@ public class PlacementOpeningController {
 		if (opening.getId() == 0) {
 			opening.setCreatedDate(new Date());
 		}
-		opening = placementManager.saveObject(opening, PlacementOpening.class);
+		opening = miscManager.saveObject(opening, PlacementOpening.class);
 		return opening;
 	}
 
 	@RequestMapping(value = "/admin/placements/opening/delete/{id}")
 	public @ResponseBody
 	PlacementOpening delete(HttpServletRequest request, @PathVariable int id) {
-		return placementManager.remove(PlacementOpening.class, id);
+		return miscManager.remove(PlacementOpening.class, id);
 	}
 
 	@RequestMapping(value = "/placements/opening/apply/{id}", method = RequestMethod.POST)
 	public @ResponseBody
 	Map<String, Object> apply(HttpServletRequest request, @PathVariable int id,
 			@ModelAttribute @Valid OpeningApplyForm form) throws IOException {
-		PlacementOpening opening = placementManager.getObject(
+		PlacementOpening opening = miscManager.getObject(
 				PlacementOpening.class, id);
 		if (opening == null) {
 			throw new ResourceNotFoundException(

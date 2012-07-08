@@ -1,7 +1,7 @@
 package in.co.zybotech.service.impl;
 
 import in.co.zybotech.core.service.impl.BaseManager;
-import in.co.zybotech.dao.PersonnelDao;
+import in.co.zybotech.dao.MiscDao;
 import in.co.zybotech.model.zyb.Personnel;
 import in.co.zybotech.model.zyb.PersonnelType;
 import in.co.zybotech.service.PersonnelManager;
@@ -16,18 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class PersonnelManagerImpl extends BaseManager implements
 		PersonnelManager {
 
-	protected PersonnelDao personnelDao;
-
 	@Autowired
-	public PersonnelManagerImpl(PersonnelDao personnelDao) {
+	public PersonnelManagerImpl(MiscDao dao) {
 		super();
-		this.personnelDao = personnelDao;
-		setDao(personnelDao);
+		setDao(dao);
 	}
 
 	@Override
 	public PersonnelType getPersonnelType(String type) {
-		PersonnelType ptype = personnelDao.getObject(PersonnelType.class, type);
+		PersonnelType ptype = getObject(PersonnelType.class, type);
 		ptype.getPersonnel().size();
 		return ptype;
 	}

@@ -6,7 +6,7 @@ import in.co.zybotech.core.exception.client.ResourceNotFoundException;
 import in.co.zybotech.core.web.model.ajax.Redirect;
 import in.co.zybotech.dao.criteria.productsandservices.ApplicationGalleryCriteria;
 import in.co.zybotech.model.productsandservices.Application;
-import in.co.zybotech.service.ProductAndServicesManager;
+import in.co.zybotech.service.MiscManager;
 import in.co.zybotech.web.controller.productsandservices.form.ApplicationForm;
 import in.co.zybotech.web.utils.RequestUtils;
 
@@ -41,7 +41,7 @@ public class AppsGalleryController {
 	private RequestUtils requestUtils;
 
 	@Autowired
-	private ProductAndServicesManager manager;
+	private MiscManager manager;
 
 	@RequestMapping("/productsandservices/app-gallery")
 	public ModelAndView gallery(SecurityContextHolderAwareRequestWrapper request) {
