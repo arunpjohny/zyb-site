@@ -22,10 +22,10 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<password-encoder ref="authenticationPasswordEncoder"/>
+			<password-encoder ref="authenticationPasswordEncoder" />
 			<user-service>
-				<user name="zybotech" password="98f37a485a6c61bf0eefbd83930cc0382743e62e266b907964007b43b5d7c0d2"
-					authorities="ROLE_USER, ROLE_ADMIN, ROLE_STUDENT_ADMIN, ROLE_ABOUTUS_ADMIN, ROLE_BROUCHER_ADMIN, ROLE_PLACEMENT_ADMIN, ROLE_APPLICATION_GALLERY_ADMIN, ROLE_TESTIMONIAL_ADMIN" />
+				<user name="${authentication.user1.username}" password="${authentication.user1.password}"
+					authorities="${authentication.user1.roles}" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
