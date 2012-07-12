@@ -86,6 +86,7 @@ body {
 	position: fixed;
     right: 5px;
 	top: 140px;
+	z-index: 100;
 }
 
 
@@ -588,4 +589,25 @@ textarea {
 }
 
 .gallery-view {
+}
+
+.zyb-combo {
+    display: inline;
+    position: relative;
+
+    input.cb-autocomplete {
+        padding-right: 20px;
+        display: inline-block;
+    }
+
+    input.cb-autocomplete[class*="span"] + i {
+    }
+
+    i.zybcombo-queryall {
+        position: absolute;
+        right: 4px;
+        top: -1px;
+        margin-top: 3px;
+        cursor: pointer;
+    }
 }

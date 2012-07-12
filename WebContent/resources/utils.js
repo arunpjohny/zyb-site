@@ -137,6 +137,19 @@ $(function() {
 							}
 
 						});
+
+				$.validator.addMethod("zyb-value-list", function(value,
+								element, param) {
+							return !$.isArray(param) || param.length <= 0
+									|| this.optional(element)
+									|| param.contains(value);
+						});
+
+				$.validator.addMethod("all-true", function(value, element,
+								param) {
+							return true;
+						});
+
 			}
 		});
 
@@ -148,13 +161,16 @@ $(function() {
 				this.element.addClass("zyb-combo");
 			}
 
-			var html = "<input class='cb-autocomplete "
+			var html = "<input type='text' class='cb-autocomplete "
 					+ (this.element.data("combosize") ? this.element
 							.data("combosize") : "")
-					+ "'/>"
+					+ "' "
+					+ (this.options.placeholder ? "placeholder='"
+							+ this.options.placeholder + "'" : "")
+					+ "/>"
 					+ "<i class='zybcombo-queryall icon icon-chevron-down' ></i>"
 					+ "<input class='cb-value' type='hidden' name='"
-					+ (this.options.name || ZtUtils.id())
+					+ (this.options.name || ZtUtils.getId())
 					+ "' error-placement='"
 					+ (this.element.attr("error-placement") || "inline")
 					+ "' all-true='true' />";
@@ -177,7 +193,7 @@ $(function() {
 
 			this.getResponseFn = $.proxy(function() {
 						return this.elAutoComplete
-								.data(this.options.autocomplete)._response();
+								.data(this.options.autocomplete)._response()
 					}, this);
 			this._initSource();
 
@@ -190,7 +206,8 @@ $(function() {
 
 		_renderItem : function(ul, item) {
 			return $("<li></li>").data("item.autocomplete", item)
-					.append($("<a></a>").html(item.label)).appendTo(ul);
+					.append($("<a></a>").html(item.listView || item.label))
+					.appendTo(ul);
 		},
 
 		_initSource : function() {
@@ -251,10 +268,13 @@ $(function() {
 				var value = $.isFunction(this.options.displayField)
 						? this.options.displayField(data)
 						: data[this.options.displayField];
+				var list = $.isFunction(this.options.listView) ? this.options
+						.listView(data) : undefined;
 				record = {
 					id : id,
 					label : value,
 					value : value,
+					listView : list,
 					obj : data
 				};
 			}
@@ -265,7 +285,7 @@ $(function() {
 			if (this.elAutoComplete.val()) {
 				this.elAutoComplete.val(this.selectedDescription);
 			} else {
-				this._setValue();
+				this.elAutoComplete.val("");
 			}
 		},
 
@@ -519,7 +539,7 @@ $(function() {
 						|| "success";
 				var msgel = opts.el;
 				fnShowMessage(messages, msgtype, msgel);
-				if (msgtype == "success" && !msgtype && !msgel) {
+				if (msgtype == "success" && !msgel) {
 					fnSetHide(5000);
 				}
 			} else if (opts.hideMessage) {
