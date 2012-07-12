@@ -94,8 +94,8 @@
 		</div>
 	</div>
 </#macro>
-<#macro ctrltext name label class="" size="" errorplacement="inline" value="" placeholder="">
-	<div class="control-group">
+<#macro ctrltext name label class="" size="" errorplacement="inline" value="" placeholder="" hidden=false>
+	<div class="control-group <#if hidden==true>hide</#if>">
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
 			<input type="text" name="${name}" class="${class} ${size}" error-placement="${errorplacement}" value="${value!""}" placeholder="${placeholder}"/>
@@ -125,6 +125,14 @@
 		<label class="control-label">${messageResolver.getMessage( label )}</label>
 		<div class="controls">
 			<input type="password" name="${name}" class="${class} ${size}" error-placement="${errorplacement}" value="${value!""}" placeholder="${placeholder}"/>
+		</div>
+	</div>
+</#macro>
+<#macro ctrlcombo label class="" size="" errorplacement="inline" placeholder="">
+	<div class="control-group">
+		<label class="control-label">${messageResolver.getMessage( label )}</label>
+		<div class="controls">
+			<div class="${class}" data-combosize="${size}" error-placement="${errorplacement}" placeholder="${placeholder}"></div>
 		</div>
 	</div>
 </#macro>
