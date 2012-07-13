@@ -68,6 +68,6 @@ public class StudentForm {
 			student.setImageName(image.getOriginalFilename());
 		}
 		student.setName(name);
-		student.setWeight(student.getWeight());
+		student.setWeight(weight);
 	}
 }

@@ -14,7 +14,7 @@ public class StudentDaoImpl extends BaseDAO implements StudentDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Student> getStudents() {
-		String criteriaQuery = "from Student order by weight";
+		String criteriaQuery = "from Student order by weight, id desc";
 		return entityManager.createQuery(criteriaQuery).getResultList();
 	}
 

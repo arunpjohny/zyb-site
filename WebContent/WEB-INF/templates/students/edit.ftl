@@ -3,18 +3,19 @@
 <@macro.header />
 	<@macro.title "Student" />
 	<div class="row-fluid" id="zyb-students">
-		<div class="span9">
+		<div class="span12">
 			<form action="" method="POST" enctype="multipart/form-data" class="form-horizontal well">
 				<fieldset class="row-fluid">
 					<div class="span8">
 						<@macro.ctrltext name="name" label="Name" class="" size="span12" value="${(student.name)!''}"/>
-						<@macro.ctrltextarea name="description" label="Body" class="" size="span12" value="${(student.description)!''}"/>
+						<@macro.ctrltext name="weight" label="Order" class="" size="span12" value="${(student.weight)!''}"/>
+						<@macro.ctrltextarea name="description" label="Body" class="height-medium" size="span12" value="${(student.description)!''}"/>
 						<@macro.ctrlfile name="image" label="Image" class="" size="span12"/>
 					</div>
 					<div class="span4">
 						<#if student?exists>
 							<div style="padding: 5px 0;">
-								<img src="${rc.getContextPath()}/student/photo/${student.id}"></img>
+								<img src="${rc.getContextPath()}/student/photo/${student.id}" class="span12"></img>
 							</div>
 						</#if>
 					</div>
@@ -27,8 +28,6 @@
 				</div>
 			</form>
 		</div> <!-- span9 -->
-		<div class="span3">
-		</div>
 	</div><!-- row -->
 <@macro.footer >
 	<script language="" src="${rc.getContextPath()}/resources/js/students/edit.js"></script>
