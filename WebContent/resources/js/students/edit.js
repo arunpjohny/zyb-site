@@ -13,6 +13,10 @@ $(function() {
 					name : {
 						required : true
 					},
+					weight : {
+						required : true,
+						digits : true
+					},
 					description : {
 						required : true
 					},
