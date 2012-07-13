@@ -5,11 +5,11 @@
 		<div class="span9">
 			<form action="" method="POST" class="form-horizontal well">
 				<fieldset>
-					<@macro.ctrltext name="name" label="Name" class="" size="span6"/>
-					<@macro.ctrltext name="mobile" label="Mobile" class="" size="span6"/>
-					<@macro.ctrltext name="from" label="Email" class="" size="span6"/>
-					<@macro.ctrltext name="subject" label="Subject" class="" size="span6"/>
-					<@macro.ctrltextarea name="body" label="Body" class="" size="span6"/>
+					<@macro.ctrltext name="name" label="Name" class="" size="span9"/>
+					<@macro.ctrltext name="mobile" label="Mobile" class="" size="span9"/>
+					<@macro.ctrltext name="from" label="Email" class="" size="span9"/>
+					<@macro.ctrltext name="subject" label="Subject" class="" size="span9"/>
+					<@macro.ctrltextarea name="body" label="Body" class="height-large" size="span9"/>
 				</fieldset>
 				
 				<div class="form-actions">
