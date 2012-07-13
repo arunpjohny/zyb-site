@@ -34,7 +34,6 @@ $(function() {
 		},
 
 		onSubmitSuccess : function(result,status,xhr) {
-			console.log("success",arguments);
 			var loc = xhr.getResponseHeader("Location");
 			window.location = loc || ZtUtils.getContextPath() + "/";
 		}
