@@ -1,0 +1,4 @@
+.student.scrollable-wrapper {
+  height: 130px;
+  overflow-y: hidden;
+}
