@@ -12,6 +12,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.util.Assert;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -26,6 +27,8 @@ public class MailerImpl extends AbstractMailer {
 		if (fields != null) {
 			this.emailIndex = fields.indexOf("email");
 		}
+		Assert.isTrue(this.emailIndex >= 0,
+				"Please specify the email field location in source.");
 	}
 
 	public void send(File source) throws IOException {

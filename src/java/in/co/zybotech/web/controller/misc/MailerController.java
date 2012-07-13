@@ -54,6 +54,9 @@ public class MailerController {
 	@Value("${bulkmailer.mail.from}")
 	private String from;
 
+	@Value("${bulkmailer.mail.from.name}")
+	private String fromName;
+
 	@RequestMapping(value = "/mailer", method = RequestMethod.GET)
 	@Secured("ROLE_BULK_MAILER")
 	public ModelAndView mailer(SecurityContextHolderAwareRequestWrapper request)
@@ -76,6 +79,7 @@ public class MailerController {
 		mailer.setSender(mailSender);
 		mailer.setFields(getFields(form.getFields()));
 		mailer.setFrom(from);
+		mailer.setFromName(fromName);
 		mailer.setSubject(form.getSubject());
 		mailer.html(form.getHtml());
 		mailer.plain(form.getPlain());

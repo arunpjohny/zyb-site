@@ -17,6 +17,8 @@ public interface BulkMailer {
 
 	void setFrom(String from);
 
+	void setFromName(String fromName);
+
 	void setSubject(String subject);
 
 	void html(String html);

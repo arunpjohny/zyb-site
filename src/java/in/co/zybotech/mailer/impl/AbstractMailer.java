@@ -5,6 +5,7 @@ import in.co.zybotech.mailer.BulkMailer;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,6 +21,7 @@ public abstract class AbstractMailer implements BulkMailer {
 	protected JavaMailSender mailSender;
 	protected List<String> fields;
 	protected String from;
+	protected String fromName;
 	protected String subject;
 	protected String html;
 	protected String plain;
@@ -39,6 +41,10 @@ public abstract class AbstractMailer implements BulkMailer {
 
 	public void setFrom(String from) {
 		this.from = from;
+	}
+
+	public void setFromName(String fromName) {
+		this.fromName = fromName;
 	}
 
 	public void setSubject(String subject) {
@@ -74,7 +80,9 @@ public abstract class AbstractMailer implements BulkMailer {
 				for (String string : emails) {
 					messageHelper.addTo(string);
 				}
-				messageHelper.setFrom(from);
+				InternetAddress fromAddress = StringUtils.isBlank(fromName) ? new InternetAddress(
+						from) : new InternetAddress(from, fromName);
+				messageHelper.setFrom(fromAddress);
 				if (StringUtils.isNotBlank(plain)
 						&& StringUtils.isNotBlank(html)) {
 					messageHelper.setText(plain, html);
