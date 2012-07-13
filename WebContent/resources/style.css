@@ -477,3 +477,15 @@ textarea.height-large {
   margin-top: 3px;
   cursor: pointer;
 }
+@media (min-width: 1200px) {
+  
+}
+@media (max-width: 767px) {
+  
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  
+}
+@media (max-width: 480px) {
+  
+}
