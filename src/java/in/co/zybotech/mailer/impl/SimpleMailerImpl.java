@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.io.FileUtils;
@@ -88,7 +89,9 @@ public class SimpleMailerImpl extends AbstractMailer {
 				for (String string : emails) {
 					messageHelper.addBcc(string);
 				}
-				messageHelper.setFrom(from);
+				InternetAddress fromAddress = StringUtils.isBlank(fromName) ? new InternetAddress(
+						from) : new InternetAddress(from, fromName);
+				messageHelper.setFrom(fromAddress);
 				messageHelper.setTo(from);
 				if (StringUtils.isNotBlank(plain)
 						&& StringUtils.isNotBlank(html)) {
