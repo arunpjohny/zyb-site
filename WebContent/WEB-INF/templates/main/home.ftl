@@ -14,7 +14,7 @@
 			                <img src="${rc.getContextPath()}/resources/images/home/5.jpg"/>
 			                <img src="${rc.getContextPath()}/resources/images/home/6.jpg"/>
 			                <img src="${rc.getContextPath()}/resources/images/home/7.jpg"/>
-			                <img src="${rc.getContextPath()}/resources/images/home/8.jpg"/>
+			                <img src="${rc.getContextPath()}/resources/images/home/8.01.jpg"/>
 			            </div>
 			        </div>
 				</div>
