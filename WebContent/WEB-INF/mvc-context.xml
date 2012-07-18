@@ -11,6 +11,8 @@
 
 	<mvc:annotation-driven validator="validator" />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/favicon.ico" mapping="/favicon.ico" />
+	<mvc:resources location="/robots.txt" mapping="/robots.txt" />
 
 	<bean name="validator"
 		class="in.co.zybotech.core.spring.bind.validation.LocalValidatorFactoryBean">
