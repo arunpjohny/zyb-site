@@ -14,9 +14,25 @@
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 
+	<filter>
+		<description>Adds any header to the response</description>
+		<filter-name>HeaderManipulationFilter</filter-name>
+		<filter-class>in.co.zybotech.web.filter.HeaderManipulationFilter</filter-class>
+		<init-param>
+			<description>far future expires tag</description>
+			<param-name>Expires</param-name>
+			<param-value>Thu, 15 Oct 2015 01:01:01 GMT</param-value>
+		</init-param>
+	</filter>
+
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>HeaderManipulationFilter</filter-name>
+		<url-pattern>/resources/*</url-pattern>
 	</filter-mapping>
 
 	<servlet>
