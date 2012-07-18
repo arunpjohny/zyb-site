@@ -80,6 +80,7 @@ $(function() {
 
 			this.$form.ajaxSubmit({
 						url : ZtUtils.getContextPath() + "/mailer",
+						timeout : 900000,
 						data : {
 							"x-requested-with" : "XMLHttpRequest"
 						},
