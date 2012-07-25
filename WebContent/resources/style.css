@@ -152,6 +152,9 @@ section p:first-child {
 .social-connect .connect-twitter {
   background-image: url("images/twitter.png");
 }
+.social-connect .connect-googleplus {
+  background-image: url("images/google-plus.jpg");
+}
 .contact-sidebar header, .contact-sidebar header.type2 {
   box-shadow: none;
   padding: 5px 0;

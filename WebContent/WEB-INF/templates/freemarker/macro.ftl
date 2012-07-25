@@ -41,6 +41,7 @@
 					<div class="social-connect">
 						<a href="http://www.facebook.com/Zybotech" target="_blank"><div class="connect-facebook"></div></a>
 						<a href="https://twitter.com/#!/zybotech" target="_blank"><div class="connect-twitter"></div></a>
+						<a href="https://plus.google.com/102678237917946943186" rel="publisher" target="_blank"><div class="connect-googleplus"></div></a>
 					</div>
 				</div>
 			</div>
