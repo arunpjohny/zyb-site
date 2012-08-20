@@ -33,7 +33,7 @@
 							<li>Development workshops</li>
 							<li>Collage projects</li>
 							<li>Live and demo projects for trainees</li>
-							<li>On The Job Training and Certified Coerces</li>
+							<li>On The Job Training and Certified Courses</li>
 						</ul>
 					</p>
 					<p>

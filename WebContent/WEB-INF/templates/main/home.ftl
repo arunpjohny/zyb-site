@@ -57,7 +57,7 @@
 					<header class="type2"><h5>Quick Links</h5></header>
 					
 					<div class="topic">
-						<strong><a href="#id=/productsandservices/app-gallery">Apps gallary</a></strong>
+						<strong><a href="#id=/productsandservices/app-gallery">Apps gallery</a></strong>
 					</div>
 					<div class="topic">
 						<strong><a href="#id=/productsandservices/whyzybotech">Why zybotech</a></strong>
