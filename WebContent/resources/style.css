@@ -153,7 +153,7 @@ section p:first-child {
   background-image: url("images/twitter.png");
 }
 .social-connect .connect-googleplus {
-  background-image: url("images/google-plus.jpg");
+  background-image: url("images/google-plus.png");
 }
 .contact-sidebar header, .contact-sidebar header.type2 {
   box-shadow: none;
@@ -479,6 +479,21 @@ textarea.height-large {
   top: -1px;
   margin-top: 3px;
   cursor: pointer;
+}
+.zyb-tags-page {
+  margin-bottom: 10px;
+}
+.zyb-tags-page  > article {
+  margin-top: 10px;
+}
+.zyb-tags-page  > article:first-child {
+  margin-top: 0;
+}
+.zyb-tags-page  > article  > section {
+  margin-top: 5px;
+}
+.zyb-tags-page  > article  > section:first-child {
+  margin-top: 0;
 }
 @media (min-width: 1200px) {
   
