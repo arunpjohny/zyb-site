@@ -14,6 +14,7 @@
 	<mvc:resources location="/favicon.ico" mapping="/favicon.ico" />
 	<mvc:resources location="/robots.txt" mapping="/robots.txt" />
 	<mvc:resources location="/googlebc3ab098c6b3c376.html" mapping="/googlebc3ab098c6b3c376.html" />
+	<mvc:resources location="/uG3AP6zUwfOnzgBUkIy03OTsvW8.html" mapping="/uG3AP6zUwfOnzgBUkIy03OTsvW8.html" />
 
 	<bean name="validator"
 		class="in.co.zybotech.core.spring.bind.validation.LocalValidatorFactoryBean">
